@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Munch Match</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <img src="logo.png" alt="Logo">
+    <h1>Munch Match</h1>
+</header>
+
+<div id="foodContainer">
+    <p id="dishName">Dish Name</p>
+    <img id="foodImage" src="image1.jpg" alt="Food Image">
+    <p id="description">Description text goes here.</p>
+    <button id="btnLeft" onclick="swipe('left')">❮</button>
+    <button id="btnRight" onclick="swipe('right')">❯</button>
+</div>
+
+<div id="allergiesPanel">
+    <h3>Allergies</h3>
+    <label class="allergyCheckbox"><input type="checkbox" name="allergy" value="nuts"> Nuts</label>
+    <label class="allergyCheckbox"><input type="checkbox" name="allergy" value="dairy"> Dairy</label>
+    <label class="allergyCheckbox"><input type="checkbox" name="allergy" value="gluten"> Gluten</label>
+    <label class="allergyCheckbox"><input type="checkbox" name="allergy" value="soy"> Soy</label>
+    <label class="allergyCheckbox"><input type="checkbox" name="allergy" value="seafood"> Seafood</label>
+</div>
+
+<div id="likedFoods"></div>
+
+<footer></footer>
+
+<script src="script.js"></script>
+</body>
+</html>

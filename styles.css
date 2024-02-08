@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+header, footer {
+    background-color: #3498db; 
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+}
+
+header img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+#foodContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px; 
+    height: 400px; 
+    overflow: hidden;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#dishName {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#foodImage {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+#description {
+    padding: 10px;
+    font-size: 14px;
+}
+
+#allergiesPanel {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.allergyCheckbox {
+    margin-bottom: 5px;
+}
+
+#btnLeft, #btnRight {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    cursor: pointer;
+    background-color: #fff;
+    border: none;
+    outline: none;
+}
+
+#btnLeft {
+    left: 10px;
+}
+
+#btnRight {
+    right: 10px;
+}
+
+#likedFoods {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 60px); 
+    grid-gap: 5px;
+}
+
+.likedFood {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+}
