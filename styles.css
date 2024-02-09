@@ -1,5 +1,5 @@
 :root {
-    --background-color: #f0dbb3;
+    --background-color: #fff3de;
     --text-color: #1c1d18;
     --primary-color: #f7b53c;
     --accent-color-1: #f23405;
@@ -13,12 +13,13 @@ body {
     background-color: var(--background-color);
 }
 
-p{
+p {
     color: var(--text-color);
 }
 
-header, footer {
-    background-color: var(--accent-color-1); 
+header,
+footer {
+    background-color: var(--accent-color-1);
     padding: 10px;
     color: var(--background-color);
     text-align: center;
@@ -34,12 +35,20 @@ header img {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px; 
-    height: 400px; 
+    width: 300px;
+    height: 400px;
     overflow: hidden;
-    border: 1px solid var(--text-color);
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    /* border: 1px solid var(--text-color); */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     text-align: center;
+    border-radius: 10px;
+    background-color: var(--background-color);
+
+    /* background-image: url("image3.png");
+    background-size: auto 100%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    background-position: center; */
 }
 
 #dishName {
@@ -60,45 +69,48 @@ header img {
     font-size: 14px;
 }
 
-#allergiesPanel {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-}
-
 .allergyCheckbox {
     margin-bottom: 5px;
 }
 
-#btnLeft, #btnRight {
+#btnLeft,
+#btnRight {
     position: absolute;
+    height: 100%;
     top: 50%;
     transform: translateY(-50%);
     font-size: 24px;
     cursor: pointer;
     background-color: var(--primary-color);
-    border: none;
+    border: var(--primary-color) 2px solid;
+    color: var(--background-color);
+    /* border: none; */
     outline: none;
 }
 
 #btnLeft {
-    left: 10px;
+    left: 0px;
 }
 
 #btnRight {
-    right: 10px;
+    right: 0px;
 }
 
-#likedFoods {
-    position: fixed;
+#likedFoods,
+#dislikedFoods {
+    border: 1px solid white;
+}
+
+#likedFoods, #dislikedFoods{
+    /* position: fixed;
     top: 10px;
-    right: 10px;
+    right: 10px; */
     display: grid;
-    grid-template-columns: repeat(3, 60px); 
+    grid-template-columns: repeat(3, 60px);
     grid-gap: 5px;
 }
 
-.likedFood {
+.likedFood, .dislikedFood {
     width: 60px;
     height: 60px;
     object-fit: cover;
@@ -110,4 +122,24 @@ footer {
     bottom: 0;
     width: 100%;
     height: 30px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.column {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+#foodColumn::before{
+    /* background-color: black; */
+    /* background-size: cover; */
+    background-image: url("image1.png");
+    /* filter: blur(10px); */
 }
