@@ -1,7 +1,7 @@
 const foods = [
-    { image: "image1.png", name: "Burger", description: "Description for Dish 1" },
-    { image: "image2.png", name: "Pasta", description: "Description for Dish 2" },
-    { image: "image3.png", name: "Salad", description: "Description for Dish 3" },
+    { image: "images/image1.png", name: "Burger", description: "Description for Dish 1" },
+    { image: "images/image2.png", name: "Pasta", description: "Description for Dish 2" },
+    { image: "images/image3.png", name: "Salad", description: "Description for Dish 3" },
 ];
 
 let currentIndex = 0;
