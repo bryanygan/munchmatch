@@ -96,6 +96,71 @@ header img {
     right: 0px;
 }
 
+/* button hover animation */
+.btn-ani-left {
+    border: none;
+    color: #000;
+  }
+  .btn-ani-left:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    left: 0;
+    direction: rtl;
+    z-index: -1;
+    box-shadow:
+     -7px -7px 20px 0px #ec9c05,
+     -4px -4px 5px 0px #f7b53c,
+     7px 7px 20px 0px #0002,
+     4px 4px 5px 0px #0001;
+    transition: all 0.3s ease;
+  }
+  .btn-ani-left:hover {
+    color: #000;
+  }
+  .btn-ani-left:hover:after {
+    left: auto;
+    right: 0;
+    width: 100%;
+  }
+  .btn-ani-left:active {
+    top: 2px;
+  }
+  
+.btn-ani-right {
+    border: none;
+    color: #000;
+}
+
+.btn-ani-right:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    box-shadow:
+     7px 7px 20px 0px #0002,
+     4px 4px 5px 0px #0001;
+    transition: all 0.3s ease;
+}
+
+.btn-ani-right:hover {
+    color: #000;
+}
+
+.btn-ani-right:hover:after {
+    left: 0;
+    width: 100%;
+}
+
+.btn-ani-right:active {
+    top: 2px;
+}
+
 #likedFoods,
 #dislikedFoods {
     border: 1px solid white;
