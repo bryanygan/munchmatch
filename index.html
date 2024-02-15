@@ -27,10 +27,17 @@
         </div>
     </div>
     <div class="column" id="foodColumn">
-        <div id="foodContainer">
-            <p id="dishName">Dish Name</p>
+        <div id="foodContainer" style="position: relative"> 
             <img id="foodImage" src="images/image1.png" alt="Food Image">
-            <p id="description">Description text goes here.</p>
+            <div id="nameContainer" style="width: 100%;
+            height: 40%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-image: linear-gradient(rgba(0, 0, 0, 0), black);">
+                <p id="dishName" style="color: white">Dish Name</p>
+                <p id="description" style="color:white">Description text goes here.</p>
+            </div>
             <button id="btnLeft" onclick="swipe('left')">❮</button>
             <button id="btnRight" onclick="swipe('right')">❯</button>
         </div>
