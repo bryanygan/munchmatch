@@ -2,7 +2,14 @@ const foods = [
     { image: "images/image1.png", name: "Burger", description: "Description for Dish 1" },
     { image: "images/image2.png", name: "Pasta", description: "Description for Dish 2" },
     { image: "images/image3.png", name: "Salad", description: "Description for Dish 3" },
+    { image: "images/image4.png", name: "Chicken Nuggets", description: "Description for Dish 4" },
 ];
+
+var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+checkboxes.forEach(function (checkbox) {
+    checkbox.checked = true;
+});
 
 let currentIndex = 0;
 let likedFoods = [], dislikedFoods = [];
