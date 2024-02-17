@@ -11,35 +11,35 @@ checkboxes.forEach(function (checkbox) {
     checkbox.checked = true;
 });
 
-//
-// var i = 0;
-// function move() {
-//   if (i == 0) {
-//     i = 1;
-//     var elem = document.getElementById("myBar");
-//     var width = 1;
-//     var id = setInterval(frame, 10);
-//     function frame() {
-//       if (width >= 100) {
-//         clearInterval(id);
-//         i = 0;
-//       } else {
-//         width++;
-//         elem.style.width = width + "%";
-//       }
-//     }
-//   }
-// }
+function generateList() {
+    var list = [];
+    var sum = 0;
+    while (sum != 100) {
+        if (sum > 100) {
+            sum -= list.shift();
+        }
+        var randomNum = 1 + Math.floor(Math.random() * 8)
+        list.push(randomNum);
+        sum += randomNum;
+    }
 
-// move();
-//
+    return list;
+}
 
-var swipeCounter = 0.0;
-function progress(){
-    swipeCounter+=1;
-    var elem = document.getElementById("myBar");
-    let fill = swipeCounter/20.0;
-    elem.style.width = fill*100+"%";
+
+var resultList = generateList();
+// console.log(resultList);
+
+var fill = 0;
+function progress() {
+    fill+=resultList.shift();
+    // var fill = resultList[swipeCounter];
+    // swipeCounter += 1;
+
+     var elem = document.getElementById("myBar");
+    // let fill = swipeCounter / 20.0;
+    elem.style.width = fill+ "%";
+    document.getElementById("percentText").innerHTML = (fill+"% to Match")
 }
 
 let currentIndex = 0;
@@ -136,3 +136,12 @@ function updateFoodPref(name) {
 //         likedFoodsContainer.appendChild(likedFoodElement);
 //     });
 // }
+
+const shuffleArray = array => {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+}
