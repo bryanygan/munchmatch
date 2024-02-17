@@ -1,8 +1,8 @@
 const foods = [
-    { image: "images/image1.png", name: "Burger", description: "Description for Dish 1" },
-    { image: "images/image2.png", name: "Pasta", description: "Description for Dish 2" },
-    { image: "images/image3.png", name: "Salad", description: "Description for Dish 3" },
-    { image: "images/image4.png", name: "Chicken Nuggets", description: "Description for Dish 4" },
+    { image: "images/image1.png", name: "Burger", description: "A beef patty with cheese and two buns." },
+    { image: "images/image2.png", name: "Pasta", description: "Pasta alfredo made with cheese and garnish." },
+    { image: "images/image3.png", name: "Salad", description: "A healthy salad with greens and veggies." },
+    { image: "images/image4.png", name: "Chicken Nuggets", description: "Chicken nuggets prepared with sauce." },
 ];
 
 var checkboxes = document.querySelectorAll('input[type="checkbox"]');
@@ -10,6 +10,29 @@ var checkboxes = document.querySelectorAll('input[type="checkbox"]');
 checkboxes.forEach(function (checkbox) {
     checkbox.checked = true;
 });
+
+//
+var i = 0;
+function move() {
+  if (i == 0) {
+    i = 1;
+    var elem = document.getElementById("myBar");
+    var width = 1;
+    var id = setInterval(frame, 10);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(id);
+        i = 0;
+      } else {
+        width++;
+        elem.style.width = width + "%";
+      }
+    }
+  }
+}
+
+move();
+//
 
 let currentIndex = 0;
 let likedFoods = [], dislikedFoods = [];

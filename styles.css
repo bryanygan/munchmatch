@@ -104,7 +104,8 @@ header img {
     border: 1px solid white;
 }
 
-#likedFoods, #dislikedFoods{
+#likedFoods,
+#dislikedFoods {
     /* position: fixed;
     top: 10px;
     right: 10px; */
@@ -113,7 +114,8 @@ header img {
     grid-gap: 5px;
 }
 
-.likedFood, .dislikedFood {
+.likedFood,
+.dislikedFood {
     width: 60px;
     height: 60px;
     object-fit: cover;
@@ -140,7 +142,7 @@ footer {
     box-sizing: border-box;
 }
 
-header{
+header {
     display: flex;
     justify-content: space-evenly;
     /* padding:20px; */
@@ -153,47 +155,47 @@ header{
     box-sizing: border-box;
 }
 
-#headerColumnLeft{
+#headerColumnLeft {
     /* justify-content: left; */
     text-align: left;
 }
 
-#foodColumn::before{
+#foodColumn::before {
     /* background-color: black; */
     /* background-size: cover; */
     background-image: url("image1.png");
     /* filter: blur(10px); */
 }
 
-  .checkbox-wrapper-64 input[type="checkbox"] {
+.checkbox-wrapper-64 input[type="checkbox"] {
     visibility: hidden;
     display: none;
-  }
+}
 
-  .checkbox-wrapper-64 *,
-  .checkbox-wrapper-64 ::after,
-  .checkbox-wrapper-64 ::before {
+.checkbox-wrapper-64 *,
+.checkbox-wrapper-64 ::after,
+.checkbox-wrapper-64 ::before {
     box-sizing: border-box;
-  }
+}
 
-  /* The switch - the box around the slider */
-  .checkbox-wrapper-64 .switch {
+/* The switch - the box around the slider */
+.checkbox-wrapper-64 .switch {
     font-size: 17px;
     position: relative;
     display: inline-block;
     width: 2.5em;
     height: 1.5em;
-  }
+}
 
-  /* Hide default HTML checkbox */
-  .checkbox-wrapper-64 .switch input {
+/* Hide default HTML checkbox */
+.checkbox-wrapper-64 .switch input {
     opacity: 0;
     width: 0;
     height: 0;
-  }
+}
 
-  /* The slider */
-  .checkbox-wrapper-64 .slider {
+/* The slider */
+.checkbox-wrapper-64 .slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -204,9 +206,9 @@ header{
     border: 1px solid var(--accent-color-1);
     transition: .4s;
     border-radius: 30px;
-  }
+}
 
-  .checkbox-wrapper-64 .slider:before {
+.checkbox-wrapper-64 .slider:before {
     position: absolute;
     content: "";
     height: 1em;
@@ -216,18 +218,42 @@ header{
     bottom: 0.25em;
     background-color: var(--background-color);
     transition: .4s;
-  }
+}
 
-  .checkbox-wrapper-64 input:checked + .slider {
+.checkbox-wrapper-64 input:checked+.slider {
     background-color: var(--accent-color-2);
     border: 1px solid var(--accent-color-2);
-  }
+}
 
-  .checkbox-wrapper-64 input:focus + .slider {
+.checkbox-wrapper-64 input:focus+.slider {
     box-shadow: 0 0 1px var(--accent-color-2);
-  }
+}
 
-  .checkbox-wrapper-64 input:checked + .slider:before {
+.checkbox-wrapper-64 input:checked+.slider:before {
     transform: translateX(.9em);
     background-color: var(--background-color);
-  }
+}
+
+#allergyIcon {
+    height: 100%;
+}
+
+#foodTextContainer {
+    width: 100%;
+    height: 30%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), black);
+}
+
+#myProgress {
+    width: 80%;
+    background-color: var(--accent-color-1);
+}
+
+#myBar {
+    width: 1%;
+    height: 30px;
+    background-color: var(--accent-color-2);
+}
