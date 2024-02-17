@@ -10,7 +10,7 @@ var checkboxes = document.querySelectorAll('input[type="checkbox"]');
 checkboxes.forEach(function (checkbox) {
     checkbox.checked = true;
     console.log(checkbox.value);
-    checkbox.addEventListener('change', function() {
+    checkbox.addEventListener('change', function () {
         handleAllergy(this);
     });
 });
@@ -23,6 +23,30 @@ function handleAllergy(checkbox) {
         console.log("Allergy deselected: " + checkbox.value);
         // Call function based on the allergy value if needed
     }
+
+    var label;
+    //var elements = document.getElementById("checkboxHolder");
+    var elements = document.querySelectorAll('#checkboxHolder');
+    elements.forEach(function (element) {
+        if (element.innerHTML.includes(checkbox.value)) {
+            label = element;
+        }
+    });
+    // label.innerHTML="beep";
+    // console.log(label.childNodes);
+    // console.log(label.childNodes[3]);
+    var labText = label.childNodes[3].innerHTML;
+    // console.log(labText.substring(0,labText.search("</i>") + 4))
+    var newText = "";
+    newText += labText.substring(0, labText.search("</i>") + 4);
+    if (!checkbox.checked) {
+        newText += '<span style="color:#F18C60;">';
+    }
+    newText += " - " + checkbox.value.toUpperCase()
+    if (!checkbox.checked) {
+        newText += "</span>";
+    }
+    label.childNodes[3].innerHTML = newText;
 }
 
 // someCheckbox.addEventListener('change', e => {
@@ -55,14 +79,14 @@ var resultList = generateList();
 
 var fill = 0;
 function progress() {
-    fill+=resultList.shift();
+    fill += resultList.shift();
     // var fill = resultList[swipeCounter];
     // swipeCounter += 1;
 
-     var elem = document.getElementById("myBar");
+    var elem = document.getElementById("myBar");
     // let fill = swipeCounter / 20.0;
-    elem.style.width = fill+ "%";
-    document.getElementById("percentText").innerHTML = ("<b>"+fill+"%</b> to Match")
+    elem.style.width = fill + "%";
+    document.getElementById("percentText").innerHTML = ("<b>" + fill + "%</b> to Match")
 }
 
 let currentIndex = 0;
