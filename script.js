@@ -12,27 +12,35 @@ checkboxes.forEach(function (checkbox) {
 });
 
 //
-var i = 0;
-function move() {
-  if (i == 0) {
-    i = 1;
-    var elem = document.getElementById("myBar");
-    var width = 1;
-    var id = setInterval(frame, 10);
-    function frame() {
-      if (width >= 100) {
-        clearInterval(id);
-        i = 0;
-      } else {
-        width++;
-        elem.style.width = width + "%";
-      }
-    }
-  }
-}
+// var i = 0;
+// function move() {
+//   if (i == 0) {
+//     i = 1;
+//     var elem = document.getElementById("myBar");
+//     var width = 1;
+//     var id = setInterval(frame, 10);
+//     function frame() {
+//       if (width >= 100) {
+//         clearInterval(id);
+//         i = 0;
+//       } else {
+//         width++;
+//         elem.style.width = width + "%";
+//       }
+//     }
+//   }
+// }
 
-move();
+// move();
 //
+
+var swipeCounter = 0.0;
+function progress(){
+    swipeCounter+=1;
+    var elem = document.getElementById("myBar");
+    let fill = swipeCounter/20.0;
+    elem.style.width = fill*100+"%";
+}
 
 let currentIndex = 0;
 let likedFoods = [], dislikedFoods = [];
@@ -53,6 +61,7 @@ function swipe(direction) {
     }
 
     updateFoodDisplay(direction);
+    progress();
 }
 
 function updateFoodDisplay(direction) {

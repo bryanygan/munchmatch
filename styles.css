@@ -1,9 +1,13 @@
 :root {
     --background-color: #fff3de;
     --text-color: #1c1d18;
+    /* -g color vairants are for gradients */
     --primary-color: #f7b53c;
+    --primary-color-g: #F5952E;
     --accent-color-1: #f23405;
+    --accent-color-1-g: #F45614;
     --accent-color-2: #76b53b;
+    --accent-color-2-g: #9CB53B;
 }
 
 body {
@@ -85,6 +89,7 @@ header img {
     font-size: 24px;
     cursor: pointer;
     background-color: var(--primary-color);
+    /* background-image: linear-gradient(var(--primary-color), var(--primary-color-g)); */
     border: var(--primary-color) 2px solid;
     color: var(--background-color);
     /* border: none; */
@@ -248,12 +253,22 @@ header {
 }
 
 #myProgress {
+    padding: 10px;
+    height: 50%;
+    /* height:; */
     width: 80%;
-    background-color: var(--accent-color-1);
+    /* background-color: var(--accent-color-1); */
 }
 
 #myBar {
-    width: 1%;
-    height: 30px;
-    background-color: var(--accent-color-2);
+    /* transition: 0.5f; */
+    transition: width 1s;
+    width: 0%;
+    height: 100%;
+    /* background-color: var(--accent-color-2); */
+    background: repeating-linear-gradient(45deg,
+            var(--accent-color-1),
+            var(--accent-color-1) 10px,
+            var(--primary-color) 10px,
+            var(--primary-color) 20px);
 }
