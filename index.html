@@ -21,33 +21,53 @@
     <header>
         <div class="headerColumn" id="headerColumnLeft">
             <div id="allergiesPanel">
-                <div class="checkbox-wrapper-64">
-                    <label class="switch">
-                        <input type="checkbox" name="allergy" value="gluten">
-                        <span class="slider"></span>
-                    </label>
-                    <i class="fa-solid fa-wheat-awn" id="allergyIcon"></i>
+                <div id="checkboxHolder">
+                    <div class="checkbox-wrapper-64">
+                        <label class="switch">
+                            <input type="checkbox" name="allergy" value="gluten">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div id="checkboxLabel">
+                        <i class="fa-solid fa-wheat-awn" id="allergyIcon"></i>
+                         - WHEAT
+                    </div>
                 </div>
-                <div class="checkbox-wrapper-64">
-                    <label class="switch">
-                        <input type="checkbox" name="allergy" value="seafood">
-                        <span class="slider"></span>
-                    </label>
-                    <i class="fa-solid fa-fish" id="allergyIcon"></i>
+                <div id="checkboxHolder">
+                    <div class="checkbox-wrapper-64">
+                        <label class="switch">
+                            <input type="checkbox" name="allergy" value="seafood">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div id="checkboxLabel">
+                        <i class="fa-solid fa-fish" id="allergyIcon"></i>
+                         - SEAFOOD
+                    </div>
                 </div>
+            </div>
+            <div id="checkboxHolder">
                 <div class="checkbox-wrapper-64">
                     <label class="switch">
                         <input type="checkbox" name="allergy" value="dairy">
                         <span class="slider"></span>
                     </label>
-                    <i class="fa-solid fa-cheese" id="allergyIcon"></i>
                 </div>
+                <div id="checkboxLabel">
+                    <i class="fa-solid fa-cheese" id="allergyIcon"></i>
+                     - DAIRY
+                </div>
+            </div>
+            <div id="checkboxHolder">
                 <div class="checkbox-wrapper-64">
                     <label class="switch">
-                        <input type="checkbox" name="allergy" value="spicy">
+                        <input type="checkbox" name="allergy" value="spice">
                         <span class="slider"></span>
                     </label>
+                </div>
+                <div id="checkboxLabel">
                     <i class="fa-solid fa-pepper-hot" id="allergyIcon"></i>
+                     - SPICE
                 </div>
             </div>
         </div>
@@ -90,7 +110,7 @@
         <div id="myProgress">
             <div id="myBar"></div>
             <div id="percentText">Swipe to find your Match</div>
-          </div>
+        </div>
     </footer>
 
     <script src="script.js"></script>

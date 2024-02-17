@@ -9,7 +9,30 @@ var checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
 checkboxes.forEach(function (checkbox) {
     checkbox.checked = true;
+    console.log(checkbox.value);
+    checkbox.addEventListener('change', function() {
+        handleAllergy(this);
+    });
 });
+
+function handleAllergy(checkbox) {
+    if (checkbox.checked) {
+        console.log("Allergy selected: " + checkbox.value);
+        // Call function based on the allergy value if needed
+    } else {
+        console.log("Allergy deselected: " + checkbox.value);
+        // Call function based on the allergy value if needed
+    }
+}
+
+// someCheckbox.addEventListener('change', e => {
+//   if(e.target.checked === true) {
+//     console.log("Checkbox is checked - boolean value: ", e.target.checked)
+//   }
+// if(e.target.checked === false) {
+//     console.log("Checkbox is not checked - boolean value: ", e.target.checked)
+//   }
+// });
 
 function generateList() {
     var list = [];
@@ -39,7 +62,7 @@ function progress() {
      var elem = document.getElementById("myBar");
     // let fill = swipeCounter / 20.0;
     elem.style.width = fill+ "%";
-    document.getElementById("percentText").innerHTML = (fill+"% to Match")
+    document.getElementById("percentText").innerHTML = ("<b>"+fill+"%</b> to Match")
 }
 
 let currentIndex = 0;
