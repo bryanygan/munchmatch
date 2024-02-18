@@ -1,9 +1,14 @@
 :root {
     --background-color: #fff3de;
+    --background-color-g: #F18C60;
     --text-color: #1c1d18;
+    /* -g color vairants are for gradients */
     --primary-color: #f7b53c;
+    --primary-color-g: #F5952E;
     --accent-color-1: #f23405;
+    --accent-color-1-g: #F45614;
     --accent-color-2: #76b53b;
+    --accent-color-2-g: #9CB53B;
 }
 
 body {
@@ -23,6 +28,7 @@ footer {
     padding: 10px;
     color: var(--background-color);
     text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 header img {
@@ -49,6 +55,23 @@ header img {
     padding-top: 3%;
     padding-bottom: 3%;
     background-position: center; */
+    animation-duration: 0.5s;
+    animation-name: animate-pop;
+    /* animation-timing-function: cubic-bezier(.26, .53, .74, 1.48); */
+    /* animation-iteration-count: 3; */
+
+}
+
+@keyframes animate-pop {
+    0% {
+        opacity: 0;
+        /* transform: scale(0.5, 0.5); */
+    }
+
+    100% {
+        opacity: 1;
+        /* transform: scale(1, 1); */
+    }
 }
 
 #dishName {
@@ -59,7 +82,10 @@ header img {
 
 #foodImage {
     width: 100%;
-    height: 70%;
+    height: 100%;
+    /*?*/
+    margin-left: auto;
+    margin-right: auto;
     object-fit: cover;
     transition: transform 0.3s ease-in-out;
 }
@@ -82,6 +108,7 @@ header img {
     font-size: 24px;
     cursor: pointer;
     background-color: var(--primary-color);
+    /* background-image: linear-gradient(var(--primary-color), var(--primary-color-g)); */
     border: var(--primary-color) 2px solid;
     color: var(--background-color);
     /* border: none; */
@@ -101,7 +128,8 @@ header img {
     border: 1px solid white;
 }
 
-#likedFoods, #dislikedFoods{
+#likedFoods,
+#dislikedFoods {
     /* position: fixed;
     top: 10px;
     right: 10px; */
@@ -110,7 +138,8 @@ header img {
     grid-gap: 5px;
 }
 
-.likedFood, .dislikedFood {
+.likedFood,
+.dislikedFood {
     width: 60px;
     height: 60px;
     object-fit: cover;
@@ -133,13 +162,170 @@ footer {
 .column {
     flex: 1;
     padding: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--background-color);
     box-sizing: border-box;
 }
 
-#foodColumn::before{
+header {
+    display: flex;
+    justify-content: space-evenly;
+    /* padding:20px; */
+}
+
+.headerColumn {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid var(--background-color);
+    box-sizing: border-box;
+}
+
+#headerColumnLeft {
+    /* justify-content: left; */
+    text-align: left;
+}
+
+#foodColumn::before {
     /* background-color: black; */
     /* background-size: cover; */
     background-image: url("image1.png");
     /* filter: blur(10px); */
+}
+
+.checkbox-wrapper-64 input[type="checkbox"] {
+    visibility: hidden;
+    display: none;
+}
+
+.checkbox-wrapper-64 *,
+.checkbox-wrapper-64 ::after,
+.checkbox-wrapper-64 ::before {
+    box-sizing: border-box;
+}
+
+/* The switch - the box around the slider */
+.checkbox-wrapper-64 .switch {
+    font-size: 17px;
+    position: relative;
+    display: inline-block;
+    width: 2.5em;
+    height: 1.5em;
+    line-height: 1.5em;
+}
+
+/* Hide default HTML checkbox */
+.checkbox-wrapper-64 .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.checkbox-wrapper-64 .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--accent-color-1);
+    border: 1px solid var(--accent-color-1);
+    transition: .4s;
+    border-radius: 30px;
+}
+
+.checkbox-wrapper-64 .slider:before {
+    position: absolute;
+    content: "";
+    height: 1em;
+    width: 1em;
+    border-radius: 20px;
+    left: 0.27em;
+    bottom: 0.25em;
+    background-color: var(--background-color);
+    transition: .4s;
+}
+
+.checkbox-wrapper-64 input:checked+.slider {
+    background-color: var(--accent-color-2);
+    border: 1px solid var(--accent-color-2);
+}
+
+.checkbox-wrapper-64 input:focus+.slider {
+    box-shadow: 0 0 1px var(--accent-color-2);
+}
+
+.checkbox-wrapper-64 input:checked+.slider:before {
+    transform: translateX(.9em);
+    background-color: var(--background-color);
+}
+
+/* #allergyIcon {
+    height: 100%;
+} */
+
+#foodTextContainer {
+    width: 100%;
+    height: 30%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), black);
+}
+
+#myProgress {
+    /* padding: 2.5%; */
+    padding: 10px;
+    /* width: 95%; */
+    height: 50%;
+    /* height:; */
+    /* width: 100%; */
+    /* background-color: var(--accent-color-1); */
+}
+
+#myBar {
+    /* transition: 0.5f; */
+    transition: width 1s;
+    width: 0%;
+    height: 100%;
+    /* background-color: var(--accent-color-2); */
+    background: repeating-linear-gradient(45deg,
+            var(--accent-color-1),
+            var(--accent-color-1) 10px,
+            var(--primary-color) 10px,
+            var(--primary-color) 20px);
+}
+
+#percentText {
+    position: absolute;
+    width: 15%;
+    /* height:100%; */
+    /* left:50%; */
+
+    /* margin: auto; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    /* bottom: 50%; */
+    text-align: center;
+    /* line-height: 100%; */
+    /* background-color: var(--accent-color-1); */
+    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0), var(--accent-color-1), rgba(0, 0, 0, 0));
+    /* height:100%; */
+}
+
+#checkboxHolder {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-wrapper-64 {
+    flex: 0 0 auto;
+    margin-right: 10px;
+}
+
+#checkboxLabel {
+    flex: 1;
+    transform: translate(0, -2px);
 }
