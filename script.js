@@ -1,9 +1,14 @@
 const foods = [
-    { image: "images/image1.png", name: "Burger", description: "A beef patty with cheese and two buns." },
-    { image: "images/image2.png", name: "Pasta", description: "Pasta alfredo made with cheese and garnish." },
-    { image: "images/image3.png", name: "Salad", description: "A healthy salad with greens and veggies." },
-    { image: "images/image4.png", name: "Chicken Nuggets", description: "Chicken nuggets prepared with sauce." },
+    { image: "images/image1.png", name: "Burger", description: "A beef patty with cheese and two buns.", gluten: true, seafood: false, dairy: false, spice: false },
+    { image: "images/image2.png", name: "Pasta", description: "Pasta alfredo made with cheese and garnish.", gluten: true, seafood: false, dairy: true, spice: false },
+    { image: "images/image3.png", name: "Salad", description: "A healthy salad with greens and veggies.", gluten: false, seafood: false, dairy: false, spice: false },
+    { image: "images/image4.png", name: "Chicken Nuggets", description: "Chicken nuggets prepared with sauce.", gluten: true, seafood: false, dairy: false, spice: false },
+    { image: "images/image5.png", name: "Lobster", description: "Lobster seasoned with garlic.", gluten: false, seafood: true, dairy: false, spice: false },
+    { image: "images/image6.png", name: "Spicy Wings", description: "Wings, celery and sauce.", gluten: false, seafood: false, dairy: true, spice: true },
 ];
+
+var allowGluten, allowSeafood, allowDairy, allowSpice;
+allowGluten = allowSeafood = allowDairy = allowSpice = true;
 
 var checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
@@ -22,6 +27,21 @@ function handleAllergy(checkbox) {
     } else {
         console.log("Allergy deselected: " + checkbox.value);
         // Call function based on the allergy value if needed
+    }
+
+    switch (checkbox.value) {
+        case "gluten":
+            allowGluten = checkbox.checked;
+            break;
+        case "seafood":
+            allowSeafood = checkbox.checked;
+            break;
+        case "dairy":
+            allowDairy = checkbox.checked;
+            break;
+        case "spice":
+            allowSpice = checkbox.checked;
+            break;
     }
 
     var label;
@@ -99,13 +119,30 @@ function swipe(direction) {
 
     if (direction === 'left') {
         dislikedFoods.push(foods[currentIndex]);
-        currentIndex = (currentIndex - 1 + foods.length) % foods.length;
+        // currentIndex = (currentIndex - 1 + foods.length) % foods.length;
         updateDislikedFoods();
     } else if (direction === 'right') {
         likedFoods.push(foods[currentIndex]);
-        currentIndex = (currentIndex + 1) % foods.length;
+        // currentIndex = (currentIndex + 1) % foods.length;
         updateLikedFoods();
     }
+    currentIndex++;
+    if (currentIndex > foods.length - 1) {
+        currentIndex = 0;
+    }
+
+    // console.log(foods[currentIndex].dairy);
+    var keepGenerating = false;
+    do{
+        var newFood = foods[currentIndex];
+        keepGenerating = (!allowGluten && newFood.gluten) || (!allowSeafood && newFood.seafood) || (!allowDairy && newFood.dairy) || (!allowSpice && newFood.spice);
+        if(keepGenerating){
+            currentIndex++;
+        }
+        if (currentIndex > foods.length - 1) {
+            currentIndex = 0;
+        }
+    }while(keepGenerating);
 
     updateFoodDisplay(direction);
     progress();
