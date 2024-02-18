@@ -1,6 +1,6 @@
 :root {
     --background-color: #fff3de;
-    --background-color-g:#F18C60;
+    --background-color-g: #F18C60;
     --text-color: #1c1d18;
     /* -g color vairants are for gradients */
     --primary-color: #f7b53c;
@@ -55,6 +55,23 @@ header img {
     padding-top: 3%;
     padding-bottom: 3%;
     background-position: center; */
+    animation-duration: 0.5s;
+    animation-name: animate-pop;
+    /* animation-timing-function: cubic-bezier(.26, .53, .74, 1.48); */
+    /* animation-iteration-count: 3; */
+
+}
+
+@keyframes animate-pop {
+    0% {
+        opacity: 0;
+        /* transform: scale(0.5, 0.5); */
+    }
+
+    100% {
+        opacity: 1;
+        /* transform: scale(1, 1); */
+    }
 }
 
 #dishName {

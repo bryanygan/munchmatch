@@ -20,13 +20,20 @@ checkboxes.forEach(function (checkbox) {
     });
 });
 
+var container = document.getElementById("foodContainer");
+container.style = 'display:none;';
+var startButton = document.getElementById("startButton");
+startButton.addEventListener('click', function() {
+    startButton.style = 'display:none;';
+
+    container.style = 'display: block;';
+});
+
 function handleAllergy(checkbox) {
     if (checkbox.checked) {
         console.log("Allergy selected: " + checkbox.value);
-        // Call function based on the allergy value if needed
     } else {
         console.log("Allergy deselected: " + checkbox.value);
-        // Call function based on the allergy value if needed
     }
 
     switch (checkbox.value) {
