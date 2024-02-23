@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css" />
     <script src="https://kit.fontawesome.com/2b9cdc1c9a.js" crossorigin="anonymous"></script>
 </head>
 
@@ -30,7 +31,7 @@
                     </div>
                     <div id="checkboxLabel">
                         <i class="fa-solid fa-wheat-awn" id="allergyIcon"></i>
-                         - GLUTEN
+                        - GLUTEN
                     </div>
                 </div>
                 <div id="checkboxHolder">
@@ -42,7 +43,7 @@
                     </div>
                     <div id="checkboxLabel" value="seafood">
                         <i class="fa-solid fa-fish" id="allergyIcon"></i>
-                         - SEAFOOD
+                        - SEAFOOD
                     </div>
                 </div>
             </div>
@@ -55,7 +56,7 @@
                 </div>
                 <div id="checkboxLabel">
                     <i class="fa-solid fa-cheese" id="allergyIcon"></i>
-                     - DAIRY
+                    - DAIRY
                 </div>
             </div>
             <div id="checkboxHolder">
@@ -67,7 +68,7 @@
                 </div>
                 <div id="checkboxLabel">
                     <i class="fa-solid fa-pepper-hot" id="allergyIcon"></i>
-                     - SPICE
+                    - SPICE
                 </div>
             </div>
         </div>
@@ -79,20 +80,25 @@
 
         <div class="headerColumn">
             <button data-modal-target="#modal" class="standard-button">About Us</button>
-            <div class="modal active" id="modal">
+            <div class="modal active" id="modal" style="display: none;">
                 <div class="modal-header">
                     <div class="title">Profile</div>
                     <button data-close-button class="close-button">
                         <i class="fa-solid fa-times" id="allergyIcon"></i>
                     </button>
                 </div>
-            <div class="modal-body">
-                MunchMatch is a Tinder-style food recommendation platform that will curate a personal food option for the user based on your profile. You’re presented with various food options, ranging from thousands of cultures, dishes, and cooking styles.  The program will find and match the perfect meal for you as the user swipes left or right on each option. Preferences like spice tolerance and allergies are taken into account, and dishes that disagree with your preferences will be filtered out automatically. Other filters include price point, location, and overall customer rating. 
+                <div class="modal-body">
+                    MunchMatch is a Tinder-style food recommendation platform that will curate a personal food option
+                    for the user based on your profile. You’re presented with various food options, ranging from
+                    thousands of cultures, dishes, and cooking styles. The program will find and match the perfect meal
+                    for you as the user swipes left or right on each option. Preferences like spice tolerance and
+                    allergies are taken into account, and dishes that disagree with your preferences will be filtered
+                    out automatically. Other filters include price point, location, and overall customer rating.
 
+                </div>
             </div>
-        </div>
-        <div id="overlay"></div>
-    
+            <div id="overlay"></div>
+
     </header>
 
     <div class="container">
@@ -111,6 +117,15 @@
                 <div id="foodTextContainer">
                     <p id="dishName">Dish Name</p>
                     <p id="description">Description text goes here.</p>
+
+                    <div class="grid-container">
+                        <!-- flag -->
+                        <div class="grid-item"><span class="fi fi-us"></span></div>
+                        <!-- price -->
+                        <div class="grid-item"><i class="fa-solid fa-dollar-sign"></i><i class="fa-solid fa-dollar-sign"></i><i class="fa-solid fa-dollar-sign"></i></div>
+
+                        <div class="grid-item"><i class="fa-solid fa-fish" id="allergyIcon"></i><i class="fa-solid fa-wheat-awn" id="allergyIcon"></i></div>
+                      </div>
                 </div>
                 <button class="custom-btn btn-ani-left" id="btnLeft" onclick="swipe('left')">❮</button>
                 <button class="custom-btn btn-ani-right" id="btnRight" onclick="swipe('right')">❯</button>
