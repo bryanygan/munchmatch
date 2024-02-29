@@ -155,6 +155,22 @@ function swipe(direction) {
     progress();
 }
 
+let lastSwipeTime = 0;
+
+document.addEventListener('keydown', function(event) {
+    const currentTime = new Date().getTime();
+
+    if (currentTime - lastSwipeTime >= 300) {
+        if (event.key === 'ArrowLeft') {
+            swipe('left');
+        } else if (event.key === 'ArrowRight') {
+            swipe('right');
+        }
+
+        lastSwipeTime = currentTime;
+    }
+});
+
 function updateFoodDisplay(direction) {
     const foodImage = document.getElementById('foodImage');
     const dishName = document.getElementById('dishName');
