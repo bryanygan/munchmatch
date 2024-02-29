@@ -155,6 +155,14 @@ function swipe(direction) {
     progress();
 }
 
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'ArrowLeft') {
+        swipe('left');
+    } else if (event.key === 'ArrowRight') {
+        swipe('right');
+    }
+});
+
 function updateFoodDisplay(direction) {
     const foodImage = document.getElementById('foodImage');
     const dishName = document.getElementById('dishName');
