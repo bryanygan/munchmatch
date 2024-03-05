@@ -1,10 +1,10 @@
 const foods = [
-    { image: "images/image1.png", name: "Burger", description: "A beef patty with cheese and two buns.", gluten: true, seafood: false, dairy: false, spice: false },
-    { image: "images/image2.png", name: "Pasta", description: "Pasta alfredo made with cheese and garnish.", gluten: true, seafood: false, dairy: true, spice: false },
-    { image: "images/image3.png", name: "Salad", description: "A healthy salad with greens and veggies.", gluten: false, seafood: false, dairy: false, spice: false },
-    { image: "images/image4.png", name: "Chicken Nuggets", description: "Chicken nuggets prepared with sauce.", gluten: true, seafood: false, dairy: false, spice: false },
-    { image: "images/image5.png", name: "Lobster", description: "Lobster seasoned with garlic.", gluten: false, seafood: true, dairy: false, spice: false },
-    { image: "images/image6.png", name: "Spicy Wings", description: "Wings, celery and sauce.", gluten: false, seafood: false, dairy: true, spice: true },
+    { image: "images/image1.png", name: "Burger", description: "A beef patty with cheese and two buns.", country: "us", gluten: true, seafood: false, dairy: false, spice: false },
+    { image: "images/image2.png", name: "Pasta", description: "Pasta alfredo made with cheese and garnish.", country: "fr", gluten: true, seafood: false, dairy: true, spice: false },
+    { image: "images/image3.png", name: "Salad", description: "A healthy salad with greens and veggies.", country: "gr", gluten: false, seafood: false, dairy: false, spice: false },
+    { image: "images/image4.png", name: "Chicken Nuggets", description: "Chicken nuggets prepared with sauce.", country: "it", gluten: true, seafood: false, dairy: false, spice: false },
+    { image: "images/image5.png", name: "Lobster", description: "Lobster seasoned with garlic.", country: "cs", gluten: false, seafood: true, dairy: false, spice: false },
+    { image: "images/image6.png", name: "Spicy Wings", description: "Wings, celery and sauce.", country: "kr", gluten: false, seafood: false, dairy: true, spice: true },
 ];
 
 var allowGluten, allowSeafood, allowDairy, allowSpice;
@@ -155,11 +155,28 @@ function swipe(direction) {
     progress();
 }
 
+let lastSwipeTime = 0;
+
+document.addEventListener('keydown', function(event) {
+    const currentTime = new Date().getTime();
+
+    if (currentTime - lastSwipeTime >= 300) {
+        if (event.key === 'ArrowLeft') {
+            swipe('left');
+        } else if (event.key === 'ArrowRight') {
+            swipe('right');
+        }
+
+        lastSwipeTime = currentTime;
+    }
+});
+
 function updateFoodDisplay(direction) {
     const foodImage = document.getElementById('foodImage');
     const dishName = document.getElementById('dishName');
     const description = document.getElementById('description');
-
+    const dishflag =document.getElementById('foodcountry');
+    
     translation = ''
     if (direction === 'left') {
         translation = 'translateX(-100%)'
@@ -172,6 +189,7 @@ function updateFoodDisplay(direction) {
     setTimeout(() => {
         foodImage.src = foods[currentIndex].image;
         dishName.innerText = foods[currentIndex].name;
+        dishflag.className = "fi fi-"+ foods[currentIndex].country;
         description.innerText = foods[currentIndex].description;
         foodImage.style.transform = 'translateX(0)';
     }, 300);
