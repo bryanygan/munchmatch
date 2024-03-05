@@ -1,10 +1,10 @@
 const foods = [
-    { image: "https://heygrillhey.com/static/234cd20061f0bc398863c88cdad06afa/SmokedHamburgers-7.jpg", name: "hamburger", description: "A beef patty with cheese and two buns.", country: "us", gluten: true, seafood: false, dairy: false, spice: false },
-    { image: "https://www.budgetbytes.com/wp-content/uploads/2022/01/Shrimp-Alfredo-Pasta-bowl2-500x500.jpg", name: "pasta_alfredo", description: "Pasta alfredo made with cheese and garnish.", country: "fr", gluten: true, seafood: false, dairy: true, spice: false },
-    { image: "https://cdn.loveandlemons.com/wp-content/uploads/2019/07/greek-salad-2.jpg", name: "salad", description: "A healthy salad with greens and veggies.", country:"gr", gluten: false, seafood: false, dairy: false, spice: false },
-    { image: "https://s7d1.scene7.com/is/image/mcdonalds/mcdonalds-Chicken-McNuggets-6-pieces-2:1-3-product-tile-desktop?wid=829&hei=515&dpr=off", name: "chicken_nuggets", country: "it",description: "Chicken nuggets prepared with sauce.", gluten: true, seafood: false, dairy: false, spice: false },
-    { image: "https://media.npr.org/assets/img/2012/05/10/lobster_custom-9e0ca5bd52353bd0dc75b03c89cab8c628b1db43-s1100-c50.jpg", name: "lobster", description: "Lobster seasoned with garlic.",country:"cs", gluten: false, seafood: true, dairy: false, spice: false },
-    { image: "https://www.recipetineats.com/wp-content/uploads/2019/01/Baked-Buffalo-Wings_0.jpg", name: "spicy_wings", description: "Wings, celery and sauce.", country:"kr",gluten: false, seafood: false, dairy: true, spice: true },
+    { image: "https://heygrillhey.com/static/234cd20061f0bc398863c88cdad06afa/SmokedHamburgers-7.jpg", name: "hamburger", description: "A beef patty with cheese and two buns.", country: "us", price: 3, gluten: true, seafood: false, dairy: false, spice: false },
+    { image: "https://www.budgetbytes.com/wp-content/uploads/2022/01/Shrimp-Alfredo-Pasta-bowl2-500x500.jpg", name: "pasta_alfredo", description: "Pasta alfredo made with cheese and garnish.", country: "fr", price: 2, gluten: true, seafood: false, dairy: true, spice: false },
+    { image: "https://cdn.loveandlemons.com/wp-content/uploads/2019/07/greek-salad-2.jpg", name: "salad", description: "A healthy salad with greens and veggies.", country: "gr", price: 2, gluten: false, seafood: false, dairy: false, spice: false },
+    { image: "https://s7d1.scene7.com/is/image/mcdonalds/mcdonalds-Chicken-McNuggets-6-pieces-2:1-3-product-tile-desktop?wid=829&hei=515&dpr=off", name: "chicken_nuggets", country: "it", price: 1, description: "Chicken nuggets prepared with sauce.", gluten: true, seafood: false, dairy: false, spice: false },
+    { image: "https://media.npr.org/assets/img/2012/05/10/lobster_custom-9e0ca5bd52353bd0dc75b03c89cab8c628b1db43-s1100-c50.jpg", name: "lobster", description: "Lobster seasoned with garlic.", price: 2, country: "gb", gluten: false, seafood: true, dairy: false, spice: false },
+    { image: "https://www.recipetineats.com/wp-content/uploads/2019/01/Baked-Buffalo-Wings_0.jpg", name: "spicy_wings", description: "Wings, celery and sauce.", country: "kr", price: 1, gluten: false, seafood: false, dairy: true, spice: true },
 ];
 
 var allowGluten, allowSeafood, allowDairy, allowSpice;
@@ -23,7 +23,7 @@ checkboxes.forEach(function (checkbox) {
 var container = document.getElementById("foodContainer");
 container.style = 'display:none;';
 var startButton = document.getElementById("startButton");
-startButton.addEventListener('click', function() {
+startButton.addEventListener('click', function () {
     startButton.style = 'display:none;';
 
     container.style = 'display: block;';
@@ -137,16 +137,16 @@ function swipe(direction) {
 
     // console.log(foods[currentIndex].dairy);
     var keepGenerating = false;
-    do{
+    do {
         var newFood = foods[currentIndex];
         keepGenerating = (!allowGluten && newFood.gluten) || (!allowSeafood && newFood.seafood) || (!allowDairy && newFood.dairy) || (!allowSpice && newFood.spice);
-        if(keepGenerating){
+        if (keepGenerating) {
             currentIndex++;
         }
         if (currentIndex > foods.length - 1) {
             currentIndex = 0;
         }
-    }while(keepGenerating);
+    } while (keepGenerating);
 
     updateFoodDisplay(direction);
     progress();
@@ -154,7 +154,7 @@ function swipe(direction) {
 
 let lastSwipeTime = 0;
 
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', function (event) {
     const currentTime = new Date().getTime();
 
     if (currentTime - lastSwipeTime >= 300) {
@@ -172,8 +172,15 @@ function updateFoodDisplay(direction) {
     const foodImage = document.getElementById('foodImage');
     const dishName = document.getElementById('dishName');
     const description = document.getElementById('description');
-    const dishflag =document.getElementById('foodcountry');
-    
+    const dishflag = document.getElementById('foodcountry');
+    const dollar2 = document.getElementById('dollar2');
+    const dollar3 = document.getElementById('dollar3');
+
+    const allergyGluten = document.getElementById('allergyGluten');
+    const allergySeafood = document.getElementById('allergySeafood');
+    const allergyDairy = document.getElementById('allergyDairy');
+    const allergySpice = document.getElementById('allergySpice');
+
     translation = ''
     if (direction === 'left') {
         translation = 'translateX(-100%)'
@@ -186,7 +193,13 @@ function updateFoodDisplay(direction) {
     setTimeout(() => {
         foodImage.src = foods[currentIndex].image;
         dishName.innerText = replaceUnderscoresWithSpacesAndCapitalize(foods[currentIndex].name);
-        dishflag.className = "fi fi-"+ foods[currentIndex].country;
+        dishflag.className = "fi fi-" + foods[currentIndex].country;
+        dollar2.style = foods[currentIndex].price >= 2 ? "" : "display: none";
+        dollar3.style = foods[currentIndex].price >= 3 ? "" : "display: none";
+        allergyGluten.style = foods[currentIndex].gluten ? "" : "display:none";
+        allergySeafood.style = foods[currentIndex].seafood ? "" : "display:none";
+        allergyDairy.style = foods[currentIndex].dairy ? "" : "display:none";
+        allergySpice.style = foods[currentIndex].spice ? "" : "display:none";
         description.innerText = foods[currentIndex].description;
         foodImage.style.transform = 'translateX(0)';
     }, 300);
@@ -199,9 +212,9 @@ function updateFoodDisplay(direction) {
 function replaceUnderscoresWithSpacesAndCapitalize(str) {
     // Replace underscores with spaces
     let stringWithSpaces = str.replace(/_/g, ' ');
-    
+
     // Capitalize each word
-    stringWithSpaces = stringWithSpaces.replace(/\b\w/g, function(char) {
+    stringWithSpaces = stringWithSpaces.replace(/\b\w/g, function (char) {
         return char.toUpperCase();
     });
 
@@ -294,10 +307,10 @@ function closeModal(modal) {
 
 let popup = document.getElementById("popup");
 
-function openPopup(){
+function openPopup() {
     popup.classList.add("open-popup");
-    }
-function closePopup(){
+}
+function closePopup() {
     popup.classList.remove("open-popup");
 }
 
