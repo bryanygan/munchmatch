@@ -1,0 +1,6 @@
+lobster|https://media.npr.org/assets/img/2012/05/10/lobster_custom-9e0ca5bd52353bd0dc75b03c89cab8c628b1db43-s1100-c50.jpg
+chicken_nuggets|https://s7d1.scene7.com/is/image/mcdonalds/mcdonalds-Chicken-McNuggets-6-pieces-2:1-3-product-tile-desktop?wid=829&hei=515&dpr=off
+hamburger|https://heygrillhey.com/static/234cd20061f0bc398863c88cdad06afa/SmokedHamburgers-7.jpg
+spicy_wings|https://www.recipetineats.com/wp-content/uploads/2019/01/Baked-Buffalo-Wings_0.jpg
+pasta_alfredo|https://www.budgetbytes.com/wp-content/uploads/2022/01/Shrimp-Alfredo-Pasta-bowl2-500x500.jpg
+salad|https://cdn.loveandlemons.com/wp-content/uploads/2019/07/greek-salad-2.jpg

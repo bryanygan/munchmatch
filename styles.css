@@ -222,10 +222,10 @@ header img {
     top: 2px;
 }
 
-#likedFoods,
+/* #likedFoods,
 #dislikedFoods {
-    /* border: 1px solid white; */
-}
+    border: 1px solid white;
+} */
 
 #likedFoods,
 #dislikedFoods {
