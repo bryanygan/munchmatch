@@ -1,10 +1,10 @@
 const foods = [
-    { image: "https://heygrillhey.com/static/234cd20061f0bc398863c88cdad06afa/SmokedHamburgers-7.jpg", name: "hamburger", description: "A beef patty with cheese and two buns.", gluten: true, seafood: false, dairy: false, spice: false },
-    { image: "https://www.budgetbytes.com/wp-content/uploads/2022/01/Shrimp-Alfredo-Pasta-bowl2-500x500.jpg", name: "pasta_alfredo", description: "Pasta alfredo made with cheese and garnish.", gluten: true, seafood: false, dairy: true, spice: false },
-    { image: "https://cdn.loveandlemons.com/wp-content/uploads/2019/07/greek-salad-2.jpg", name: "salad", description: "A healthy salad with greens and veggies.", gluten: false, seafood: false, dairy: false, spice: false },
-    { image: "https://s7d1.scene7.com/is/image/mcdonalds/mcdonalds-Chicken-McNuggets-6-pieces-2:1-3-product-tile-desktop?wid=829&hei=515&dpr=off", name: "chicken_nuggets", description: "Chicken nuggets prepared with sauce.", gluten: true, seafood: false, dairy: false, spice: false },
-    { image: "https://media.npr.org/assets/img/2012/05/10/lobster_custom-9e0ca5bd52353bd0dc75b03c89cab8c628b1db43-s1100-c50.jpg", name: "lobster", description: "Lobster seasoned with garlic.", gluten: false, seafood: true, dairy: false, spice: false },
-    { image: "https://www.recipetineats.com/wp-content/uploads/2019/01/Baked-Buffalo-Wings_0.jpg", name: "spicy_wings", description: "Wings, celery and sauce.", gluten: false, seafood: false, dairy: true, spice: true },
+    { image: "https://heygrillhey.com/static/234cd20061f0bc398863c88cdad06afa/SmokedHamburgers-7.jpg", name: "hamburger", description: "A beef patty with cheese and two buns.", country: "us", gluten: true, seafood: false, dairy: false, spice: false },
+    { image: "https://www.budgetbytes.com/wp-content/uploads/2022/01/Shrimp-Alfredo-Pasta-bowl2-500x500.jpg", name: "pasta_alfredo", description: "Pasta alfredo made with cheese and garnish.", country: "fr", gluten: true, seafood: false, dairy: true, spice: false },
+    { image: "https://cdn.loveandlemons.com/wp-content/uploads/2019/07/greek-salad-2.jpg", name: "salad", description: "A healthy salad with greens and veggies.", country:"gr", gluten: false, seafood: false, dairy: false, spice: false },
+    { image: "https://s7d1.scene7.com/is/image/mcdonalds/mcdonalds-Chicken-McNuggets-6-pieces-2:1-3-product-tile-desktop?wid=829&hei=515&dpr=off", name: "chicken_nuggets", country: "it",description: "Chicken nuggets prepared with sauce.", gluten: true, seafood: false, dairy: false, spice: false },
+    { image: "https://media.npr.org/assets/img/2012/05/10/lobster_custom-9e0ca5bd52353bd0dc75b03c89cab8c628b1db43-s1100-c50.jpg", name: "lobster", description: "Lobster seasoned with garlic.",country:"cs", gluten: false, seafood: true, dairy: false, spice: false },
+    { image: "https://www.recipetineats.com/wp-content/uploads/2019/01/Baked-Buffalo-Wings_0.jpg", name: "spicy_wings", description: "Wings, celery and sauce.", country:"kr",gluten: false, seafood: false, dairy: true, spice: true },
 ];
 
 var allowGluten, allowSeafood, allowDairy, allowSpice;
@@ -152,11 +152,28 @@ function swipe(direction) {
     progress();
 }
 
+let lastSwipeTime = 0;
+
+document.addEventListener('keydown', function(event) {
+    const currentTime = new Date().getTime();
+
+    if (currentTime - lastSwipeTime >= 300) {
+        if (event.key === 'ArrowLeft') {
+            swipe('left');
+        } else if (event.key === 'ArrowRight') {
+            swipe('right');
+        }
+
+        lastSwipeTime = currentTime;
+    }
+});
+
 function updateFoodDisplay(direction) {
     const foodImage = document.getElementById('foodImage');
     const dishName = document.getElementById('dishName');
     const description = document.getElementById('description');
-
+    const dishflag =document.getElementById('foodcountry');
+    
     translation = ''
     if (direction === 'left') {
         translation = 'translateX(-100%)'
@@ -169,6 +186,7 @@ function updateFoodDisplay(direction) {
     setTimeout(() => {
         foodImage.src = foods[currentIndex].image;
         dishName.innerText = replaceUnderscoresWithSpacesAndCapitalize(foods[currentIndex].name);
+        dishflag.className = "fi fi-"+ foods[currentIndex].country;
         description.innerText = foods[currentIndex].description;
         foodImage.style.transform = 'translateX(0)';
     }, 300);
@@ -272,3 +290,14 @@ function closeModal(modal) {
     modal.classList.remove('active')
     overlay.classList.remove('active')
 }
+
+
+let popup = document.getElementById("popup");
+
+function openPopup(){
+    popup.classList.add("open-popup");
+    }
+function closePopup(){
+    popup.classList.remove("open-popup");
+}
+

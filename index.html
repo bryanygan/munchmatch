@@ -75,10 +75,12 @@
 
         <div class="headerColumn">
             <img src="branding/munchmatch_logo.png" alt="Logo">
-            <h1>Munch Match</h1>
+            <h1>MUNCH MATCH</h1>
         </div>
 
         <div class="headerColumn">
+
+
             <button data-modal-target="#modal" class="standard-button">About Us</button>
             <div class="modal active" id="modal">
                 <div class="modal-header">
@@ -97,7 +99,16 @@
 
                 </div>
             </div>
+            
             <div id="overlay"></div>
+
+            <button type="submit" class="btn" onclick="openPopup()">Match</button>
+            <div class="popup" id="popup">
+                <img id="foodImage" src="images/image1.png" alt="Food Image">
+                <img id="itsA" src="images/its-a.png" alt="Its a">
+                <img id="match" src="images/match.png" alt="Match">
+                <button type="button" onclick="closePopup()">OK</button>
+            </div>
 
     </header>
 
@@ -120,7 +131,7 @@
 
                     <div class="grid-container">
                         <!-- flag -->
-                        <div class="grid-item"><span class="fi fi-US"></span></div>
+                        <div class="grid-item"><span id="foodcountry" class="fi fi-kr"></span></div>
                         <!-- price -->
                         <div class="grid-item"><i class="fa-solid fa-dollar-sign"></i><i class="fa-solid fa-dollar-sign"></i><i class="fa-solid fa-dollar-sign"></i></div>
 
