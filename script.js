@@ -126,13 +126,10 @@ function swipe(direction) {
 
     if (direction === 'left') {
         dislikedFoods.push(foods[currentIndex]);
-        // currentIndex = (currentIndex - 1 + foods.length) % foods.length;
-        updateDislikedFoods();
     } else if (direction === 'right') {
         likedFoods.push(foods[currentIndex]);
-        // currentIndex = (currentIndex + 1) % foods.length;
-        updateLikedFoods();
     }
+    updateLikedFoods();
     currentIndex++;
     if (currentIndex > foods.length - 1) {
         currentIndex = 0;
@@ -171,14 +168,26 @@ function updateFoodDisplay(direction) {
     foodImage.style.transform = translation;
     setTimeout(() => {
         foodImage.src = foods[currentIndex].image;
-        dishName.innerText = capitalizeFirstLetter(foods[currentIndex].replace("_"," "));
+        dishName.innerText = replaceUnderscoresWithSpacesAndCapitalize(foods[currentIndex].name);
         description.innerText = foods[currentIndex].description;
         foodImage.style.transform = 'translateX(0)';
     }, 300);
 }
 
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+// function capitalizeFirstLetter(string) {
+//     return string.charAt(0).toUpperCase() + string.slice(1);
+// }
+
+function replaceUnderscoresWithSpacesAndCapitalize(str) {
+    // Replace underscores with spaces
+    let stringWithSpaces = str.replace(/_/g, ' ');
+    
+    // Capitalize each word
+    stringWithSpaces = stringWithSpaces.replace(/\b\w/g, function(char) {
+        return char.toUpperCase();
+    });
+
+    return stringWithSpaces;
 }
 
 function updateLikedFoods() {
@@ -199,38 +208,24 @@ function updateFoodPref(name) {
         likedFoods.forEach(food => {
             const foodElement = document.createElement('img');
             foodElement.src = food.image;
-            // likedFoodElement.alt = 'Liked Food';
             foodElement.className = name;
             likedFoodsContainer.appendChild(foodElement);
         });
     }
+
     //dislikedFood
 
-    //THIS CAN BE SIMPLIFIED LATER
+    //THIS IS BAD CODE - CAN BE SIMPLIFIED LATER
     else {
         dislikedFoodsContainer.innerHTML = '';
         dislikedFoods.forEach(food => {
             const foodElement = document.createElement('img');
             foodElement.src = food.image;
-            // likedFoodElement.alt = 'Liked Food';
             foodElement.className = name;
             dislikedFoodsContainer.appendChild(foodElement);
         });
     }
 }
-
-// function updateLikedFoods() {
-//     const likedFoodsContainer = document.getElementById('likedFoods');
-//     likedFoodsContainer.innerHTML = '';
-
-//     likedFoods.forEach(food => {
-//         const likedFoodElement = document.createElement('img');
-//         likedFoodElement.src = food.image;
-//         likedFoodElement.alt = 'Liked Food';
-//         likedFoodElement.className = 'likedFood';
-//         likedFoodsContainer.appendChild(likedFoodElement);
-//     });
-// }
 
 const shuffleArray = array => {
     for (let i = array.length - 1; i > 0; i--) {
