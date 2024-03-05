@@ -80,7 +80,7 @@
 
         <div class="headerColumn">
             <button data-modal-target="#modal" class="standard-button">About Us</button>
-            <div class="modal active" id="modal" style="display: none;">
+            <div class="modal active" id="modal">
                 <div class="modal-header">
                     <div class="title">Profile</div>
                     <button data-close-button class="close-button">
@@ -97,7 +97,17 @@
 
                 </div>
             </div>
+            
+            
             <div id="overlay"></div>
+
+            <button type="submit" class="btn" onclick="openPopup()">Match</button>
+            <div class="popup" id="popup">
+                <img id="foodImage" src="images/image1.png" alt="Food Image">
+                <img id="itsA" src="images/its-a.png" alt="Its a">
+                <img id="match" src="images/match.png" alt="Match">
+                <button type="button" onclick="closePopup()">OK</button>
+            </div>
 
     </header>
 
