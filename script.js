@@ -1,11 +1,29 @@
 const foods = [
     { image: "https://heygrillhey.com/static/234cd20061f0bc398863c88cdad06afa/SmokedHamburgers-7.jpg", name: "hamburger", description: "A beef patty with cheese and two buns.", country: "us", price: 3, gluten: true, seafood: false, dairy: false, spice: false },
     { image: "https://www.budgetbytes.com/wp-content/uploads/2022/01/Shrimp-Alfredo-Pasta-bowl2-500x500.jpg", name: "pasta_alfredo", description: "Pasta alfredo made with cheese and garnish.", country: "fr", price: 2, gluten: true, seafood: false, dairy: true, spice: false },
-    { image: "https://cdn.loveandlemons.com/wp-content/uploads/2019/07/greek-salad-2.jpg", name: "salad", description: "A healthy salad with greens and veggies.", country: "gr", price: 2, gluten: false, seafood: false, dairy: false, spice: false },
+    { image: "https://natashaskitchen.com/wp-content/uploads/2019/08/Caprese-Salad-6.jpg", name: "salad", description: "A healthy salad with greens and veggies.", country: "gr", price: 2, gluten: false, seafood: false, dairy: false, spice: false },
     { image: "https://s7d1.scene7.com/is/image/mcdonalds/mcdonalds-Chicken-McNuggets-6-pieces-2:1-3-product-tile-desktop?wid=829&hei=515&dpr=off", name: "chicken_nuggets", country: "it", price: 1, description: "Chicken nuggets prepared with sauce.", gluten: true, seafood: false, dairy: false, spice: false },
     { image: "https://media.npr.org/assets/img/2012/05/10/lobster_custom-9e0ca5bd52353bd0dc75b03c89cab8c628b1db43-s1100-c50.jpg", name: "lobster", description: "Lobster seasoned with garlic.", price: 2, country: "gb", gluten: false, seafood: true, dairy: false, spice: false },
     { image: "https://www.recipetineats.com/wp-content/uploads/2019/01/Baked-Buffalo-Wings_0.jpg", name: "spicy_wings", description: "Wings, celery and sauce.", country: "kr", price: 1, gluten: false, seafood: false, dairy: true, spice: true },
+    { image: "https://www.recipetineats.com/wp-content/uploads/2022/08/Stack-of-cheeseburgers.jpg", name: "cheeseburger", description: "Beef patty with melted cheese on a bun.", country: "us", price: 2, gluten: true, seafood: false, dairy: true, spice: false },
+    { image: "https://www.allrecipes.com/thmb/i7yLualeJp6h7nuux-Dnr7AUI6o=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/4559474-vegetarian-sushi-Buckwheat-Queen-4x3-1-af11cac7218240e383dbe72ef6b1ec8f.jpg", name: "sushi", description: "Raw fish and rice wrapped in seaweed.", country: "jp", price: 3, gluten: false, seafood: true, dairy: false, spice: false },
+    { image: "https://hot-thai-kitchen.com/wp-content/uploads/2021/10/Untitled-design-5.jpg", name: "pad_thai", description: "Stir-fried rice noodles with shrimp and peanuts.", country: "th", price: 2, gluten: true, seafood: true, dairy: false, spice: true },
+    { image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/2018_01_Croissant_IMG_0685.JPG/1200px-2018_01_Croissant_IMG_0685.JPG", name: "croissant", description: "Flaky pastry made with butter and yeast.", country: "fr", price: 2, gluten: true, seafood: false, dairy: true, spice: false },
+    { image: "https://hips.hearstapps.com/hmg-prod/images/taco-salad-index-643eeb39014bd.jpg?crop=0.6666666666666667xw:1xh;center,top&resize=1200:*", name: "taco", description: "Corn tortilla filled with seasoned meat and toppings.", country: "mx", price: 1, gluten: true, seafood: false, dairy: false, spice: true },
+    { image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Peking_Duck%2C_2014_%2802%29.jpg/640px-Peking_Duck%2C_2014_%2802%29.jpg", name: "peking_duck", description: "Roasted duck with crispy skin served with pancakes.", country: "cn", price: 3, gluten: true, seafood: false, dairy: false, spice: true },
+    { image: "https://natashaskitchen.com/wp-content/uploads/2019/08/Caprese-Salad-6.jpg", name: "caprese_salad", description: "Tomatoes, mozzarella, and basil with balsamic glaze.", country: "it", price: 2, gluten: false, seafood: false, dairy: true, spice: false },
+    { image: "https://hips.hearstapps.com/hmg-prod/images/goulash-index-64de8d20b97d5.jpg?crop=0.8888888888888888xw:1xh;center,top&resize=1200:*", name: "goulash", description: "Hungarian stew with meat, vegetables, and paprika.", country: "hu", price: 2, gluten: true, seafood: false, dairy: false, spice: true },
+    { image: "https://www.allrecipes.com/thmb/SZjdgaXhmkrRNLoOvdxuAktwk3E=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/228443-authentic-pho-DDMFS-4x3-0523f6531ccf4dbeb4b5bde52e007b1e.jpg", name: "pho", description: "Vietnamese soup with broth, rice noodles, and meat.", country: "vn", price: 2, gluten: true, seafood: false, dairy: false, spice: true },
+    { image: "https://www.mygreekdish.com/wp-content/uploads/2013/05/Moussaka-recipe-Traditional-Greek-Moussaka-with-Eggplants.jpg", name: "moussaka", description: "Greek dish with layers of eggplant, potato, and meat.", country: "gr", price: 3, gluten: true, seafood: false, dairy: true, spice: true }
 ];
+
+// fetch("images.txt")
+//     .then(function (res) {
+//         return res.text();
+//     })
+//     .then(function (data) {
+//         console.log(data);
+//     });
 
 var allowGluten, allowSeafood, allowDairy, allowSpice;
 allowGluten = allowSeafood = allowDairy = allowSpice = true;
@@ -102,16 +120,12 @@ function generateList() {
 
 
 var resultList = generateList();
-// console.log(resultList);
 
 var fill = 0;
 function progress() {
     fill += resultList.shift();
-    // var fill = resultList[swipeCounter];
-    // swipeCounter += 1;
 
     var elem = document.getElementById("myBar");
-    // let fill = swipeCounter / 20.0;
     elem.style.width = fill + "%";
     document.getElementById("percentText").innerHTML = ("<b>" + fill + "%</b> to Match")
 }
@@ -120,9 +134,9 @@ let currentIndex = 0;
 let likedFoods = [], dislikedFoods = [];
 
 function swipe(direction) {
-    const foodImage = document.getElementById('foodImage');
-    const dishName = document.getElementById('dishName');
-    const description = document.getElementById('description');
+    // const foodImage = document.getElementById('foodImage');
+    // const dishName = document.getElementById('dishName');
+    // const description = document.getElementById('description');
 
     if (direction === 'left') {
         dislikedFoods.push(foods[currentIndex]);
@@ -135,7 +149,6 @@ function swipe(direction) {
         currentIndex = 0;
     }
 
-    // console.log(foods[currentIndex].dairy);
     var keepGenerating = false;
     do {
         var newFood = foods[currentIndex];
@@ -205,15 +218,9 @@ function updateFoodDisplay(direction) {
     }, 300);
 }
 
-// function capitalizeFirstLetter(string) {
-//     return string.charAt(0).toUpperCase() + string.slice(1);
-// }
-
 function replaceUnderscoresWithSpacesAndCapitalize(str) {
-    // Replace underscores with spaces
     let stringWithSpaces = str.replace(/_/g, ' ');
 
-    // Capitalize each word
     stringWithSpaces = stringWithSpaces.replace(/\b\w/g, function (char) {
         return char.toUpperCase();
     });
