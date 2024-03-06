@@ -28,8 +28,9 @@ def extract_within_quotes(text):
         return None
 
 for line in foodsLines:
+    print(line)
     if line.__contains__("{"):
-        if not line.__contains__("*"):
+        if not line.__contains__("~"):
             outputLines.append(line)
         else:
             # ind1 = line.index("name: ") + 6
@@ -43,7 +44,7 @@ for line in foodsLines:
             selectedLine = search_list(imagesLines, foodName)
             print(f"selected line: {selectedLine}")
             imageLink = selectedLine[selectedLine.index("|")+1:]
-            outputLines.append(line.replace("*", imageLink.strip().strip('\n')))
+            outputLines.append(line.replace("~", imageLink.strip().strip('\n')))
 
 # for line in imagesLines:
 

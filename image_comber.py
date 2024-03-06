@@ -13,7 +13,7 @@ counter = 0
 for food in allFoods:
     outputLines.append(food.strip().strip('\n'))
     counter+=1
-    if(counter%10==0):
+    if(counter%20==0):
         outputLines.append("\n")
     else:
         outputLines.append(",")
