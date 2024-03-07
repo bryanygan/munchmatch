@@ -504,7 +504,7 @@ header {
     padding: 10px;
     cursor: pointer;
 }
-
+/*
 .btn{
     padding: 10px 60px;
     background: #fff;
@@ -515,7 +515,7 @@ header {
     font-weight: 500;
     border-radius: 30px;
 }
-
+*/
 .popup{
     width: 400px;
     height: 500px;
@@ -537,7 +537,7 @@ header {
     transform: translate(-50%,-50%) scale(1);
 }
 /*
-.popup img{
+.popup matchImage{
     margin-left: auto;
     margin-right: auto;
     position: absolute;
@@ -545,12 +545,12 @@ header {
     border-radius: 6px;
     height: auto;
     max-width: 100%;
-    /*margin-top: -50px; 
+    /*margin-top: -50px;
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-*/
+
 
 
 .popup button{
