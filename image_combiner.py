@@ -33,24 +33,12 @@ for line in foodsLines:
         if not line.__contains__("~"):
             outputLines.append(line)
         else:
-            # ind1 = line.index("name: ") + 6
-            # ind2 = line.index("description: ") + 12
-            # print(ind1)
-            # print(ind2)
-            # print(f"line:{line}")
-            # foodName = line[ind1 : (ind2 - ind1)]
             foodName = extract_within_quotes(line.split(",")[1])
             print(f"FOODNAME:{foodName}")
             selectedLine = search_list(imagesLines, foodName)
             print(f"selected line: {selectedLine}")
             imageLink = selectedLine[selectedLine.index("|")+1:]
             outputLines.append(line.replace("~", imageLink.strip().strip('\n')))
-
-# for line in imagesLines:
-
-#     # count += 1
-#     print(line.strip())
-#     # print("Line{}: {}".format(count, line.strip()))
 
 foodsText = open("foods_array.txt", "w")
 outputText = "const foods = [\n"
