@@ -1,42 +1,52 @@
 const foods = [
-    { image: "https://heygrillhey.com/static/234cd20061f0bc398863c88cdad06afa/SmokedHamburgers-7.jpg", name: "hamburger", description: "A beef patty with cheese and two buns.", country: "us", price: 3, gluten: true, seafood: false, dairy: false, spice: false },
-    { image: "https://www.budgetbytes.com/wp-content/uploads/2022/01/Shrimp-Alfredo-Pasta-bowl2-500x500.jpg", name: "pasta_alfredo", description: "Pasta alfredo made with cheese and garnish.", country: "fr", price: 2, gluten: true, seafood: false, dairy: true, spice: false },
-    { image: "https://natashaskitchen.com/wp-content/uploads/2019/08/Caprese-Salad-6.jpg", name: "salad", description: "A healthy salad with greens and veggies.", country: "gr", price: 2, gluten: false, seafood: false, dairy: false, spice: false },
-    { image: "https://s7d1.scene7.com/is/image/mcdonalds/mcdonalds-Chicken-McNuggets-6-pieces-2:1-3-product-tile-desktop?wid=829&hei=515&dpr=off", name: "chicken_nuggets", country: "it", price: 1, description: "Chicken nuggets prepared with sauce.", gluten: true, seafood: false, dairy: false, spice: false },
-    { image: "https://media.npr.org/assets/img/2012/05/10/lobster_custom-9e0ca5bd52353bd0dc75b03c89cab8c628b1db43-s1100-c50.jpg", name: "lobster", description: "Lobster seasoned with garlic.", price: 2, country: "gb", gluten: false, seafood: true, dairy: false, spice: false },
-    { image: "https://www.recipetineats.com/wp-content/uploads/2019/01/Baked-Buffalo-Wings_0.jpg", name: "spicy_wings", description: "Wings, celery and sauce.", country: "kr", price: 1, gluten: false, seafood: false, dairy: true, spice: true },
-    { image: "https://www.recipetineats.com/wp-content/uploads/2022/08/Stack-of-cheeseburgers.jpg", name: "cheeseburger", description: "Beef patty with melted cheese on a bun.", country: "us", price: 2, gluten: true, seafood: false, dairy: true, spice: false },
-    { image: "https://www.allrecipes.com/thmb/i7yLualeJp6h7nuux-Dnr7AUI6o=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/4559474-vegetarian-sushi-Buckwheat-Queen-4x3-1-af11cac7218240e383dbe72ef6b1ec8f.jpg", name: "sushi", description: "Raw fish and rice wrapped in seaweed.", country: "jp", price: 3, gluten: false, seafood: true, dairy: false, spice: false },
-    { image: "https://hot-thai-kitchen.com/wp-content/uploads/2021/10/Untitled-design-5.jpg", name: "pad_thai", description: "Stir-fried rice noodles with shrimp and peanuts.", country: "th", price: 2, gluten: true, seafood: true, dairy: false, spice: true },
-    { image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/2018_01_Croissant_IMG_0685.JPG/1200px-2018_01_Croissant_IMG_0685.JPG", name: "croissant", description: "Flaky pastry made with butter and yeast.", country: "fr", price: 2, gluten: true, seafood: false, dairy: true, spice: false },
-    { image: "https://hips.hearstapps.com/hmg-prod/images/taco-salad-index-643eeb39014bd.jpg?crop=0.6666666666666667xw:1xh;center,top&resize=1200:*", name: "taco", description: "Corn tortilla filled with seasoned meat and toppings.", country: "mx", price: 1, gluten: true, seafood: false, dairy: false, spice: true },
-    { image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Peking_Duck%2C_2014_%2802%29.jpg/640px-Peking_Duck%2C_2014_%2802%29.jpg", name: "peking_duck", description: "Roasted duck with crispy skin served with pancakes.", country: "cn", price: 3, gluten: true, seafood: false, dairy: false, spice: true },
-    { image: "https://natashaskitchen.com/wp-content/uploads/2019/08/Caprese-Salad-6.jpg", name: "caprese_salad", description: "Tomatoes, mozzarella, and basil with balsamic glaze.", country: "it", price: 2, gluten: false, seafood: false, dairy: true, spice: false },
-    { image: "https://hips.hearstapps.com/hmg-prod/images/goulash-index-64de8d20b97d5.jpg?crop=0.8888888888888888xw:1xh;center,top&resize=1200:*", name: "goulash", description: "Hungarian stew with meat, vegetables, and paprika.", country: "hu", price: 2, gluten: true, seafood: false, dairy: false, spice: true },
-    { image: "https://www.allrecipes.com/thmb/SZjdgaXhmkrRNLoOvdxuAktwk3E=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/228443-authentic-pho-DDMFS-4x3-0523f6531ccf4dbeb4b5bde52e007b1e.jpg", name: "pho", description: "Vietnamese soup with broth, rice noodles, and meat.", country: "vn", price: 2, gluten: true, seafood: false, dairy: false, spice: true },
-    { image: "https://www.mygreekdish.com/wp-content/uploads/2013/05/Moussaka-recipe-Traditional-Greek-Moussaka-with-Eggplants.jpg", name: "moussaka", description: "Greek dish with layers of eggplant, potato, and meat.", country: "gr", price: 3, gluten: true, seafood: false, dairy: true, spice: true },
-    { image: "*", name: "mango_sticky_rice", description: "Sweet sticky rice topped with ripe mango.", country: "th", price: 2, sweet: 4, sour: 1, salty: 1, bitter: 0, umami: 0, gluten: false, seafood: false, dairy: false, spice: false },
-    { image: "*", name: "ärtsoppa", description: "Traditional Swedish pea soup with ham.", country: "se", price: 2, sweet: 1, sour: 1, salty: 3, bitter: 2, umami: 0, gluten: true, seafood: false, dairy: false, spice: false },
-    { image: "*", name: "takoyaki", description: "Japanese octopus-filled savory balls.", country: "jp", price: 2, sweet: 1, sour: 2, salty: 3, bitter: 0, umami: 3, gluten: true, seafood: true, dairy: false, spice: false },
-    { image: "*", name: "taro_ball_dessert", description: "Sweet dessert made from taro balls and syrup.", country: "tw", price: 2, sweet: 5, sour: 1, salty: 1, bitter: 0, umami: 0, gluten: false, seafood: false, dairy: false, spice: false },
-    { image: "*", name: "gaeng_keow_wan", description: "Thai green curry with coconut milk and meat.", country: "th", price: 3, sweet: 3, sour: 2, salty: 3, bitter: 0, umami: 3, gluten: true, seafood: false, dairy: true, spice: true },
-    { image: "*", name: "coq_au_vin", description: "French chicken braised in red wine.", country: "fr", price: 3, sweet: 1, sour: 2, salty: 3, bitter: 1, umami: 3, gluten: false, seafood: false, dairy: true, spice: false },
-    { image: "*", name: "kedgeree", description: "British dish of rice, fish, and hard-boiled eggs.", country: "gb", price: 2, sweet: 1, sour: 2, salty: 3, bitter: 1, umami: 2, gluten: false, seafood: true, dairy: false, spice: true },
-    { image: "*", name: "pastitsio", description: "Greek baked pasta dish with meat and béchamel.", country: "gr", price: 3, sweet: 1, sour: 1, salty: 3, bitter: 1, umami: 2, gluten: true, seafood: false, dairy: true, spice: false },
-    { image: "*", name: "andijviestamppot", description: "Dutch mashed potatoes with endive.", country: "nl", price: 1, sweet: 1, sour: 1, salty: 2, bitter: 3, umami: 0, gluten: false, seafood: false, dairy: true, spice: false },
-    { image: "*", name: "haemul_pajeon", description: "Korean seafood and green onion pancake.", country: "kr", price: 2, sweet: 1, sour: 2, salty: 3, bitter: 0, umami: 3, gluten: true, seafood: true, dairy: false, spice: true },
-    { image: "*", name: "amala", description: "Nigerian thick paste made from yam flour.", country: "ng", price: 1, sweet: 0, sour: 0, salty: 1, bitter: 1, umami: 0, gluten: false, seafood: false, dairy: false, spice: false },
-    { image: "*", name: "fattoush", description: "Levantine salad made from mixed greens and bread.", country: "lb", price: 1, sweet: 2, sour: 3, salty: 2, bitter: 2, umami: 1, gluten: true, seafood: false, dairy: false, spice: true },
-    { image: "*", name: "curry", description: "Indian spiced dish with meat or vegetables.", country: "in", price: 2, sweet: 1, sour: 2, salty: 3, bitter: 1, umami: 3, gluten: true, seafood: false, dairy: false, spice: true },
-    { image: "*", name: "japchae", description: "Korean stir-fried glass noodles with vegetables.", country: "kr", price: 2, sweet: 2, sour: 2, salty: 3, bitter: 0, umami: 2, gluten: true, seafood: false, dairy: false, spice: true },
-    { image: "*", name: "gumbo", description: "Louisiana stew with meat, vegetables, and roux.", country: "us", price: 2, sweet: 1, sour: 2, salty: 3, bitter: 1, umami: 3, gluten: true, seafood: true, dairy: false, spice: true },
-    { image: "*", name: "lamingtons", description: "Australian sponge cake coated in chocolate and coconut.", country: "au", price: 2, sweet: 4, sour: 0, salty: 1, bitter: 0, umami: 0, gluten: true, seafood: false, dairy: true, spice: false },
-    { image: "*", name: "erwtensoep", description: "Dutch split pea soup with pork.", country: "nl", price: 2, sweet: 1, sour: 1, salty: 3, bitter: 1, umami: 2, gluten: false, seafood: false, dairy: false, spice: true },
-    { image: "*", name: "khao_soi", description: "Northern Thai coconut curry noodle soup.", country: "th", price: 2, sweet: 2, sour: 3, salty: 4, bitter: 0, umami: 3, gluten: true, seafood: false, dairy: false, spice: true },
-    { image: "*", name: "dobos_torte", description: "Hungarian layer cake with caramel and chocolate.", country: "hu", price: 3, sweet: 4, sour: 1, salty: 1, bitter: 0, umami: 0, gluten: true, seafood: false, dairy: true, spice: false },
-    { image: "*", name: "manakish", description: "Levantine flatbread topped with za'atar or cheese.", country: "lb", price: 1, sweet: 0, sour: 1, salty: 3, bitter: 1, umami: 2, gluten: true, seafood: false, dairy: false, spice: true}
-
+    // { image: "https://heygrillhey.com/static/234cd20061f0bc398863c88cdad06afa/SmokedHamburgers-7.jpg", name: "hamburger", description: "A beef patty with cheese and two buns.", country: "us", price: 3, gluten: true, seafood: false, dairy: false, spice: false },
+    // { image: "https://www.budgetbytes.com/wp-content/uploads/2022/01/Shrimp-Alfredo-Pasta-bowl2-500x500.jpg", name: "pasta_alfredo", description: "Pasta alfredo made with cheese and garnish.", country: "fr", price: 2, gluten: true, seafood: false, dairy: true, spice: false },
+    // { image: "https://natashaskitchen.com/wp-content/uploads/2019/08/Caprese-Salad-6.jpg", name: "salad", description: "A healthy salad with greens and veggies.", country: "gr", price: 2, gluten: false, seafood: false, dairy: false, spice: false },
+    // { image: "https://s7d1.scene7.com/is/image/mcdonalds/mcdonalds-Chicken-McNuggets-6-pieces-2:1-3-product-tile-desktop?wid=829&hei=515&dpr=off", name: "chicken_nuggets", country: "it", price: 1, description: "Chicken nuggets prepared with sauce.", gluten: true, seafood: false, dairy: false, spice: false },
+    // { image: "https://media.npr.org/assets/img/2012/05/10/lobster_custom-9e0ca5bd52353bd0dc75b03c89cab8c628b1db43-s1100-c50.jpg", name: "lobster", description: "Lobster seasoned with garlic.", price: 2, country: "gb", gluten: false, seafood: true, dairy: false, spice: false },
+    // { image: "https://www.recipetineats.com/wp-content/uploads/2019/01/Baked-Buffalo-Wings_0.jpg", name: "spicy_wings", description: "Wings, celery and sauce.", country: "kr", price: 1, gluten: false, seafood: false, dairy: true, spice: true },
+    // { image: "https://www.recipetineats.com/wp-content/uploads/2022/08/Stack-of-cheeseburgers.jpg", name: "cheeseburger", description: "Beef patty with melted cheese on a bun.", country: "us", price: 2, gluten: true, seafood: false, dairy: true, spice: false },
+    // { image: "https://www.allrecipes.com/thmb/i7yLualeJp6h7nuux-Dnr7AUI6o=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/4559474-vegetarian-sushi-Buckwheat-Queen-4x3-1-af11cac7218240e383dbe72ef6b1ec8f.jpg", name: "sushi", description: "Raw fish and rice wrapped in seaweed.", country: "jp", price: 3, gluten: false, seafood: true, dairy: false, spice: false },
+    // { image: "https://hot-thai-kitchen.com/wp-content/uploads/2021/10/Untitled-design-5.jpg", name: "pad_thai", description: "Stir-fried rice noodles with shrimp and peanuts.", country: "th", price: 2, gluten: true, seafood: true, dairy: false, spice: true },
+    // { image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/2018_01_Croissant_IMG_0685.JPG/1200px-2018_01_Croissant_IMG_0685.JPG", name: "croissant", description: "Flaky pastry made with butter and yeast.", country: "fr", price: 2, gluten: true, seafood: false, dairy: true, spice: false },
+    // { image: "https://hips.hearstapps.com/hmg-prod/images/taco-salad-index-643eeb39014bd.jpg?crop=0.6666666666666667xw:1xh;center,top&resize=1200:*", name: "taco", description: "Corn tortilla filled with seasoned meat and toppings.", country: "mx", price: 1, gluten: true, seafood: false, dairy: false, spice: true },
+    // { image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Peking_Duck%2C_2014_%2802%29.jpg/640px-Peking_Duck%2C_2014_%2802%29.jpg", name: "peking_duck", description: "Roasted duck with crispy skin served with pancakes.", country: "cn", price: 3, gluten: true, seafood: false, dairy: false, spice: true },
+    // { image: "https://natashaskitchen.com/wp-content/uploads/2019/08/Caprese-Salad-6.jpg", name: "caprese_salad", description: "Tomatoes, mozzarella, and basil with balsamic glaze.", country: "it", price: 2, gluten: false, seafood: false, dairy: true, spice: false },
+    // { image: "https://hips.hearstapps.com/hmg-prod/images/goulash-index-64de8d20b97d5.jpg?crop=0.8888888888888888xw:1xh;center,top&resize=1200:*", name: "goulash", description: "Hungarian stew with meat, vegetables, and paprika.", country: "hu", price: 2, gluten: true, seafood: false, dairy: false, spice: true },
+    // { image: "https://www.allrecipes.com/thmb/SZjdgaXhmkrRNLoOvdxuAktwk3E=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/228443-authentic-pho-DDMFS-4x3-0523f6531ccf4dbeb4b5bde52e007b1e.jpg", name: "pho", description: "Vietnamese soup with broth, rice noodles, and meat.", country: "vn", price: 2, gluten: true, seafood: false, dairy: false, spice: true },
+    // { image: "https://www.mygreekdish.com/wp-content/uploads/2013/05/Moussaka-recipe-Traditional-Greek-Moussaka-with-Eggplants.jpg", name: "moussaka", description: "Greek dish with layers of eggplant, potato, and meat.", country: "gr", price: 3, gluten: true, seafood: false, dairy: true, spice: true },
+    { image: "https://thefoodietakesflight.com/wp-content/uploads/2021/08/Thai-Mango-Sticky-Rice-1-of-7-677x1024.jpg", name: "mango_sticky_rice", description: "Sweet sticky rice topped with ripe mango.", country: "th", price: 2, sweet: 4, sour: 1, salty: 1, bitter: 0, umami: 0, gluten: false, seafood: false, dairy: false, spice: false },
+    { image: "https://www.thedevilwearsparsley.com/wp-content/uploads/2020/04/Artsoppa-17-2-1170x617.jpg", name: "ärtsoppa", description: "Traditional Swedish pea soup with ham.", country: "se", price: 2, sweet: 1, sour: 1, salty: 3, bitter: 2, umami: 0, gluten: true, seafood: false, dairy: false, spice: false },
+    { image: "https://www.justonecookbook.com/wp-content/uploads/2013/10/Takoyaki-NEW-500x375.jpg", name: "takoyaki", description: "Japanese octopus-filled savory balls.", country: "jp", price: 2, sweet: 1, sour: 2, salty: 3, bitter: 0, umami: 3, gluten: true, seafood: true, dairy: false, spice: false },
+    { image: "https://onehappybite.com/wp-content/uploads/2021/06/Taiwanese-Taro-and-Yam-Balls-Dessert-5-edited.jpg", name: "taro_ball_dessert", description: "Sweet dessert made from taro balls and syrup.", country: "tw", price: 2, sweet: 5, sour: 1, salty: 1, bitter: 0, umami: 0, gluten: false, seafood: false, dairy: false, spice: false },
+    { image: "https://rachelcooksthai.com/wp-content/uploads/2011/05/Green-Curry-Eggplant-04.jpg", name: "gaeng_keow_wan", description: "Thai green curry with coconut milk and meat.", country: "th", price: 3, sweet: 3, sour: 2, salty: 3, bitter: 0, umami: 3, gluten: true, seafood: false, dairy: true, spice: true },
+    { image: "https://www.recipetineats.com/wp-content/uploads/2016/09/Coq-au-Vin_00.jpg?w=900", name: "coq_au_vin", description: "French chicken braised in red wine.", country: "fr", price: 3, sweet: 1, sour: 2, salty: 3, bitter: 1, umami: 3, gluten: false, seafood: false, dairy: true, spice: false },
+    { image: "https://www.recipetineats.com/wp-content/uploads/2023/04/Kedgeree_3.jpg?w=900", name: "kedgeree", description: "British dish of rice, fish, and hard-boiled eggs.", country: "gb", price: 2, sweet: 1, sour: 2, salty: 3, bitter: 1, umami: 2, gluten: false, seafood: true, dairy: false, spice: true },
+    { image: "https://www.oliveandmango.com/images/uploads/2023_10_10_pastitsio_2.jpg", name: "pastitsio", description: "Greek baked pasta dish with meat and béchamel.", country: "gr", price: 3, sweet: 1, sour: 1, salty: 3, bitter: 1, umami: 2, gluten: true, seafood: false, dairy: true, spice: false },
+    { image: "https://ohmydish.com/wp-content/uploads/2016/08/Dutch-escarole-mash-square.jpg", name: "andijviestamppot", description: "Dutch mashed potatoes with endive.", country: "nl", price: 1, sweet: 1, sour: 1, salty: 2, bitter: 3, umami: 0, gluten: false, seafood: false, dairy: true, spice: false },
+    { image: "https://www.koreanbapsang.com/wp-content/uploads/2019/12/DSC3431-4.jpg", name: "haemul_pajeon", description: "Korean seafood and green onion pancake.", country: "kr", price: 2, sweet: 1, sour: 2, salty: 3, bitter: 0, umami: 3, gluten: true, seafood: true, dairy: false, spice: true },
+    { image: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Amala_Akkineni_Hyderabad_2010.jpg", name: "amala", description: "Nigerian thick paste made from yam flour.", country: "ng", price: 1, sweet: 0, sour: 0, salty: 1, bitter: 1, umami: 0, gluten: false, seafood: false, dairy: false, spice: false },
+    { image: "https://feelgoodfoodie.net/wp-content/uploads/2017/06/Fattoush-Salad-10.jpg", name: "fattoush", description: "Levantine salad made from mixed greens and bread.", country: "lb", price: 1, sweet: 2, sour: 3, salty: 2, bitter: 2, umami: 1, gluten: true, seafood: false, dairy: false, spice: true },
+    { image: "https://cdn.nba.com/headshots/nba/latest/1040x760/201939.png", name: "curry", description: "Indian spiced dish with meat or vegetables.", country: "in", price: 2, sweet: 1, sour: 2, salty: 3, bitter: 1, umami: 3, gluten: true, seafood: false, dairy: false, spice: true },
+    { image: "https://www.koreanbapsang.com/wp-content/uploads/2010/01/DSC5189-3.jpg", name: "japchae", description: "Korean stir-fried glass noodles with vegetables.", country: "kr", price: 2, sweet: 2, sour: 2, salty: 3, bitter: 0, umami: 2, gluten: true, seafood: false, dairy: false, spice: true },
+    { image: "https://hips.hearstapps.com/hmg-prod/images/shrimp-sausage-gumbo-index-65130058c85c0.jpg?crop=0.8888888888888888xw:1xh;center,top", name: "gumbo", description: "Louisiana stew with meat, vegetables, and roux.", country: "us", price: 2, sweet: 1, sour: 2, salty: 3, bitter: 1, umami: 3, gluten: true, seafood: true, dairy: false, spice: true },
+    { image: "https://www.rainbownourishments.com/wp-content/uploads/2021/02/vegan-lamington-stack.jpg", name: "lamingtons", description: "Australian sponge cake coated in chocolate and coconut.", country: "au", price: 2, sweet: 4, sour: 0, salty: 1, bitter: 0, umami: 0, gluten: true, seafood: false, dairy: true, spice: false },
+    { image: "https://i0.wp.com/live.staticflickr.com/65535/49547714652_2ea7f8a09e_b.jpg?resize=1024%2C683&ssl=1", name: "erwtensoep", description: "Dutch split pea soup with pork.", country: "nl", price: 2, sweet: 1, sour: 1, salty: 3, bitter: 1, umami: 2, gluten: false, seafood: false, dairy: false, spice: true },
+    { image: "https://assets.bonappetit.com/photos/57adf6d053e63daf11a4e015/1:1/w_2560%2Cc_limit/chicken-khao-soi1.jpg", name: "khao_soi", description: "Northern Thai coconut curry noodle soup.", country: "th", price: 2, sweet: 2, sour: 3, salty: 4, bitter: 0, umami: 3, gluten: true, seafood: false, dairy: false, spice: true },
+    { image: "https://cdn.sprinklebakes.com/media/2021/12/Dobos-torte-14.jpg", name: "dobos_torte", description: "Hungarian layer cake with caramel and chocolate.", country: "hu", price: 3, sweet: 4, sour: 1, salty: 1, bitter: 0, umami: 0, gluten: true, seafood: false, dairy: true, spice: false },
+    { image: "https://www.unicornsinthekitchen.com/wp-content/uploads/2022/05/manakeesh-zaatar-manakish-sq.jpg", name: "manakish", description: "Levantine flatbread topped with za'atar or cheese.", country: "lb", price: 1, sweet: 0, sour: 1, salty: 3, bitter: 1, umami: 2, gluten: true, seafood: false, dairy: false, spice: true}
 ];
+
+const shuffleArray = array => {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+}
+
+shuffleArray(foods);
 
 // fetch("images.txt")
 //     .then(function (res) {
@@ -66,6 +76,7 @@ startButton.addEventListener('click', function () {
     startButton.style = 'display:none;';
 
     container.style = 'display: block;';
+    updateFoodDisplay("");
 });
 
 function handleAllergy(checkbox) {
@@ -91,18 +102,14 @@ function handleAllergy(checkbox) {
     }
 
     var label;
-    //var elements = document.getElementById("checkboxHolder");
     var elements = document.querySelectorAll('#checkboxHolder');
     elements.forEach(function (element) {
         if (element.innerHTML.includes(checkbox.value)) {
             label = element;
         }
     });
-    // label.innerHTML="beep";
-    // console.log(label.childNodes);
-    // console.log(label.childNodes[3]);
+
     var labText = label.childNodes[3].innerHTML;
-    // console.log(labText.substring(0,labText.search("</i>") + 4))
     var newText = "";
     newText += labText.substring(0, labText.search("</i>") + 4);
     if (!checkbox.checked) {
@@ -114,15 +121,6 @@ function handleAllergy(checkbox) {
     }
     label.childNodes[3].innerHTML = newText;
 }
-
-// someCheckbox.addEventListener('change', e => {
-//   if(e.target.checked === true) {
-//     console.log("Checkbox is checked - boolean value: ", e.target.checked)
-//   }
-// if(e.target.checked === false) {
-//     console.log("Checkbox is not checked - boolean value: ", e.target.checked)
-//   }
-// });
 
 function generateList() {
     var list = [];
@@ -219,7 +217,7 @@ function updateFoodDisplay(direction) {
     if (direction === 'left') {
         translation = 'translateX(-100%)'
     }
-    else {
+    else if (direction=='right'){
         translation = 'translateX(100%)'
     }
 
@@ -286,16 +284,6 @@ function updateFoodPref(name) {
     }
 }
 
-const shuffleArray = array => {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        const temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-}
-
-
 const openModalButtons = document.querySelectorAll('[data-modal-target]')
 const closeModalButtons = document.querySelectorAll('[data-close-button]')
 const overlay = document.getElementById('overlay')
@@ -341,4 +329,3 @@ function openPopup() {
 function closePopup() {
     popup.classList.remove("open-popup");
 }
-
