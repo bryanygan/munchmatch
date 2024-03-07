@@ -34,8 +34,12 @@ const foods = [
     { image: "https://i0.wp.com/live.staticflickr.com/65535/49547714652_2ea7f8a09e_b.jpg?resize=1024%2C683&ssl=1", name: "erwtensoep", description: "Dutch split pea soup with pork.", country: "nl", price: 2, sweet: 1, sour: 1, salty: 3, bitter: 1, umami: 2, gluten: false, seafood: false, dairy: false, spice: true },
     { image: "https://assets.bonappetit.com/photos/57adf6d053e63daf11a4e015/1:1/w_2560%2Cc_limit/chicken-khao-soi1.jpg", name: "khao_soi", description: "Northern Thai coconut curry noodle soup.", country: "th", price: 2, sweet: 2, sour: 3, salty: 4, bitter: 0, umami: 3, gluten: true, seafood: false, dairy: false, spice: true },
     { image: "https://cdn.sprinklebakes.com/media/2021/12/Dobos-torte-14.jpg", name: "dobos_torte", description: "Hungarian layer cake with caramel and chocolate.", country: "hu", price: 3, sweet: 4, sour: 1, salty: 1, bitter: 0, umami: 0, gluten: true, seafood: false, dairy: true, spice: false },
-    { image: "https://www.unicornsinthekitchen.com/wp-content/uploads/2022/05/manakeesh-zaatar-manakish-sq.jpg", name: "manakish", description: "Levantine flatbread topped with za'atar or cheese.", country: "lb", price: 1, sweet: 0, sour: 1, salty: 3, bitter: 1, umami: 2, gluten: true, seafood: false, dairy: false, spice: true}
+    { image: "https://www.unicornsinthekitchen.com/wp-content/uploads/2022/05/manakeesh-zaatar-manakish-sq.jpg", name: "manakish", description: "Levantine flatbread topped with za'atar or cheese.", country: "lb", price: 1, sweet: 0, sour: 1, salty: 3, bitter: 1, umami: 2, gluten: true, seafood: false, dairy: false, spice: true }
 ];
+
+// sweetPref = sourPref = saltyPref = bitterPref = umamiPref = 0; 
+sweetTotal = sourTotal = saltyTotal = bitterTotal = umamiTotal = 0;
+likedTotal = 0;
 
 const shuffleArray = array => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -77,6 +81,55 @@ startButton.addEventListener('click', function () {
 
     container.style = 'display: block;';
     updateFoodDisplay("");
+});
+
+
+//chart
+
+var options = {
+    responsive: false,
+    maintainAspectRatio: true,
+    scale: {
+        ticks: {
+            beginAtZero: true,
+            max: 5
+        }
+    },
+    elements: {
+        line: {
+            borderWidth: 3
+        }
+    },
+};
+
+var chrt = document.getElementById("chartId").getContext("2d");
+var chartId = new Chart(chrt, {
+    type: 'radar',
+    data: {
+        labels: ["Sweet", "Sour", "Salty", "Bitter", "Umami"],
+        datasets: [{
+            label: "Current",
+            data: [0, 0, 0, 0, 0],
+            fill: true,
+            backgroundColor: 'rgba(242, 52, 5,0.2)',
+            borderColor: 'rgb(242, 52, 5)',
+            pointBackgroundColor: 'rgb(242, 52, 5)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(242, 52, 5)'
+        }, {
+            label: "Preference",
+            data: [0, 0, 0, 0, 0],
+            fill: true,
+            backgroundColor: 'rgba(247, 181, 60,0.2)',
+            borderColor: 'rgb(247, 181, 60)',
+            pointBackgroundColor: 'rgb(247, 181, 60)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(247, 181, 60)'
+        }],
+    },
+    options
 });
 
 function handleAllergy(checkbox) {
@@ -148,12 +201,12 @@ function progress() {
     elem.style.width = fill + "%";
     document.getElementById("percentText").innerHTML = ("<b>" + fill + "%</b> to Match")
     if (fill >= 100) {
-        openPopup() 
+        openPopup()
     }
 }
 
 let currentIndex = 0;
-let likedFoods = [], dislikedFoods = [];
+let likedFoods = []//, dislikedFoods = [];
 
 function swipe(direction) {
     // const foodImage = document.getElementById('foodImage');
@@ -161,7 +214,7 @@ function swipe(direction) {
     // const description = document.getElementById('description');
 
     if (direction === 'left') {
-        dislikedFoods.push(foods[currentIndex]);
+        // dislikedFoods.push(foods[currentIndex]);
     } else if (direction === 'right') {
         likedFoods.push(foods[currentIndex]);
     }
@@ -220,9 +273,25 @@ function updateFoodDisplay(direction) {
     if (direction === 'left') {
         translation = 'translateX(-100%)'
     }
-    else if (direction=='right'){
+    else if (direction == 'right') {
         translation = 'translateX(100%)'
+        likedTotal++;
+        sweetTotal += foods[currentIndex].sweet;
+        sourTotal += foods[currentIndex].sour;
+        saltyTotal += foods[currentIndex].salty;
+        bitterTotal += foods[currentIndex].bitter;
+        umamiTotal += foods[currentIndex].umami;
     }
+
+    //set grace to 5 minus max
+    currArr = new Array(foods[currentIndex].sweet, foods[currentIndex].sour, foods[currentIndex].salty, foods[currentIndex].bitter, foods[currentIndex].umami);
+    // gra = 5 - currArr.max
+    // chartId.options.scale.
+    //
+    chartId.data.datasets[0].data = currArr;
+    chartId.data.datasets[1].data = new Array(sweetTotal / likedTotal, sourTotal / likedTotal, saltyTotal / likedTotal, bitterTotal / likedTotal, umamiTotal / likedTotal);
+
+    chartId.update()
 
     foodImage.style.transform = translation;
     setTimeout(() => {
@@ -254,14 +323,14 @@ function updateLikedFoods() {
     updateFoodPref("likedFood")
 }
 
-function updateDislikedFoods() {
-    updateFoodPref("dislikedFood")
-}
+// function updateDislikedFoods() {
+//     updateFoodPref("dislikedFood")
+// }
 
 function updateFoodPref(name) {
     const likedFoodsContainer = document.getElementById("likedFoods");
 
-    const dislikedFoodsContainer = document.getElementById("dislikedFoods");
+    // const dislikedFoodsContainer = document.getElementById("dislikedFoods");
 
     if (name === "likedFood") {
         likedFoodsContainer.innerHTML = '';
@@ -276,15 +345,15 @@ function updateFoodPref(name) {
     //dislikedFood
 
     //THIS IS BAD CODE - CAN BE SIMPLIFIED LATER
-    else {
-        dislikedFoodsContainer.innerHTML = '';
-        dislikedFoods.forEach(food => {
-            const foodElement = document.createElement('img');
-            foodElement.src = food.image;
-            foodElement.className = name;
-            dislikedFoodsContainer.appendChild(foodElement);
-        });
-    }
+    // else {
+    //     dislikedFoodsContainer.innerHTML = '';
+    //     dislikedFoods.forEach(food => {
+    //         const foodElement = document.createElement('img');
+    //         foodElement.src = food.image;
+    //         foodElement.className = name;
+    //         dislikedFoodsContainer.appendChild(foodElement);
+    //     });
+    // }
 }
 
 const openModalButtons = document.querySelectorAll('[data-modal-target]')

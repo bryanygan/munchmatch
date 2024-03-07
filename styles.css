@@ -3,9 +3,9 @@
     --background-color-g: #F18C60;
     --text-color: #1c1d18;
     /* -g color vairants are for gradients */
-    --primary-color: #f7b53c;
+    --primary-color: rgb(247, 181, 60);
     --primary-color-g: #F5952E;
-    --accent-color-1: #f23405;
+    --accent-color-1: rgb(242, 52, 5);
     --accent-color-1-g: #F45614;
     --accent-color-2: #76b53b;
     --accent-color-2-g: #9CB53B;
