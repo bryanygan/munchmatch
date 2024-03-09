@@ -235,7 +235,7 @@ header img {
     top: 10px;
     right: 10px; */
     display: grid;
-    grid-template-columns: repeat(3, 60px);
+    grid-template-columns: repeat(5, 60px);
     grid-gap: 5px;
 }
 

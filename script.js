@@ -1,3 +1,148 @@
+const map = new jsVectorMap({
+    // world_merc, us_mill_en, us_merc_en,
+    // us_lcc_en, us_aea_en, spain
+    // russia, canada, iraq
+    map: 'world',
+    selector: '#map',
+    backgroundColor: 'tranparent',
+    draggable: false,
+    zoomButtons: false,
+    zoomOnScroll: false,
+    zoomOnScrollSpeed: 3,
+    zoomMax: 12,
+    zoomMin: 1,
+    zoomAnimate: true,
+    showTooltip: true,
+    zoomStep: 1.5,
+    bindTouchEvents: true,
+    // Line options
+    lineStyle: {
+        stroke: '#808080',
+        strokeWidth: 1,
+        strokeLinecap: 'round'
+    },
+    focusOn: {}, // focus on regions on page load
+    /**
+     * Markers options
+     */
+    markers: null, // Set of markers to add to the map during initialization
+    markersSelectable: false,
+    markersSelectableOne: false,
+    markerStyle: {
+        initial: {
+            r: 7,
+            fill: '#374151',
+            fillOpacity: 1,
+            stroke: '#FFF',
+            strokeWidth: 5,
+            strokeOpacity: .5
+        },
+        hover: {
+            fill: '#3cc0ff',
+            cursor: 'pointer'
+        },
+        selected: {
+            fill: 'blue'
+        },
+        selectedHover: {}
+    },
+    markerLabelStyle: {
+        initial: {
+            fontFamily: 'Verdana',
+            fontSize: 12,
+            fontWeight: 500,
+            cursor: 'default',
+            fill: '#374151'
+        },
+        hover: {
+            cursor: 'pointer'
+        },
+        selected: {},
+        selectedHover: {}
+    },
+    /**
+     * Region styles
+     */
+    labels: { // add a label for a specific region
+        regions: {
+            render(code) {
+                return [].indexOf(code) > -1 ? 'x ' : ''
+            },
+        }
+    },
+    regionsSelectable: false,
+    regionsSelectableOne: false,
+    regionStyle: {
+        // Region style
+        initial: {
+            fill: 'rgb(242, 52, 5)',
+            fillOpacity: 1,
+            stroke: 'none',
+            strokeWidth: 0,
+            strokeOpacity: 0
+        },
+        hover: {
+            fillOpacity: 1,
+            cursor: 'default',
+            // fillOpacity: .7,
+            // fill: 'rgb(247, 181, 60)',
+            // cursor: 'pointer'
+        },
+        selected: {
+            fill: '#000'
+        },
+        selectedHover: {}
+    },
+    // Region label style
+    regionLabelStyle: {
+        initial: {
+            fontFamily: 'Verdana',
+            fontSize: '12',
+            fontWeight: 'bold',
+            cursor: 'default',
+            fill: 'rgb(247, 181, 60)'
+        },
+        hover: {
+            cursor: 'pointer'
+        }
+    },
+    series: {
+        markers: [
+            // You can add one or more objects to create series for markers.
+            {
+                name: 'Palestine',
+                coords: [31.5, 34.8],
+              },
+              {
+                name: 'Russia',
+                coords: [61, 105],
+              },
+              {
+                name: 'Geenland',
+                coords: [72, -42],
+              },
+              {
+                name: 'Canada',
+                coords: [56, -106],
+              },
+        ],
+        regions: [
+            // You can add one or more objects to create series for regions.
+        ]
+    },
+    // map visualization is used to analyze and display the geographically related data and present it in the form of maps.
+    // visualizeData: {
+    //     scale: ['#f23405', '#f7b53c'],
+    //     values: {
+    //         // EG: 1,
+    //         // US: 2,
+    //         // CA: 3,
+    //         // BR: 4,
+    //         // // ...
+    //     }
+    // }
+})
+
 const foods = [
     // { image: "https://heygrillhey.com/static/234cd20061f0bc398863c88cdad06afa/SmokedHamburgers-7.jpg", name: "hamburger", description: "A beef patty with cheese and two buns.", country: "us", price: 3, gluten: true, seafood: false, dairy: false, spice: false },
     // { image: "https://www.budgetbytes.com/wp-content/uploads/2022/01/Shrimp-Alfredo-Pasta-bowl2-500x500.jpg", name: "pasta_alfredo", description: "Pasta alfredo made with cheese and garnish.", country: "fr", price: 2, gluten: true, seafood: false, dairy: true, spice: false },
@@ -72,17 +217,6 @@ checkboxes.forEach(function (checkbox) {
         handleAllergy(this);
     });
 });
-
-var container = document.getElementById("foodContainer");
-container.style = 'display:none;';
-var startButton = document.getElementById("startButton");
-startButton.addEventListener('click', function () {
-    startButton.style = 'display:none;';
-
-    container.style = 'display: block;';
-    updateFoodDisplay("");
-});
-
 
 //chart
 
@@ -175,6 +309,18 @@ function handleAllergy(checkbox) {
     label.childNodes[3].innerHTML = newText;
 }
 
+var container = document.getElementById("foodContainer");
+container.style = 'display:none;';
+var chartContainer = document.getElementById("spiderChart");
+chartContainer.style = 'display:none;';
+var startButton = document.getElementById("startButton");
+startButton.addEventListener('click', function () {
+    startButton.style = 'display:none;';
+    chartContainer.style = 'display:block;';
+    container.style = 'display: block;';
+    updateFoodDisplay("");
+});
+
 function generateList() {
     var list = [];
     var sum = 0;
@@ -256,6 +402,14 @@ document.addEventListener('keydown', function (event) {
     }
 });
 
+function updateDictionary(dict, key) {
+    if (dict.hasOwnProperty(key)) {
+        dict[key]++;
+    } else {
+        dict[key] = 1;
+    }
+}
+
 function updateFoodDisplay(direction) {
     const foodImage = document.getElementById('foodImage');
     const dishName = document.getElementById('dishName');
@@ -292,6 +446,52 @@ function updateFoodDisplay(direction) {
     chartId.data.datasets[1].data = new Array(sweetTotal / likedTotal, sourTotal / likedTotal, saltyTotal / likedTotal, bitterTotal / likedTotal, umamiTotal / likedTotal);
 
     chartId.update()
+
+    //update map
+    // console.log(map.dataVisualization._values)
+
+    // var newDict = updateDictionary(map.dataVisualization._values, foods[currentIndex].country.toUpperCase())
+    // map.dataVisualization._values = newDict
+    // map.dataVisualization._values = {
+    //     EG: 1,
+    //     US: 2,
+    //     CA: 3,
+    //     BR: 10,
+    // };
+
+    // map.dataVisualization.setValues({
+    //     EG: 1,
+    //     US: 2,
+    //     CA: 3,
+    //     BR: 10,
+    // })
+
+    // const newData = {
+    //     EG: 1,
+    //     US: 2,
+    //     CA: 3,
+    //     BR: 10,
+    // }
+
+    // map.series.regions[0].setValues(newData);
+
+    // map.updateSeries({
+    //     dataVisualization: {
+    //         values: {
+    //             EG: 1,
+    //             US: 2,
+    //             CA: 3,
+    //             BR: 10,
+    //         }
+    //     }
+    // });
+
+    // map.addLines([
+    //     { from: 'United States', to: 'Egypt' },
+    //     { from: 'Palestine', to: 'Ukraine' },
+    // ])
+
+    // console.log(map.dataVisualization._values)
 
     foodImage.style.transform = translation;
     setTimeout(() => {

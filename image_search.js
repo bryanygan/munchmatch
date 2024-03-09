@@ -9,7 +9,7 @@ const options = { page: 1, size: 'large' };
 const fs = require('fs');
 let promises = [];
 let links = [];
-let foods = ["Mango Sticky Rice","Ärtsoppa","Takoyaki","Taro Ball Dessert","Gaeng Keow Wan","Coq au Vin","Kedgeree","Pastitsio","Andijviestamppot","Haemul Pajeon","Amala","Fattoush","Curry","Japchae","Gumbo","Lamingtons","Erwtensoep","Khao Soi","Dobos Torte","Manakish"];
+let foods = ["Mango Sticky Rice", "Ärtsoppa", "Takoyaki", "Taro Ball Dessert", "Gaeng Keow Wan", "Coq au Vin", "Kedgeree", "Pastitsio", "Andijviestamppot", "Haemul Pajeon", "Amala", "Fattoush", "Curry", "Japchae", "Gumbo", "Lamingtons", "Erwtensoep", "Khao Soi", "Dobos Torte", "Manakish"];
 
 foods.forEach(element => {
     let promise = client.search(element, options)
