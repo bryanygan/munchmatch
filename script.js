@@ -498,12 +498,12 @@ function updateFoodDisplay(direction) {
         foodImage.src = foods[currentIndex].image;
         dishName.innerText = replaceUnderscoresWithSpacesAndCapitalize(foods[currentIndex].name);
         dishflag.className = "fi fi-" + foods[currentIndex].country;
-        dollar2.style = foods[currentIndex].price >= 2 ? "" : "display: none";
-        dollar3.style = foods[currentIndex].price >= 3 ? "" : "display: none";
-        allergyGluten.style = foods[currentIndex].gluten ? "" : "display:none";
-        allergySeafood.style = foods[currentIndex].seafood ? "" : "display:none";
-        allergyDairy.style = foods[currentIndex].dairy ? "" : "display:none";
-        allergySpice.style = foods[currentIndex].spice ? "" : "display:none";
+        dollar2.style = foods[currentIndex].price >= 2 ? "" : "color: rgba(255, 243, 222, 0.3);";
+        dollar3.style = foods[currentIndex].price >= 3 ? "" : "color: rgba(255, 243, 222, 0.3);";
+        allergyGluten.style = foods[currentIndex].gluten ? "" : "color: rgba(255, 243, 222, 0.3);";
+        allergySeafood.style = foods[currentIndex].seafood ? "" : "color: rgba(255, 243, 222, 0.3);";
+        allergyDairy.style = foods[currentIndex].dairy ? "" : "color: rgba(255, 243, 222, 0.3);";
+        allergySpice.style = foods[currentIndex].spice ? "" : "color: rgba(255, 243, 222, 0.3);";
         description.innerText = foods[currentIndex].description;
         foodImage.style.transform = 'translateX(0)';
     }, 300);

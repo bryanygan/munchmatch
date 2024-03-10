@@ -1,5 +1,5 @@
 :root {
-    --background-color: #fff3de;
+    --background-color: rgb(255, 243, 222);
     --background-color-g: #F18C60;
     --text-color: #1c1d18;
     /* -g color vairants are for gradients */
@@ -97,17 +97,18 @@ header img {
 }
 
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr;
-    gap: 10px;
+    display: flex;
+    justify-content: space-around;
+    /* grid-template-columns: repeat(3, 1fr); */
+    /* grid-template-rows: 1fr; */
+    /* gap: 5px; */
 }
 
 .grid-item {
     height: 20px;
     /* background-color: rgba(255,255,255,100); */
-    background-color: rgba(var(--accent-color-1), 0.8);
-    border-radius: 10px;
+    /* background-color: rgba(var(--accent-color-1), 0.8); */
+    /* border-radius: 10px; */
     color: var(--background-color);
     /* padding: 20px; */
     text-align: center;
@@ -437,7 +438,7 @@ header {
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
     transition: 200ms ease-in-out;
-    border: 3px solid var(--background-color);
+    /* border: 3px solid var(--background-color); */
     border-radius: 10px;
     z-index: 10;
     background-color: var(--accent-color-1);
@@ -454,10 +455,12 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid var(--background-color);
+    border-bottom: 4px solid var(--background-color);
 }
 
 .modal-header .title {
+    text-align: center;
+
     font-size: 1.25rem;
     font-weight: bold;
     /* font-family: "Montserrat", sans-serif; */
@@ -475,7 +478,9 @@ header {
 }
 
 .modal-body {
-    padding: 10 px 15 px;
+    padding: 15 px 15 px;
+    padding: 20px 20px;
+    text-align: left;
 }
 
 #overlay {
@@ -562,4 +567,8 @@ header {
     font-size: 18px;
     border-radius: 4px;
     cursor: pointer;
+}
+
+#dollar1, #dollar2, #dollar3, #allergyGluten, #allergySeafood, #allergyDairy, #allergySpice{
+    transition: 0.5s;
 }

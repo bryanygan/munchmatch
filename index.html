@@ -88,21 +88,20 @@
             <div class="headerColumn">
 
 
-                <button data-modal-target="#modal" class="standard-button">About Us</button>
+                <button data-modal-target="#modal" class="standard-button">Description</button>
+                
                 <div class="modal active" id="modal">
                     <div class="modal-header">
-                        <div class="title">Profile</div>
+                        <div class="title">Description</div>
                         <button data-close-button class="close-button">
                             <i class="fa-solid fa-times" id="allergyIcon"></i>
                         </button>
                     </div>
                     <div class="modal-body">
-                        MunchMatch is a Tinder-style food recommendation platform that will curate a personal food option
-                        for the user based on your profile. You’re presented with various food options, ranging from
-                        thousands of cultures, dishes, and cooking styles. The program will find and match the perfect meal
-                        for you as the user swipes left or right on each option. Preferences like spice tolerance and
-                        allergies are taken into account, and dishes that disagree with your preferences will be filtered
-                        out automatically. Other filters include price point, location, and overall customer rating.
+                        MunchMatch is a Tinder-style food recommendation platform that will curate a personal food option based on your preferences.
+                        The program will find and match your perfect dish as you swipe left or right on each option. 
+                        Preferences like spice tolerance and allergies are taken into account, and dishes that disagree with your preferences will be filtered
+                        out automatically. 
 
                     </div>
                 </div>
@@ -135,7 +134,7 @@
                     <button type="button" id="startButton" class="standard-button">Start</button>
                 </div>
                 <div id="foodContainer">
-                    <img id="foodImage" src="images/image1.png" alt="Food Image">
+                    <img draggable=false id="foodImage" src="images/image1.png" alt="Food Image">
                     <div id="foodTextContainer">
                         <p id="dishName">Dish Name</p>
                         <p id="description">Description text goes here.</p>
