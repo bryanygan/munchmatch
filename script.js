@@ -597,7 +597,9 @@ let popup = document.getElementById("popup");
 
 function openPopup() {
     popup.classList.add("open-popup");
+    document.querySelector('.container').classList.add('blur-effect');
 }
 function closePopup() {
     popup.classList.remove("open-popup");
+    document.querySelector('.container').classList.remove('blur-effect');
 }

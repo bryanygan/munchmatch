@@ -526,7 +526,10 @@ header {
     height: 500px;
     /* background-color: #cccccc; */
     background-image: url("images/image1.jpg");
-    object-fit: cover;
+    object-fit: contain;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     border-radius: 6px;
     position: absolute;
     top: 50%;
@@ -567,6 +570,10 @@ header {
     font-size: 18px;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.blur-effect {
+    filter: blur(40px);
 }
 
 #dollar1, #dollar2, #dollar3, #allergyGluten, #allergySeafood, #allergyDairy, #allergySpice{
