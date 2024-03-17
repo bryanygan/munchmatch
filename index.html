@@ -1,172 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Munch Match</title>
-        <link rel="icon" type="image/x-icon" href="branding/munchmatch_logo.png">
-        <link rel="stylesheet" href="styles.css">
-        <!-- font -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-            rel="stylesheet">
-        <!-- flags -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css" />
-        <script src="https://kit.fontawesome.com/2b9cdc1c9a.js" crossorigin="anonymous"></script>
-        <!-- chart -->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <!-- map -->
-        <link rel="stylesheet" href="./dist/css/jsvectormap.css" />
-        <script src="./dist/js/jsvectormap.min.js"></script>
-        <script src="./dist/maps/world.js"></script>
-        <script src="./dist/maps/world-merc.js"></script>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Munch Match</title>
+    <link rel="icon" type="image/x-icon" href="branding/munchmatch_logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <!-- flags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css" />
+    <script src="https://kit.fontawesome.com/2b9cdc1c9a.js" crossorigin="anonymous"></script>
+    <!-- chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- map -->
+    <link rel="stylesheet" href="./dist/css/jsvectormap.css" />
+    <script src="./dist/js/jsvectormap.min.js"></script>
+    <script src="./dist/maps/world.js"></script>
+    <script src="./dist/maps/world-merc.js"></script>
+</head>
 
-    <body>
+<body>
 
-        <header>
-            <div class="headerColumn" id="headerColumnLeft">
-                <div id="allergiesPanel">
-                    <div id="checkboxHolder">
-                        <div class="checkbox-wrapper-64">
-                            <label class="switch">
-                                <input type="checkbox" name="allergy" value="gluten">
-                                <span class="slider"></span>
-                            </label>
-                        </div>
-                        <div id="checkboxLabel">
-                            <i class="fa-solid fa-wheat-awn" id="allergyIcon"></i>
-                            - GLUTEN
-                        </div>
+    <header>
+        <div class="headerColumn" id="headerColumnLeft">
+            <div id="allergiesPanel">
+                <div id="checkboxHolder">
+                    <div class="checkbox-wrapper-64">
+                        <label class="switch">
+                            <input type="checkbox" name="allergy" value="gluten">
+                            <span class="slider"></span>
+                        </label>
                     </div>
-                    <div id="checkboxHolder">
-                        <div class="checkbox-wrapper-64">
-                            <label class="switch">
-                                <input type="checkbox" name="allergy" value="seafood">
-                                <span class="slider"></span>
-                            </label>
-                        </div>
-                        <div id="checkboxLabel" value="seafood">
-                            <i class="fa-solid fa-fish" id="allergyIcon"></i>
-                            - SEAFOOD
-                        </div>
+                    <div id="checkboxLabel">
+                        <i class="fa-solid fa-wheat-awn" id="allergyIcon"></i>
+                        - GLUTEN
                     </div>
                 </div>
                 <div id="checkboxHolder">
                     <div class="checkbox-wrapper-64">
                         <label class="switch">
-                            <input type="checkbox" name="allergy" value="dairy">
+                            <input type="checkbox" name="allergy" value="seafood">
                             <span class="slider"></span>
                         </label>
                     </div>
-                    <div id="checkboxLabel">
-                        <i class="fa-solid fa-cheese" id="allergyIcon"></i>
-                        - DAIRY
-                    </div>
-                </div>
-                <div id="checkboxHolder">
-                    <div class="checkbox-wrapper-64">
-                        <label class="switch">
-                            <input type="checkbox" name="allergy" value="spice">
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-                    <div id="checkboxLabel">
-                        <i class="fa-solid fa-pepper-hot" id="allergyIcon"></i>
-                        - SPICE
+                    <div id="checkboxLabel" value="seafood">
+                        <i class="fa-solid fa-fish" id="allergyIcon"></i>
+                        - SEAFOOD
                     </div>
                 </div>
             </div>
-
-            <div class="headerColumn">
-                <img src="branding/munchmatch_logo.png" alt="Logo">
-                <h1>MUNCH MATCH</h1>
-            </div>
-
-            <div class="headerColumn">
-
-
-                <button data-modal-target="#modal" class="standard-button">Description</button>
-                
-                <div class="modal active" id="modal">
-                    <div class="modal-header">
-                        <div class="title">Description</div>
-                        <button data-close-button class="close-button">
-                            <i class="fa-solid fa-times" id="allergyIcon"></i>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        MunchMatch is a Tinder-style food recommendation platform that will curate a personal food option based on your preferences.
-                        The program will find and match your perfect dish as you swipe left or right on each option. 
-                        Preferences like spice tolerance and allergies are taken into account, and dishes that disagree with your preferences will be filtered
-                        out automatically. 
-
-                    </div>
+            <div id="checkboxHolder">
+                <div class="checkbox-wrapper-64">
+                    <label class="switch">
+                        <input type="checkbox" name="allergy" value="dairy">
+                        <span class="slider"></span>
+                    </label>
                 </div>
-
-                <div id="overlay"></div>
-
-                <div class="popup" id="popup" style="z-index: 3">
-
-                    <img id="itsA" src="images/its-a.png" alt="Its a">
-                    <img id="match" src="images/match.png" alt="Match">
-                    <button type="button" onclick="closePopup()">OK</button>
-                </div>
-
-        </header>
-
-        <div class="container">
-            <div class="column">
-                <!-- <div id="dislikedFoods">
-
-                </div> -->
-                
-                <div id="spiderChart">
-                    <canvas id="chartId" aria-label="chart" height="200" width="580"></canvas>
-                </div>
-                <!-- <div id="map"></div> -->
-            </div>
-            <div class="column" id="foodColumn">
-                <!-- style="display: none;" -->
-                <div id="instructionContainer">
-                    <button type="button" id="startButton" class="standard-button">Start</button>
-                </div>
-                <div id="foodContainer">
-                    <img draggable=false id="foodImage" src="images/image1.png" alt="Food Image">
-                    <div id="foodTextContainer">
-                        <p id="dishName">Dish Name</p>
-                        <p id="description">Description text goes here.</p>
-
-                        <div class="grid-container">
-                            <div class="grid-item"><span id="foodcountry" class="fi fi-kr"></span></div>
-                            <div class="grid-item"><i class="fa-solid fa-dollar-sign" id="dollar1"></i><i
-                                    class="fa-solid fa-dollar-sign" id="dollar2"></i><i class="fa-solid fa-dollar-sign"
-                                    id="dollar3"></i></div>
-                            <div class="grid-item"><i class="fa-solid fa-wheat-awn" id="allergyGluten"></i> <i
-                                    class="fa-solid fa-fish" id="allergySeafood"></i> <i class="fa-solid fa-cheese"
-                                    id="allergyDairy"></i> <i class="fa-solid fa-pepper-hot" id="allergySpice"></i></div>
-                        </div>
-                    </div>
-                    <button class="custom-btn btn-ani-left" id="btnLeft" onclick="swipe('left')">❮</button>
-                    <button class="custom-btn btn-ani-right" id="btnRight" onclick="swipe('right')">❯</button>
+                <div id="checkboxLabel">
+                    <i class="fa-solid fa-cheese" id="allergyIcon"></i>
+                    - DAIRY
                 </div>
             </div>
-            <div class="column">
-                <div id="likedFoods">
-
+            <div id="checkboxHolder">
+                <div class="checkbox-wrapper-64">
+                    <label class="switch">
+                        <input type="checkbox" name="allergy" value="spice">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div id="checkboxLabel">
+                    <i class="fa-solid fa-pepper-hot" id="allergyIcon"></i>
+                    - SPICE
                 </div>
             </div>
         </div>
 
-        <footer>
-            <div id="myProgress">
-                <div id="myBar"></div>
-                <div id="percentText">Swipe to find your Match</div>
-            </div>
-        </footer>
+        <div class="headerColumn">
+            <img src="branding/munchmatch_logo.png" alt="Logo">
+            <h1>MUNCH MATCH</h1>
+        </div>
 
-        <script src="script.js"></script>
-    </body>
+        <div class="headerColumn">
+
+
+            <button data-modal-target="#modal" class="standard-button">Description</button>
+
+            <div class="modal" id="modal">
+                <div class="modal-header">
+                    <div class="title">Description</div>
+                    <button data-close-button class="close-button">
+                        <i class="fa-solid fa-times" id="allergyIcon"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    MunchMatch is a Tinder-style food recommendation platform that will curate a personal food option
+                    based on your preferences.
+                    The program will find and match your perfect dish as you swipe left or right on each option.
+                    Preferences like spice tolerance and allergies are taken into account, and dishes that disagree with
+                    your preferences will be filtered
+                    out automatically.
+
+                </div>
+            </div>
+
+
+            <div class="popup" id="popup" style="z-index: 3">
+
+                <img id="itsA" src="images/its-a.png" alt="Its a">
+                <img id="match" src="images/match.png" alt="Match">
+                <button type="button" onclick="closePopup()">OK</button>
+            </div>
+
+    </header>
+
+    <div class="container">
+        <div class="column" id="chartColumn">
+            <div class="column-title">Flavor Profiles</div>
+            <!-- <div id="dislikedFoods">
+
+                </div> -->
+
+            <div id="spiderChart">
+                <canvas id="chartId" aria-label="chart" height="200" width="200"></canvas>
+            </div>
+            <!-- <div id="map"></div> -->
+        </div>
+        <div class="column" id="foodColumn">
+            <!-- style="display: none;" -->
+            <div id="instructionContainer">
+                <!-- Discover your perfect bite with Munch Match!
+                Swipe right if you like the food, and left if you don't.
+                Our algorithm will match you with a dish in 20 swipes.
+                Happy matching!
+                <br>
+                <br> -->
+
+                <button type="button" id="startButton" class="standard-button">Launch</button>
+            </div>
+            <div id="foodContainer">
+                <img draggable=false id="foodImage" src="images/image1.png" alt="Food Image">
+                <div id="foodTextContainer">
+                    <p id="dishName">Dish Name</p>
+                    <p id="description">Description text goes here.</p>
+
+                    <div class="grid-container">
+                        <div class="grid-item"><span id="foodcountry" class="fi fi-kr"></span></div>
+                        <div class="grid-item"><i class="fa-solid fa-dollar-sign" id="dollar1"></i><i
+                                class="fa-solid fa-dollar-sign" id="dollar2"></i><i class="fa-solid fa-dollar-sign"
+                                id="dollar3"></i></div>
+                        <div class="grid-item"><i class="fa-solid fa-wheat-awn" id="allergyGluten"></i> <i
+                                class="fa-solid fa-fish" id="allergySeafood"></i> <i class="fa-solid fa-cheese"
+                                id="allergyDairy"></i> <i class="fa-solid fa-pepper-hot" id="allergySpice"></i></div>
+                    </div>
+                </div>
+                <button class="custom-btn btn-ani-left" id="btnLeft" onclick="swipe('left')">❮</button>
+                <button class="custom-btn btn-ani-right" id="btnRight" onclick="swipe('right')">❯</button>
+                <!-- <dif id="badge">
+                    <i class="fa-solid fa-heart"></i>
+                </div> -->
+            </div>
+        </div>
+        <div class="column" id="likedFoodsColumn">
+            <div class="column-title">Liked Foods</div>
+            <div id="likedFoods">
+
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div id="myProgress">
+            <div id="myBar"></div>
+            <div id="percentText">Swipe to find your Match</div>
+        </div>
+    </footer>
+    <div id="overlay"></div>
+
+    <script src="script.js"></script>
+</body>
+
 </html>

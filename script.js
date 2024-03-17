@@ -1,3 +1,4 @@
+//#region map def
 const map = new jsVectorMap({
     // world_merc, us_mill_en, us_merc_en,
     // us_lcc_en, us_aea_en, spain
@@ -21,11 +22,9 @@ const map = new jsVectorMap({
         strokeWidth: 1,
         strokeLinecap: 'round'
     },
-    focusOn: {}, // focus on regions on page load
-    /**
-     * Markers options
-     */
-    markers: null, // Set of markers to add to the map during initialization
+    focusOn: {},
+
+    markers: null,
     markersSelectable: false,
     markersSelectableOne: false,
     markerStyle: {
@@ -60,10 +59,8 @@ const map = new jsVectorMap({
         selected: {},
         selectedHover: {}
     },
-    /**
-     * Region styles
-     */
-    labels: { // add a label for a specific region
+
+    labels: {
         regions: {
             render(code) {
                 return [].indexOf(code) > -1 ? 'x ' : ''
@@ -73,7 +70,7 @@ const map = new jsVectorMap({
     regionsSelectable: false,
     regionsSelectableOne: false,
     regionStyle: {
-        // Region style
+
         initial: {
             fill: 'rgb(242, 52, 5)',
             fillOpacity: 1,
@@ -84,16 +81,13 @@ const map = new jsVectorMap({
         hover: {
             fillOpacity: 1,
             cursor: 'default',
-            // fillOpacity: .7,
-            // fill: 'rgb(247, 181, 60)',
-            // cursor: 'pointer'
         },
         selected: {
             fill: '#000'
         },
         selectedHover: {}
     },
-    // Region label style
+
     regionLabelStyle: {
         initial: {
             fontFamily: 'Verdana',
@@ -108,58 +102,32 @@ const map = new jsVectorMap({
     },
     series: {
         markers: [
-            // You can add one or more objects to create series for markers.
             {
                 name: 'Palestine',
                 coords: [31.5, 34.8],
-              },
-              {
+            },
+            {
                 name: 'Russia',
                 coords: [61, 105],
-              },
-              {
+            },
+            {
                 name: 'Geenland',
                 coords: [72, -42],
-              },
-              {
+            },
+            {
                 name: 'Canada',
                 coords: [56, -106],
-              },
+            },
         ],
         regions: [
-            // You can add one or more objects to create series for regions.
+
         ]
     },
-    // map visualization is used to analyze and display the geographically related data and present it in the form of maps.
-    // visualizeData: {
-    //     scale: ['#f23405', '#f7b53c'],
-    //     values: {
-    //         // EG: 1,
-    //         // US: 2,
-    //         // CA: 3,
-    //         // BR: 4,
-    //         // // ...
-    //     }
-    // }
 })
 
+//#endregion
+//#region foods arr
 const foods = [
-    // { image: "https://heygrillhey.com/static/234cd20061f0bc398863c88cdad06afa/SmokedHamburgers-7.jpg", name: "hamburger", description: "A beef patty with cheese and two buns.", country: "us", price: 3, gluten: true, seafood: false, dairy: false, spice: false },
-    // { image: "https://www.budgetbytes.com/wp-content/uploads/2022/01/Shrimp-Alfredo-Pasta-bowl2-500x500.jpg", name: "pasta_alfredo", description: "Pasta alfredo made with cheese and garnish.", country: "fr", price: 2, gluten: true, seafood: false, dairy: true, spice: false },
-    // { image: "https://natashaskitchen.com/wp-content/uploads/2019/08/Caprese-Salad-6.jpg", name: "salad", description: "A healthy salad with greens and veggies.", country: "gr", price: 2, gluten: false, seafood: false, dairy: false, spice: false },
-    // { image: "https://s7d1.scene7.com/is/image/mcdonalds/mcdonalds-Chicken-McNuggets-6-pieces-2:1-3-product-tile-desktop?wid=829&hei=515&dpr=off", name: "chicken_nuggets", country: "it", price: 1, description: "Chicken nuggets prepared with sauce.", gluten: true, seafood: false, dairy: false, spice: false },
-    // { image: "https://media.npr.org/assets/img/2012/05/10/lobster_custom-9e0ca5bd52353bd0dc75b03c89cab8c628b1db43-s1100-c50.jpg", name: "lobster", description: "Lobster seasoned with garlic.", price: 2, country: "gb", gluten: false, seafood: true, dairy: false, spice: false },
-    // { image: "https://www.recipetineats.com/wp-content/uploads/2019/01/Baked-Buffalo-Wings_0.jpg", name: "spicy_wings", description: "Wings, celery and sauce.", country: "kr", price: 1, gluten: false, seafood: false, dairy: true, spice: true },
-    // { image: "https://www.recipetineats.com/wp-content/uploads/2022/08/Stack-of-cheeseburgers.jpg", name: "cheeseburger", description: "Beef patty with melted cheese on a bun.", country: "us", price: 2, gluten: true, seafood: false, dairy: true, spice: false },
-    // { image: "https://www.allrecipes.com/thmb/i7yLualeJp6h7nuux-Dnr7AUI6o=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/4559474-vegetarian-sushi-Buckwheat-Queen-4x3-1-af11cac7218240e383dbe72ef6b1ec8f.jpg", name: "sushi", description: "Raw fish and rice wrapped in seaweed.", country: "jp", price: 3, gluten: false, seafood: true, dairy: false, spice: false },
-    // { image: "https://hot-thai-kitchen.com/wp-content/uploads/2021/10/Untitled-design-5.jpg", name: "pad_thai", description: "Stir-fried rice noodles with shrimp and peanuts.", country: "th", price: 2, gluten: true, seafood: true, dairy: false, spice: true },
-    // { image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/2018_01_Croissant_IMG_0685.JPG/1200px-2018_01_Croissant_IMG_0685.JPG", name: "croissant", description: "Flaky pastry made with butter and yeast.", country: "fr", price: 2, gluten: true, seafood: false, dairy: true, spice: false },
-    // { image: "https://hips.hearstapps.com/hmg-prod/images/taco-salad-index-643eeb39014bd.jpg?crop=0.6666666666666667xw:1xh;center,top&resize=1200:*", name: "taco", description: "Corn tortilla filled with seasoned meat and toppings.", country: "mx", price: 1, gluten: true, seafood: false, dairy: false, spice: true },
-    // { image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Peking_Duck%2C_2014_%2802%29.jpg/640px-Peking_Duck%2C_2014_%2802%29.jpg", name: "peking_duck", description: "Roasted duck with crispy skin served with pancakes.", country: "cn", price: 3, gluten: true, seafood: false, dairy: false, spice: true },
-    // { image: "https://natashaskitchen.com/wp-content/uploads/2019/08/Caprese-Salad-6.jpg", name: "caprese_salad", description: "Tomatoes, mozzarella, and basil with balsamic glaze.", country: "it", price: 2, gluten: false, seafood: false, dairy: true, spice: false },
-    // { image: "https://hips.hearstapps.com/hmg-prod/images/goulash-index-64de8d20b97d5.jpg?crop=0.8888888888888888xw:1xh;center,top&resize=1200:*", name: "goulash", description: "Hungarian stew with meat, vegetables, and paprika.", country: "hu", price: 2, gluten: true, seafood: false, dairy: false, spice: true },
-    // { image: "https://www.allrecipes.com/thmb/SZjdgaXhmkrRNLoOvdxuAktwk3E=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/228443-authentic-pho-DDMFS-4x3-0523f6531ccf4dbeb4b5bde52e007b1e.jpg", name: "pho", description: "Vietnamese soup with broth, rice noodles, and meat.", country: "vn", price: 2, gluten: true, seafood: false, dairy: false, spice: true },
-    // { image: "https://www.mygreekdish.com/wp-content/uploads/2013/05/Moussaka-recipe-Traditional-Greek-Moussaka-with-Eggplants.jpg", name: "moussaka", description: "Greek dish with layers of eggplant, potato, and meat.", country: "gr", price: 3, gluten: true, seafood: false, dairy: true, spice: true },
     { image: "https://thefoodietakesflight.com/wp-content/uploads/2021/08/Thai-Mango-Sticky-Rice-1-of-7-677x1024.jpg", name: "mango_sticky_rice", description: "Sweet sticky rice topped with ripe mango.", country: "th", price: 2, sweet: 4, sour: 1, salty: 1, bitter: 0, umami: 0, gluten: false, seafood: false, dairy: false, spice: false },
     { image: "https://www.thedevilwearsparsley.com/wp-content/uploads/2020/04/Artsoppa-17-2-1170x617.jpg", name: "ärtsoppa", description: "Traditional Swedish pea soup with ham.", country: "se", price: 2, sweet: 1, sour: 1, salty: 3, bitter: 2, umami: 0, gluten: true, seafood: false, dairy: false, spice: false },
     { image: "https://www.justonecookbook.com/wp-content/uploads/2013/10/Takoyaki-NEW-500x375.jpg", name: "takoyaki", description: "Japanese octopus-filled savory balls.", country: "jp", price: 2, sweet: 1, sour: 2, salty: 3, bitter: 0, umami: 3, gluten: true, seafood: true, dairy: false, spice: false },
@@ -181,8 +149,8 @@ const foods = [
     { image: "https://cdn.sprinklebakes.com/media/2021/12/Dobos-torte-14.jpg", name: "dobos_torte", description: "Hungarian layer cake with caramel and chocolate.", country: "hu", price: 3, sweet: 4, sour: 1, salty: 1, bitter: 0, umami: 0, gluten: true, seafood: false, dairy: true, spice: false },
     { image: "https://www.unicornsinthekitchen.com/wp-content/uploads/2022/05/manakeesh-zaatar-manakish-sq.jpg", name: "manakish", description: "Levantine flatbread topped with za'atar or cheese.", country: "lb", price: 1, sweet: 0, sour: 1, salty: 3, bitter: 1, umami: 2, gluten: true, seafood: false, dairy: false, spice: true }
 ];
+//#endregion
 
-// sweetPref = sourPref = saltyPref = bitterPref = umamiPref = 0; 
 sweetTotal = sourTotal = saltyTotal = bitterTotal = umamiTotal = 0;
 likedTotal = 0;
 
@@ -197,14 +165,6 @@ const shuffleArray = array => {
 
 shuffleArray(foods);
 
-// fetch("images.txt")
-//     .then(function (res) {
-//         return res.text();
-//     })
-//     .then(function (data) {
-//         console.log(data);
-//     });
-
 var allowGluten, allowSeafood, allowDairy, allowSpice;
 allowGluten = allowSeafood = allowDairy = allowSpice = true;
 
@@ -217,8 +177,6 @@ checkboxes.forEach(function (checkbox) {
         handleAllergy(this);
     });
 });
-
-//chart
 
 var options = {
     responsive: false,
@@ -321,6 +279,8 @@ startButton.addEventListener('click', function () {
     updateFoodDisplay("");
 });
 
+//start the program
+
 function generateList() {
     var list = [];
     var sum = 0;
@@ -352,16 +312,11 @@ function progress() {
 }
 
 let currentIndex = 0;
-let likedFoods = []//, dislikedFoods = [];
+let likedFoods = []
 
 function swipe(direction) {
-    // const foodImage = document.getElementById('foodImage');
-    // const dishName = document.getElementById('dishName');
-    // const description = document.getElementById('description');
 
-    if (direction === 'left') {
-        // dislikedFoods.push(foods[currentIndex]);
-    } else if (direction === 'right') {
+    if (direction === 'right') {
         likedFoods.push(foods[currentIndex]);
     }
     updateLikedFoods();
@@ -437,61 +392,11 @@ function updateFoodDisplay(direction) {
         umamiTotal += foods[currentIndex].umami;
     }
 
-    //set grace to 5 minus max
     currArr = new Array(foods[currentIndex].sweet, foods[currentIndex].sour, foods[currentIndex].salty, foods[currentIndex].bitter, foods[currentIndex].umami);
-    // gra = 5 - currArr.max
-    // chartId.options.scale.
-    //
     chartId.data.datasets[0].data = currArr;
     chartId.data.datasets[1].data = new Array(sweetTotal / likedTotal, sourTotal / likedTotal, saltyTotal / likedTotal, bitterTotal / likedTotal, umamiTotal / likedTotal);
 
     chartId.update()
-
-    //update map
-    // console.log(map.dataVisualization._values)
-
-    // var newDict = updateDictionary(map.dataVisualization._values, foods[currentIndex].country.toUpperCase())
-    // map.dataVisualization._values = newDict
-    // map.dataVisualization._values = {
-    //     EG: 1,
-    //     US: 2,
-    //     CA: 3,
-    //     BR: 10,
-    // };
-
-    // map.dataVisualization.setValues({
-    //     EG: 1,
-    //     US: 2,
-    //     CA: 3,
-    //     BR: 10,
-    // })
-
-    // const newData = {
-    //     EG: 1,
-    //     US: 2,
-    //     CA: 3,
-    //     BR: 10,
-    // }
-
-    // map.series.regions[0].setValues(newData);
-
-    // map.updateSeries({
-    //     dataVisualization: {
-    //         values: {
-    //             EG: 1,
-    //             US: 2,
-    //             CA: 3,
-    //             BR: 10,
-    //         }
-    //     }
-    // });
-
-    // map.addLines([
-    //     { from: 'United States', to: 'Egypt' },
-    //     { from: 'Palestine', to: 'Ukraine' },
-    // ])
-
-    // console.log(map.dataVisualization._values)
 
     foodImage.style.transform = translation;
     setTimeout(() => {
@@ -523,14 +428,8 @@ function updateLikedFoods() {
     updateFoodPref("likedFood")
 }
 
-// function updateDislikedFoods() {
-//     updateFoodPref("dislikedFood")
-// }
-
 function updateFoodPref(name) {
     const likedFoodsContainer = document.getElementById("likedFoods");
-
-    // const dislikedFoodsContainer = document.getElementById("dislikedFoods");
 
     if (name === "likedFood") {
         likedFoodsContainer.innerHTML = '';
@@ -541,19 +440,6 @@ function updateFoodPref(name) {
             likedFoodsContainer.appendChild(foodElement);
         });
     }
-
-    //dislikedFood
-
-    //THIS IS BAD CODE - CAN BE SIMPLIFIED LATER
-    // else {
-    //     dislikedFoodsContainer.innerHTML = '';
-    //     dislikedFoods.forEach(food => {
-    //         const foodElement = document.createElement('img');
-    //         foodElement.src = food.image;
-    //         foodElement.className = name;
-    //         dislikedFoodsContainer.appendChild(foodElement);
-    //     });
-    // }
 }
 
 const openModalButtons = document.querySelectorAll('[data-modal-target]')
