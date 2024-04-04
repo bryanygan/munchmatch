@@ -524,9 +524,9 @@ header {
 .popup{
     width: 400px;
     height: 500px;
-    /* background-color: #cccccc; */
-    background-image: url("images/image1.jpg");
-    object-fit: cover;
+    background-color: #cccccc; 
+    /*background-image: url("images/image1.jpg");*/
+    object-fit: fill;
     border-radius: 6px;
     position: absolute;
     top: 50%;
@@ -543,8 +543,8 @@ header {
     top: 50;
     transform: translate(-50%,-50%) scale(1);
 }
-/*
-.matchImage{
+
+.match{
     position: relative;
     border-radius: 6px;
     height: 100%;
@@ -554,10 +554,10 @@ header {
     object-fit: fill;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-*/
-
 
 .popup button{
+    top: 450px;
+    position: relative;
     width: 100%;
     padding: 10px 0;
     background: var(--accent-color-2);
