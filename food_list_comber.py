@@ -6,7 +6,6 @@ allFoods = []
 for line in foodsLines:
     for food in line.split(","):
         allFoods.append(food)
-#remove dups
 allFoods = list(set(allFoods))
 
 counter = 0

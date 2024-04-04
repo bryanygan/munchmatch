@@ -44,22 +44,13 @@ header img {
     width: 300px;
     height: 400px;
     overflow: hidden;
-    /* border: 1px solid var(--text-color); */
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     text-align: center;
     border-radius: 10px;
     background-color: var(--background-color);
 
-    /* background-image: url("image3.png");
-    background-size: auto 100%;
-    padding-top: 3%;
-    padding-bottom: 3%;
-    background-position: center; */
     animation-duration: 0.5s;
     animation-name: animate-pop;
-    /* animation-timing-function: cubic-bezier(.26, .53, .74, 1.48); */
-    /* animation-iteration-count: 3; */
-
 }
 
 @keyframes animate-pop {
@@ -99,18 +90,11 @@ header img {
 .grid-container {
     display: flex;
     justify-content: space-around;
-    /* grid-template-columns: repeat(3, 1fr); */
-    /* grid-template-rows: 1fr; */
-    /* gap: 5px; */
 }
 
 .grid-item {
     height: 20px;
-    /* background-color: rgba(255,255,255,100); */
-    /* background-color: rgba(var(--accent-color-1), 0.8); */
-    /* border-radius: 10px; */
     color: var(--background-color);
-    /* padding: 20px; */
     text-align: center;
 }
 
@@ -152,7 +136,6 @@ header img {
     right: 0px;
 }
 
-/* button hover animation */
 .btn-ani-left {
     border: none;
     color: #000;
@@ -167,11 +150,7 @@ header img {
     left: 0;
     direction: rtl;
     z-index: -1;
-    /* box-shadow:
-     -7px -7px 20px 0px #ec9c05,
-     -4px -4px 5px 0px #f7b53c,
-     7px 7px 20px 0px #0002,
-     4px 4px 5px 0px #0001; */
+
     transition: all 0.3s ease;
 }
 
@@ -204,9 +183,6 @@ header img {
     top: 0;
     right: 0;
     z-index: -1;
-    /* box-shadow:
-     7px 7px 20px 0px #0002,
-     4px 4px 5px 0px #0001; */
     transition: all 0.3s ease;
 }
 
@@ -236,14 +212,41 @@ header img {
     top: 10px;
     right: 10px; */
     display: grid;
-    grid-template-columns: repeat(5, 60px);
-    grid-gap: 5px;
+    grid-template-columns: repeat(5, 5rem);
+    grid-gap: 1rem;
+    overflow-y: auto;
+}
+
+/* #likedFoodsColumn{
+    background-color: white;
+} */
+/* .column{
+    background-color: white;
+} */
+
+#likedFoodsColumn,
+#chartColumn {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    /* background-color: rgba(255, 255, 255, 0.5); */
+    padding: 10px;
+}
+
+.column-title {
+    font-weight: bold;
+    text-decoration: underline solid var(--accent-color-2);
+    text-underline-offset: 8px;
+    padding: 20px;
+    /* background-color: var(--accent-color-2-g); */
+    color: var(--text-color);
 }
 
 .likedFood,
 .dislikedFood {
-    width: 60px;
-    height: 60px;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     object-fit: cover;
     /* border: 1px solid var(--text-color); */
 }
@@ -509,6 +512,7 @@ header {
     padding: 10px;
     cursor: pointer;
 }
+
 /*
 .btn{
     padding: 10px 60px;
@@ -521,7 +525,7 @@ header {
     border-radius: 30px;
 }
 */
-.popup{
+.popup {
     width: 400px;
     height: 500px;
     background-color: #cccccc; 
@@ -530,18 +534,21 @@ header {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%) scale(0.1);
+    transform: translate(-50%, -50%) scale(0.1);
     text-align: center;
     color: #333;
     visibility: hidden;
     transition: transform 0.4s, top 0.4s;
 }
 
-.open-popup{
+.open-popup {
     visibility: visible;
     top: 50;
-    transform: translate(-50%,-50%) scale(1);
+    transform: translate(-50%, -50%) scale(1);
 }
+
+/*
+.matchImage{
 
 .match{
     position: relative;
@@ -557,6 +564,7 @@ header {
 .popup button{
     top: 450px;
     position: relative;
+.popup button {
     width: 100%;
     padding: 10px 0;
     background: var(--accent-color-2);
@@ -572,6 +580,28 @@ header {
     filter: blur(40px);
 }
 
-#dollar1, #dollar2, #dollar3, #allergyGluten, #allergySeafood, #allergyDairy, #allergySpice{
+#dollar1,
+#dollar2,
+#dollar3,
+#allergyGluten,
+#allergySeafood,
+#allergyDairy,
+#allergySpice {
     transition: 0.5s;
+}
+
+#badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--accent-color-1-g);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--background-color);
+    font-size: 14px;
+    font-weight: bold;
 }
