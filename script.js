@@ -319,10 +319,10 @@ function swipe(direction) {
     if (direction === 'right') {
         likedFoods.push(foods[currentIndex]);
     }
-    updateLikedFoods();
-    currentIndex++;
+    updateLikedFoods()
+    currentIndex++
     if (currentIndex > foods.length - 1) {
-        currentIndex = 0;
+        currentIndex = 0
     }
 
     var keepGenerating = false;
