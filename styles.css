@@ -528,18 +528,9 @@ header {
 .popup {
     width: 400px;
     height: 500px;
-<<<<<<< HEAD
     background-color: #cccccc; 
     /*background-image: url("images/image1.jpg");*/
     object-fit: fill;
-=======
-    /* background-color: #cccccc; */
-    background-image: url("images/image1.jpg");
-    object-fit: contain;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
->>>>>>> 365fe194993b077b87e1d2a24350c775711c4152
     border-radius: 6px;
     position: absolute;
     top: 50%;
