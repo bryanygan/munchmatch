@@ -528,7 +528,7 @@ header {
 .popup {
     width: 400px;
     height: 500px;
-    background-color: #cccccc; 
+    background-image: url('${selectedFoodImageURL}');
     object-fit: fill;
     border-radius: 6px;
     position: absolute;
@@ -547,8 +547,9 @@ header {
     transform: translate(-50%, -50%) scale(1);
 }
 
-/*
-.matchImage{
+.popup .foodImage {
+    background-image: url('${selectedFoodImageURL}');
+}
 
 .match{
     position: relative;
@@ -564,7 +565,6 @@ header {
 .popup button{
     top: 450px;
     position: relative;
-.popup button {
     width: 100%;
     padding: 10px 0;
     background: var(--accent-color-2);

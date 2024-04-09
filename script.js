@@ -305,9 +305,12 @@ function progress() {
 
     var elem = document.getElementById("myBar");
     elem.style.width = fill + "%";
-    document.getElementById("percentText").innerHTML = ("<b>" + fill + "%</b> to Match")
+    document.getElementById("percentText").innerHTML = ("<b>" + fill + "%</b> to Match");
     if (fill >= 100) {
-        openPopup()
+        const randomIndex = Math.floor(Math.random() * likedFoods.length);
+        const selectedFood = likedFoods[randomIndex];
+        selectedFoodImageURL = selectedFood.image;
+        openPopup();
     }
 }
 
