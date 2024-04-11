@@ -526,9 +526,11 @@ header {
 }
 */
 .popup {
+    z-index: 10;
     width: 400px;
     height: 500px;
-    background-image: url('${selectedFoodImageURL}');
+    background-position: 50% 50%;
+    background-position: center;
     object-fit: fill;
     border-radius: 6px;
     position: absolute;
@@ -547,9 +549,9 @@ header {
     transform: translate(-50%, -50%) scale(1);
 }
 
-.popup .foodImage {
-    background-image: url('${selectedFoodImageURL}');
-}
+/* .popup .foodImage { */
+    /* background-image: url('selectedFoodImageURL'); */
+/* } */
 
 .match{
     position: relative;
