@@ -307,12 +307,21 @@ function progress() {
     elem.style.width = fill + "%";
     document.getElementById("percentText").innerHTML = ("<b>" + fill + "%</b> to Match");
     if (fill >= 100) {
-        const randomIndex = Math.floor(Math.random() * likedFoods.length);
-        const selectedFood = likedFoods[randomIndex];
-        selectedFoodImageURL = selectedFood.image;
-        openPopup();
+        foodMatch()
     }
 }
+
+function foodMatch(){
+    const randomIndex = Math.floor(Math.random() * likedFoods.length);
+    const selectedFood = likedFoods[randomIndex];
+    selectedFoodImageURL = selectedFood.image;
+    openPopup();
+}
+
+var superBtn = document.getElementById("superBtn")
+superBtn.addEventListener('click',()=>{
+    foodMatch()
+})
 
 let currentIndex = 0;
 let likedFoods = []

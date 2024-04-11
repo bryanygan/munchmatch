@@ -9,6 +9,8 @@
     --accent-color-1-g: #F45614;
     --accent-color-2: #76b53b;
     --accent-color-2-g: #9CB53B;
+    --super-match-color: #3b62b5;
+    --super-match-color-g: #5f86db;
 }
 
 body {
@@ -43,7 +45,7 @@ header img {
     transform: translate(-50%, -50%);
     width: 300px;
     height: 400px;
-    overflow: hidden;
+    /* overflow: hidden; */
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     text-align: center;
     border-radius: 10px;
@@ -139,6 +141,30 @@ header img {
 .btn-ani-left {
     border: none;
     color: #000;
+}
+
+.super-btn {
+    transition: .25s;
+    /* height: 30px; */
+    /* width: 30px; */
+    background-color: var(--super-match-color);
+    position: absolute;
+    bottom: 0;
+    /* right: 40%; */
+    right: 0;
+    text-align: center;
+    color: var(--background-color);
+    font-weight: bold;
+    padding: .5rem;
+    transform: translate(1rem,1rem);
+    border-radius: 1.5rem;
+    font-size: small;
+}
+
+.super-btn:hover{
+    /* color:var(--super-match-color); */
+    background-color: var(--super-match-color-g);
+    cursor: pointer;
 }
 
 .btn-ani-left:after {
@@ -551,7 +577,7 @@ header {
     background-image: url('${selectedFoodImageURL}');
 }
 
-.match{
+.match {
     position: relative;
     border-radius: 6px;
     height: 100%;
@@ -562,7 +588,7 @@ header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.popup button{
+.popup button {
     top: 450px;
     position: relative;
     width: 100%;
