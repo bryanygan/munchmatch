@@ -305,9 +305,12 @@ function progress() {
 
     var elem = document.getElementById("myBar");
     elem.style.width = fill + "%";
-    document.getElementById("percentText").innerHTML = ("<b>" + fill + "%</b> to Match")
+    document.getElementById("percentText").innerHTML = ("<b>" + fill + "%</b> to Match");
     if (fill >= 100) {
-        openPopup()
+        const randomIndex = Math.floor(Math.random() * likedFoods.length);
+        const selectedFood = likedFoods[randomIndex];
+        selectedFoodImageURL = selectedFood.image;
+        openPopup();
     }
 }
 
@@ -489,3 +492,15 @@ function closePopup() {
     popup.classList.remove("open-popup");
     document.querySelector('.container').classList.remove('blur-effect');
 }
+
+// function tiltFoodContainer(direction) {
+    // const foodContainer = document.getElementById('foodContainer');
+    // tilt direction
+    // const tiltAmount = direction === 'left' ? '-5deg' : '5deg';
+
+    // foodContainer.style.transform = `rotate(${tiltAmount})`;
+
+    // tilt reset after delay
+    // setTimeout(() => {
+        // foodContainer.style.transform = 'rotate(0deg)';
+    // }, 150);
