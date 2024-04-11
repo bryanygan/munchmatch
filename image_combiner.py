@@ -30,15 +30,20 @@ def extract_within_quotes(text):
 for line in foodsLines:
     print(line)
     if line.__contains__("{"):
-        if not line.__contains__("~"):
+        if not line.__contains__("*"):
             outputLines.append(line)
         else:
             foodName = extract_within_quotes(line.split(",")[1])
             print(f"FOODNAME:{foodName}")
             selectedLine = search_list(imagesLines, foodName)
-            print(f"selected line: {selectedLine}")
-            imageLink = selectedLine[selectedLine.index("|")+1:]
-            outputLines.append(line.replace("~", imageLink.strip().strip('\n')))
+            if selectedLine is not None:
+                print(f"selected line: {selectedLine}")
+                imageLink = selectedLine[selectedLine.index("|")+1:]
+                outputLines.append(line.replace("*", imageLink.strip().strip('\n')))
+            else:
+                print("Didn't find.")
+                outputLines.append(line)
+                #keep
 
 foodsText = open("foods_array.txt", "w")
 outputText = "const foods = [\n"
