@@ -299,32 +299,7 @@ function generateList() {
 
 var resultList = generateList();
 
-var fill = 0;
-function progress() {
-    fill += resultList.shift();
 
-    var elem = document.getElementById("myBar");
-    elem.style.width = fill + "%";
-    document.getElementById("percentText").innerHTML = ("<b>" + fill + "%</b> to Match");
-    if (fill >= 100) {
-        foodMatch()
-    }
-}
-
-function foodMatch() {
-    const randomIndex = Math.floor(Math.random() * likedFoods.length);
-    const selectedFood = likedFoods[randomIndex];
-    selectedFoodImageURL = selectedFood.image;
-    var foodImage = document.getElementById("popup");
-    foodImage.style = "background-image: url(" + selectedFoodImageURL + ");";
-    console.log(selectedFoodImageURL)
-    openPopup();
-}
-
-var superBtn = document.getElementById("superBtn")
-superBtn.addEventListener('click', () => {
-    foodMatch()
-})
 
 let currentIndex = 0;
 let likedFoods = []
@@ -355,6 +330,42 @@ function swipe(direction) {
     updateFoodDisplay(direction);
     progress();
 }
+
+var fill = 0;
+function progress() {
+    fill += resultList.shift();
+
+    var elem = document.getElementById("myBar");
+    elem.style.width = fill + "%";
+    document.getElementById("percentText").innerHTML = ("<b>" + fill + "%</b> to Match");
+    if (fill >= 100) {
+        foodMatch(false)
+    }
+}
+
+function foodMatch(current) {
+    var selectedFoodImageURL = ""
+    if(current){
+        console.log(foods[currentIndex])
+        console.log(foods[currentIndex].image)
+        selectedFoodImageURL = foods[currentIndex].image
+    }
+    else{
+        const randomIndex = Math.floor(Math.random() * likedFoods.length);
+        const selectedFood = likedFoods[randomIndex];
+        selectedFoodImageURL = selectedFood.image;
+    }
+    var foodImage = document.getElementById("popup");
+    // console.log(current)
+    foodImage.style = "background-image: url(" + selectedFoodImageURL + ");";
+    // console.log(selectedFoodImageURL)
+    openPopup();
+}
+
+var superBtn = document.getElementById("superBtn")
+superBtn.addEventListener('click', () => {
+    foodMatch(true)
+})
 
 let lastSwipeTime = 0;
 
