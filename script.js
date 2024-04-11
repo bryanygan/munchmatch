@@ -310,6 +310,9 @@ function progress() {
         const randomIndex = Math.floor(Math.random() * likedFoods.length);
         const selectedFood = likedFoods[randomIndex];
         selectedFoodImageURL = selectedFood.image;
+        var foodImage = document.getElementById("popup");
+        foodImage.style = "background-image: url("+selectedFoodImageURL+");";
+        console.log(selectedFoodImageURL)
         openPopup();
     }
 }
