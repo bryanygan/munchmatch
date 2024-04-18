@@ -297,8 +297,11 @@ function generateList() {
 }
 
 
-var resultList = generateList(); {
+var resultList = generateList();
 
+var fill = 0;
+function progress() {
+    fill += resultList.shift();
 
     var elem = document.getElementById("myBar");
     elem.style.width = fill + "%";
@@ -413,42 +416,6 @@ function swipe(direction) {
     updateFoodDisplay(direction);
     progress();
 }
-
-var fill = 0;
-function progress() {
-    fill += resultList.shift();
-
-    var elem = document.getElementById("myBar");
-    elem.style.width = fill + "%";
-    document.getElementById("percentText").innerHTML = ("<b>" + fill + "%</b> to Match");
-    if (fill >= 100) {
-        foodMatch(false)
-    }
-}
-
-function foodMatch(current) {
-    var selectedFoodImageURL = ""
-    if(current){
-        console.log(foods[currentIndex])
-        console.log(foods[currentIndex].image)
-        selectedFoodImageURL = foods[currentIndex].image
-    }
-    else{
-        const randomIndex = Math.floor(Math.random() * likedFoods.length);
-        const selectedFood = likedFoods[randomIndex];
-        selectedFoodImageURL = selectedFood.image;
-    }
-    var foodImage = document.getElementById("popup");
-    // console.log(current)
-    foodImage.style = "background-image: url(" + selectedFoodImageURL + ");";
-    // console.log(selectedFoodImageURL)
-    openPopup();
-}
-
-var superBtn = document.getElementById("superBtn")
-superBtn.addEventListener('click', () => {
-    foodMatch(true)
-})
 
 let lastSwipeTime = 0;
 
@@ -600,13 +567,13 @@ function closePopup() {
 }
 
 // function tiltFoodContainer(direction) {
-// const foodContainer = document.getElementById('foodContainer');
-// tilt direction
-// const tiltAmount = direction === 'left' ? '-5deg' : '5deg';
+    // const foodContainer = document.getElementById('foodContainer');
+    // tilt direction
+    // const tiltAmount = direction === 'left' ? '-5deg' : '5deg';
 
-// foodContainer.style.transform = `rotate(${tiltAmount})`;
+    // foodContainer.style.transform = `rotate(${tiltAmount})`;
 
-// tilt reset after delay
-// setTimeout(() => {
-// foodContainer.style.transform = 'rotate(0deg)';
-// }, 150);
+    // tilt reset after delay
+    // setTimeout(() => {
+        // foodContainer.style.transform = 'rotate(0deg)';
+    // }, 150);
