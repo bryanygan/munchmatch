@@ -573,41 +573,23 @@ function closePopup() {
     document.querySelector('.container').classList.remove('blur-effect');
 }
 
-// function tiltFoodContainer(direction) {
-//     const foodContainer = document.getElementById('foodContainer');
-// // tilt direction
-//     const tiltAmount = direction === 'left' ? '-20deg' : '20deg';
+// Base code written by ChatGPT, modified by Bryan
+function tiltFoodContainer(direction) {
+    const foodContainer = document.getElementById('foodContainer');
+    let tiltAngle = 15; // Degree of tilt
+    let moveDistance = 80; // Pixels to move horizontally
 
-//     foodContainer.style.transform = `rotate(${tiltAmount})`;
-
-//     // tilt reset after delay
-//         setTimeout(() => {
-//             foodContainer.style.transform = 'rotate(0deg)';
-//         }, 250);
-// }
-
-// temp code to debug the moving foodContainer
-
-var startButton = document.getElementById("startButton");
-var container = document.getElementById("foodContainer");
-
-// Log initial computed styles before the container is displayed
-// console.log("Initial styles:", window.getComputedStyle(container));
-
-// startButton.addEventListener('click', function () {
-//     // First change the display style to block
-//     container.style.display = 'block';
-
-//     // Log the computed styles immediately after displaying
-//     console.log("Styles after displaying:", window.getComputedStyle(container));
-
-//     // Rest of your code to set up the container for use...
-//     chartContainer.style.display = 'block';
-//     updateFoodDisplay("");
-// });
-
-// var computedStyle = window.getComputedStyle(container);
-// console.log("Transform:", computedStyle.transform);
-// console.log("Position:", computedStyle.position);
-// console.log("Top:", computedStyle.top);
-// console.log("Left:", computedStyle.left);
+    if (direction === 'left') {
+        // Tilt and move left
+        foodContainer.style.transform = `translateX(${-moveDistance}px) rotate(${-tiltAngle}deg)`;
+    } else if (direction === 'right') {
+        // Tilt and move right
+        foodContainer.style.transform = `translateX(${moveDistance}px) rotate(${tiltAngle}deg)`;
+    } else {
+        // Reset position if direction is not left or right
+        foodContainer.style.transform = 'translateX(0) rotate(0deg)';
+    }     
+    setTimeout(() => {
+        foodContainer.style.transform = 'rotate(0deg)';
+        }, 250);
+}
