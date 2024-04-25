@@ -84,13 +84,14 @@
             <img src="branding/munchmatch_logo.png" alt="Logo">
             <h1>MUNCH MATCH</h1>
         </div>
-        
-        <div class="headerColumn">
 
+        <div class="headerColumn" id="headerColumnRight">
 
-            <button data-modal-target="#modal" class="standard-button"><i class="fa-regular fa-file"></i> Description</button>
+            <!-- description text -->
+            <button data-modal-target="#modalDescription" class="standard-button" id="popupButton"></i>
+                Description</button>
 
-            <div class="modal" id="modal">
+            <div class="modal" id="modalDescription">
                 <div class="modal-header">
                     <div class="title">Description</div>
                     <button data-close-button class="close-button">
@@ -104,10 +105,73 @@
                     Preferences like spice tolerance and allergies are taken into account, and dishes that disagree with
                     your preferences will be filtered
                     out automatically.
-
                 </div>
             </div>
 
+            <!-- about us text -->
+            <button data-modal-target="#modalAbout" class="standard-button" id="popupButton">About
+                Us</button>
+
+            <div class="modal" id="modalAbout">
+                <div class="modal-header">
+                    <div class="title">About Us</div>
+                    <button data-close-button class="close-button">
+                        <i class="fa-solid fa-times" id="allergyIcon"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="aboutContainer">
+                        <div id="aboutProfile">
+                            <img src="images/profiles/elan.jpeg" id="aboutImg">
+                            <div>
+                                <span id="nameSpan">Elan</span> is a CS major with a passion for game development. He
+                                makes art in his free time.
+                            </div>
+                        </div>
+                        <div id="aboutProfile">
+                            <img src="images/profiles/bryan.jpg" id="aboutImg">
+                            <div>
+                                <!-- bryan, put profile here -->
+                                <span id="nameSpan">Bryan</span> Lorem ipsum dolor sit amet, consectetur adipisicing
+                                elit. Cupiditate hic debitis tempora
+                                ea amet! Dicta non culpa omnis illo recusandae ipsa unde error in perferendis quod! Amet
+                                ab quae sequi.
+                            </div>
+                        </div>
+                        <div id="aboutProfile">
+                            <img src="images/profiles/ethan.jpg" id="aboutImg">
+                            <div>
+                                <!-- ethan, put profile here -->
+                                <span id="nameSpan">Ethan</span> Lorem ipsum dolor sit amet, consectetur adipisicing
+                                elit. Cupiditate hic debitis tempora
+                                ea amet! Dicta non culpa omnis illo recusandae ipsa unde error in perferendis quod! Amet
+                                ab quae sequi.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- about us text -->
+            <button data-modal-target="#modalInstructions" class="standard-button"
+                id="popupButton">Instructions</button>
+
+            <div class="modal" id="modalInstructions">
+                <div class="modal-header">
+                    <div class="title">Instructions</div>
+                    <button data-close-button class="close-button">
+                        <i class="fa-solid fa-times" id="allergyIcon"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <li>Launch the site</li>
+                    <li>Toggle your allergies and flavor preferences</li>
+                    <li>Swipe right on foods you like, and left on foods you don't</li>
+                    <li>Click the 'Super Match' button if you love a food</li>
+                    <li>After ~20 swipes, you'll be matched with the perfect dish</li>
+                    <li>Accept the match, or keep going!</li>
+                </div>
+            </div>
 
             <div class="popup" id="popup" style="z-index: 3">
 
@@ -162,7 +226,7 @@
                 <!-- <dif id="badge">
                     <i class="fa-solid fa-heart"></i>
                 </div> -->
-                <div class = "super-btn" id="superBtn">
+                <div class="super-btn" id="superBtn">
                     <i class="fa-solid fa-heart"></i>
                     Super Match
                 </div>
@@ -175,8 +239,8 @@
             </div>
         </div>
     </div>
-            </div>
-        </div>
+    </div>
+    </div>
     </div>
 
     <footer>
@@ -190,7 +254,7 @@
     <script src="script.js"></script>
 </body>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 
 </html>
