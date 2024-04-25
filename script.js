@@ -307,14 +307,7 @@ function progress() {
     elem.style.width = fill + "%";
     document.getElementById("percentText").innerHTML = ("<b>" + fill + "%</b> to Match");
     if (fill >= 100) {
-        const randomIndex = Math.floor(Math.random() * likedFoods.length);
-        const selectedFood = likedFoods[randomIndex];
-        selectedFoodImageURL = selectedFood.image;
-        var foodImage = document.getElementById("popup");
-        foodImage.style = "background-image: url("+selectedFoodImageURL+");";
-        console.log(selectedFoodImageURL)
-        openPopup();
-
+        foodMatch()
         //Confetti taken from codepen created by Andrew Collins
         const canvasEl = document.querySelector('#canvas');
 
@@ -323,54 +316,54 @@ function progress() {
 
         function loop() {
             requestAnimationFrame(loop);
-            ctx.clearRect(0,0,w,h);
-        
+            ctx.clearRect(0, 0, w, h);
+
             confs.forEach((conf) => {
                 conf.update();
                 conf.draw();
             })
         }
 
-        function Confetti () {
+        function Confetti() {
             //construct confetti
             const colours = ['#F5952E', '#F45614', '#76b53b'];
-        
-            this.x = Math.round(Math.random() * w);
-            this.y = Math.round(Math.random() * h)-(h/2);
-            this.rotation = Math.random()*360;
 
-            const size = Math.random()*(w/60);
+            this.x = Math.round(Math.random() * w);
+            this.y = Math.round(Math.random() * h) - (h / 2);
+            this.rotation = Math.random() * 360;
+
+            const size = Math.random() * (w / 60);
             this.size = size < 15 ? 15 : size;
 
             this.color = colours[Math.floor(colours.length * Math.random())];
 
-            this.speed = this.size/7;
-        
+            this.speed = this.size / 7;
+
             this.opacity = Math.random();
 
             this.shiftDirection = Math.random() > 0.5 ? 1 : -1;
         }
 
-        Confetti.prototype.border = function() {
+        Confetti.prototype.border = function () {
             if (this.y >= h) {
                 this.y = h;
             }
         }
 
-        Confetti.prototype.update = function() {
+        Confetti.prototype.update = function () {
             this.y += this.speed;
-        
+
             if (this.y <= h) {
-                this.x += this.shiftDirection/3;
-                this.rotation += this.shiftDirection*this.speed/100;
+                this.x += this.shiftDirection / 3;
+                this.rotation += this.shiftDirection * this.speed / 100;
             }
 
             if (this.y > h) this.border();
         };
 
-        Confetti.prototype.draw = function() {
+        Confetti.prototype.draw = function () {
             ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, this.rotation, this.rotation+(Math.PI/2));
+            ctx.arc(this.x, this.y, this.size, this.rotation, this.rotation + (Math.PI / 2));
             ctx.lineTo(this.x, this.y);
             ctx.closePath();
             ctx.globalAlpha = this.opacity;
@@ -383,8 +376,19 @@ function progress() {
         const confs = new Array(confNum).fill().map(_ => new Confetti());
 
         loop();
-        
+
     }
+}
+
+function foodMatch() {
+    const randomIndex = Math.floor(Math.random() * likedFoods.length);
+    const selectedFood = likedFoods[randomIndex];
+    selectedFoodImageURL = selectedFood.image;
+    var foodImage = document.getElementById("popup");
+    foodImage.style = "background-image: url(" + selectedFoodImageURL + ");";
+    console.log(selectedFoodImageURL)
+    openPopup();
+
 }
 
 let currentIndex = 0;
@@ -567,13 +571,13 @@ function closePopup() {
 }
 
 // function tiltFoodContainer(direction) {
-    // const foodContainer = document.getElementById('foodContainer');
-    // tilt direction
-    // const tiltAmount = direction === 'left' ? '-5deg' : '5deg';
+// const foodContainer = document.getElementById('foodContainer');
+// tilt direction
+// const tiltAmount = direction === 'left' ? '-5deg' : '5deg';
 
-    // foodContainer.style.transform = `rotate(${tiltAmount})`;
+// foodContainer.style.transform = `rotate(${tiltAmount})`;
 
-    // tilt reset after delay
-    // setTimeout(() => {
-        // foodContainer.style.transform = 'rotate(0deg)';
-    // }, 150);
+// tilt reset after delay
+// setTimeout(() => {
+// foodContainer.style.transform = 'rotate(0deg)';
+// }, 150);
