@@ -42,7 +42,9 @@ header img {
     transform-origin: center;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(0%, 0%);
+    margin-left: auto;
+    margin-right: auto;
     width: 300px;
     height: 400px;
     /* overflow: hidden; */

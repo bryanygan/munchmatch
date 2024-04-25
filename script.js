@@ -573,18 +573,18 @@ function closePopup() {
     document.querySelector('.container').classList.remove('blur-effect');
 }
 
-// function tiltFoodContainer(direction) {
-//     const foodContainer = document.getElementById('foodContainer');
-// // tilt direction
-//     const tiltAmount = direction === 'left' ? '-20deg' : '20deg';
+function tiltFoodContainer(direction) {
+    const foodContainer = document.getElementById('foodContainer');
+// tilt direction
+    const tiltAmount = direction === 'left' ? '-20deg' : '20deg';
 
-//     foodContainer.style.transform = `rotate(${tiltAmount})`;
+    foodContainer.style.transform = `rotate(${tiltAmount})`;
 
-//     // tilt reset after delay
-//         setTimeout(() => {
-//             foodContainer.style.transform = 'rotate(0deg)';
-//         }, 250);
-// }
+    // tilt reset after delay
+        setTimeout(() => {
+            foodContainer.style.transform = 'rotate(0deg)';
+        }, 250);
+}
 
 // temp code to debug the moving foodContainer
 
