@@ -279,6 +279,11 @@ startButton.addEventListener('click', function () {
     updateFoodDisplay("");
 });
 
+var superBtn = document.getElementById("superBtn")
+superBtn.addEventListener('click', function () {
+    foodMatch(true)
+})
+
 //start the program
 
 function generateList() {
@@ -307,7 +312,7 @@ function progress() {
     elem.style.width = fill + "%";
     document.getElementById("percentText").innerHTML = ("<b>" + fill + "%</b> to Match");
     if (fill >= 100) {
-        foodMatch()
+        foodMatch(false)
         //Confetti taken from codepen created by Andrew Collins
         const canvasEl = document.querySelector('#canvas');
 
@@ -380,19 +385,19 @@ function progress() {
     }
 }
 
-function foodMatch() {
+let currentIndex = 0;
+let likedFoods = []
+
+function foodMatch(useCurrent) {
     const randomIndex = Math.floor(Math.random() * likedFoods.length);
-    const selectedFood = likedFoods[randomIndex];
+    const selectedFood = useCurrent ? foods[currentIndex] : likedFoods[randomIndex];
     selectedFoodImageURL = selectedFood.image;
     var foodImage = document.getElementById("popup");
     foodImage.style = "background-image: url(" + selectedFoodImageURL + ");";
     console.log(selectedFoodImageURL)
     openPopup();
-
 }
 
-let currentIndex = 0;
-let likedFoods = []
 
 function swipe(direction) {
 
@@ -588,8 +593,8 @@ function tiltFoodContainer(direction) {
     } else {
         // Reset position if direction is not left or right
         foodContainer.style.transform = 'translateX(0) rotate(0deg)';
-    }     
+    }
     setTimeout(() => {
         foodContainer.style.transform = 'rotate(0deg)';
-        }, 250);
+    }, 250);
 }
