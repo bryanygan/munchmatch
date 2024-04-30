@@ -323,6 +323,7 @@ function progress() {
                 conf.draw();
             })
         }
+        
 
         function Confetti() {
             //construct confetti
