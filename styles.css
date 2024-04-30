@@ -119,6 +119,15 @@ header img {
     margin-bottom: 5px;
 }
 
+.button-container {
+    text-align: center;
+    height: 100vh; 
+}
+#startButton {
+    display: block; 
+    margin: auto; 
+}
+
 #btnLeft,
 #btnRight {
     position: absolute;
@@ -161,12 +170,12 @@ header img {
     color: var(--background-color);
     font-weight: bold;
     padding: .5rem;
-    transform: translate(1rem,1rem);
+    transform: translate(1rem, 1rem);
     border-radius: 1.5rem;
     font-size: small;
 }
 
-.super-btn:hover{
+.super-btn:hover {
     /* color:var(--super-match-color); */
     background-color: var(--super-match-color-g);
     cursor: pointer;
@@ -257,10 +266,19 @@ header img {
 
 #likedFoodsColumn,
 #chartColumn {
-    background-color: rgba(255, 255, 255, 0.5);
+    /* background-color: rgba(255, 255, 255, 0.5); */
     border-radius: 20px;
     /* background-color: rgba(255, 255, 255, 0.5); */
     padding: 10px;
+}
+
+#popupButton {
+    text-align: right;
+    background: rgba(0, 0, 0, 0);
+    text-transform: uppercase;
+    font-weight: normal;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
 }
 
 .column-title {
@@ -318,6 +336,12 @@ header {
 #headerColumnLeft {
     /* justify-content: left; */
     text-align: left;
+}
+
+#headerColumnRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 #foodColumn::before {
@@ -581,7 +605,7 @@ header {
 }
 
 /* .popup .foodImage { */
-    /* background-image: url('selectedFoodImageURL'); */
+/* background-image: url('selectedFoodImageURL'); */
 /* } */
 
 .match {
@@ -673,3 +697,35 @@ header {
     display: inline-block;
     width: 2px;
   }
+
+#aboutContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+#aboutProfile {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 1rem;
+}
+
+#aboutImg {
+    /* border: .25rem var(--accent-color-2) solid; */
+    height: 4rem;
+    width: 4rem;
+    object-fit: cover;
+    border-radius: 2.5rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#nameSpan {
+    font-weight: bold;
+    /* color: var(--accent-color-2); */
+    text-decoration: underline solid 2px;
+    text-decoration-color: var(--accent-color-2);
+}
