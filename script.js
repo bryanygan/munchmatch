@@ -1540,3 +1540,11 @@ function tiltFoodContainer(direction) {
         foodContainer.style.transform = 'rotate(0deg)';
     }, 250);
 }
+
+window.onload = function() {
+    var canvas = document.getElementById('canvas');
+    if (canvas) {
+        canvas.width = 0;
+        canvas.height = 0;
+    }
+};
