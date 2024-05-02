@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/convert-array-to-csv@2.0.0/lib/convert-array-to-csv.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/convert-array-to-csv@2.0.0/lib/helpers/append-element.min.js"></script> -->
+    <script>
+        import { convertArrayToCSV } from 'https://cdn.jsdelivr.net/npm/convert-array-to-csv@2.0.0/lib/convert-array-to-csv.min.js';
+
+        const arrayData = [
+            ['Name', 'Age', 'Country'],
+            ['John', 30, 'USA'],
+            ['Alice', 25, 'UK'],
+            ['Bob', 35, 'Canada']
+        ];
+
+        const csv = convertArrayToCSV(arrayData); // accessing function from package's namespace
+
+        console.log(csv);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
