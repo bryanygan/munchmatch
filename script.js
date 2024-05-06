@@ -1342,6 +1342,18 @@ function foodMatch(useCurrent) {
 
 function swipe(direction) {
 
+    // const currentImage = document.getElementById('foodImage');
+    // const preloadedImage = document.getElementById('preloadedImage');
+
+    // if (currentIndex + 1 < foods.length) {
+    //     currentIndex++;
+    //     setTimeout(() => {
+    //         currentImage.src = preloadedImage.src;
+
+    //         preloadImage(currentIndex); // Preload the next one
+    //     }, 500);
+    // }
+
     if (direction === 'right') {
         likedFoods.push(foods[currentIndex]);
     }
@@ -1548,3 +1560,15 @@ window.onload = function() {
         canvas.height = 0;
     }
 };
+
+// function preloadImage(index) {
+//     const nextIndex = index + 1;
+//     if (nextIndex < foods.length) {
+//         const img = new Image();
+//         img.onload = function() {
+//             document.getElementById('preloadedImage').src = this.src;
+//             document.getElementById('preloadedImage').style.display = 'block';
+//         };
+//         img.src = foods[nextIndex].image;
+//     }
+// }
