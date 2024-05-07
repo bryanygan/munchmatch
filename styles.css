@@ -105,7 +105,10 @@ header img {
     text-align: center;
 }
 
-#foodImage {
+#foodImage, #preloadedImage {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     /*?*/
@@ -113,6 +116,10 @@ header img {
     margin-right: auto;
     object-fit: cover;
     transition: transform 0.3s ease-in-out;
+}
+
+#preloadedImage {
+    z-index: -1;
 }
 
 .allergyCheckbox {
@@ -741,3 +748,16 @@ header {
     text-decoration: underline solid 2px;
     text-decoration-color: var(--accent-color-2);
 }
+
+.slide-in-left, .slide-in-right {
+    transform: translateX(-50%) scale(1.05);  /* Slightly zoom in during transition */
+}
+
+.slide-out-left {
+    transform: translateX(-150%); /* Slide out to the left */
+}
+
+.slide-out-right {
+    transform: translateX(150%); /* Slide out to the right */
+}
+
