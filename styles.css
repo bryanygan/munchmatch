@@ -626,7 +626,22 @@ header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.popup button {
+.popup .accept {
+    position: absolute;
+    width: 100%;
+    padding: 10px 0;
+    background: var(--accent-color-2);
+    color: #fff;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+}
+
+.popup .decline {
     position: absolute;
     width: 100%;
     padding: 10px 0;
@@ -708,7 +723,6 @@ header {
     font-weight: 500;
     margin: 20px
     color: #FFF;
-    color: white;
     text-align: left;
   }
   
