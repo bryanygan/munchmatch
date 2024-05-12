@@ -411,19 +411,6 @@ function foodMatch(useCurrent) {
 }
 
 function swipe(direction) {
-
-    // const currentImage = document.getElementById('foodImage');
-    // const preloadedImage = document.getElementById('preloadedImage');
-
-    // if (currentIndex + 1 < foods.length) {
-    //     currentIndex++;
-    //     setTimeout(() => {
-    //         currentImage.src = preloadedImage.src;
-
-    //         preloadImage(currentIndex); // Preload the next one
-    //     }, 500);
-    // }
-
     if (direction === 'right') {
         likedFoods.push(foods[currentIndex]);
     }
@@ -473,8 +460,19 @@ function updateDictionary(dict, key) {
     }
 }
 
+// let preloadedIndex = 1; // Index for the next image to be displayed
+
+// function preloadNextImage() {
+//     if (preloadedIndex >= foods.length) {
+//         preloadedIndex = 0; // Loop back to the first image if we reach the end of the array
+//     }
+//     const preloadedImage = document.getElementById('preloadedImage');
+//     preloadedImage.src = foods[preloadedIndex].image; // Set the source for the preloaded image
+// }
+
 function updateFoodDisplay(direction) {
-    const foodImage = document.getElementById('foodImage');
+    // const currentImage = document.getElementById('currentImage');
+    // const preloadedImage = document.getElementById('preloadedImage');
     const dishName = document.getElementById('dishName');
     const description = document.getElementById('description');
     const dishflag = document.getElementById('foodcountry');
@@ -485,6 +483,9 @@ function updateFoodDisplay(direction) {
     const allergySeafood = document.getElementById('allergySeafood');
     const allergyDairy = document.getElementById('allergyDairy');
     const allergySpice = document.getElementById('allergySpice');
+
+    // currentImage.style.transition = 'transform 0.5s ease-in-out';
+    // currentImage.style.transform = `translateX(${direction === 'left' ? '-' : ''}100%)`;
 
     translation = ''
     if (direction === 'left') {
@@ -508,7 +509,14 @@ function updateFoodDisplay(direction) {
 
     foodImage.style.transform = translation;
     setTimeout(() => {
-        foodImage.src = foods[currentIndex].image;
+        // currentIndex = preloadedIndex;
+        // preloadedIndex = (preloadedIndex + 1) % foods.length;
+        // preloadNextImage();
+
+        // currentImage.src = preloadedImage.src;
+        // currentImage.style.transform = 'translateX(0)';
+
+        // foodImage.src = foods[currentIndex].image;
         dishName.innerText = replaceUnderscoresWithSpacesAndCapitalize(foods[currentIndex].name);
         dishflag.className = "fi fi-" + foods[currentIndex].country;
         dollar2.style = foods[currentIndex].price >= 2 ? "" : "color: rgba(255, 243, 222, 0.3);";
@@ -522,7 +530,8 @@ function updateFoodDisplay(direction) {
     }, 300);
 
     tiltFoodContainer(direction)
-
+    
+// preloadNextImage();
 }
 
 function replaceUnderscoresWithSpacesAndCapitalize(str) {
@@ -630,14 +639,3 @@ window.onload = function() {
     }
 };
 
-// function preloadImage(index) {
-//     const nextIndex = index + 1;
-//     if (nextIndex < foods.length) {
-//         const img = new Image();
-//         img.onload = function() {
-//             document.getElementById('preloadedImage').src = this.src;
-//             document.getElementById('preloadedImage').style.display = 'block';
-//         };
-//         img.src = foods[nextIndex].image;
-//     }
-// }
