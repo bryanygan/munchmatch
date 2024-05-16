@@ -516,7 +516,7 @@ function updateFoodDisplay(direction) {
         // currentImage.src = preloadedImage.src;
         // currentImage.style.transform = 'translateX(0)';
 
-        // foodImage.src = foods[currentIndex].image;
+        foodImage.src = foods[currentIndex].image;
         dishName.innerText = replaceUnderscoresWithSpacesAndCapitalize(foods[currentIndex].name);
         dishflag.className = "fi fi-" + foods[currentIndex].country;
         dollar2.style = foods[currentIndex].price >= 2 ? "" : "color: rgba(255, 243, 222, 0.3);";
