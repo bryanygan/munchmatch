@@ -9,10 +9,13 @@ MunchMatch is a Tinder-style food recommendation platform that will curate a per
 ## Installation
 No installation will be needed. Once the site is finalized, we will host it on the web.
 
+## Tech Stack
+To develop the site, we used HTML, CSS, and Javascript.
+
 ## Roadmap
 Winter 2024 - project begins (CI102)
 Spring 2024 - project continues (CI103)
-Summer 2024 (anticipated) - project completed
+Summer 2024 - minimum viable product of project completed
 
 ## Contributing
 We are not accepting contributions to the project at this time, but please let us know if you find errors in the site. 
