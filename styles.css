@@ -584,6 +584,11 @@ header {
     border-radius: 30px;
 }
 */
+
+.popup::after {
+    background-image: linear-gradient(rgba(0, 0, 0, 0), black 80%);
+}
+
 .popup {
     z-index: 10;
     width: 400px;
@@ -597,10 +602,11 @@ header {
     left: 50%;
     transform: translate(-50%, -50%) scale(0.1);
     text-align: center;
-    color: #333;
     visibility: hidden;
     transition: transform 0.4s, top 0.4s;
 }
+
+
 
 .open-popup {
     visibility: visible;
@@ -719,8 +725,7 @@ header {
     font-size: 20px;
     font-weight: 500;
     margin: 20px
-    color: #FFF;
-    text-align: left;
+
   }
   
   span.space {
