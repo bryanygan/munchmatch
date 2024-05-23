@@ -393,7 +393,7 @@ let likedFoods = []
 function foodMatch(useCurrent) {
     const randomIndex = Math.floor(Math.random() * likedFoods.length);
     const selectedFood = useCurrent ? foods[currentIndex] : likedFoods[randomIndex];
-    selectedFoodImageURL = selectedFood.image;
+    
 
     selectedFoodName = selectedFood.name.toUpperCase();
     var foodNameDisplay = document.getElementById("selectedFoodName");
@@ -403,9 +403,9 @@ function foodMatch(useCurrent) {
     var foodDescriptionDisplay = document.getElementById("selectedFoodDescription");
     foodDescriptionDisplay.textContent = replaceUnderscoresWithSpacesAndCapitalize(selectedFoodDescription);
     
-
+    selectedFoodImageURL = selectedFood.image;
     var foodImage = document.getElementById("popup");
-    foodImage.style = "background-image: url(" + selectedFoodImageURL + ");";
+    foodImage.style = "background-image: linear-gradient(rgba(0, 0, 0, 0), black 80%);";
     console.log(selectedFoodImageURL)
     openPopup();
 }
