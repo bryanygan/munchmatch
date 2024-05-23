@@ -305,12 +305,17 @@ function generateList() {
 var resultList = generateList();
 
 var fill = 0;
-function progress() {
+function progress(direction) {
     fill += resultList.shift();
 
     var elem = document.getElementById("myBar");
     elem.style.width = fill + "%";
     document.getElementById("percentText").innerHTML = ("<b>" + fill + "%</b> to Match");
+    if (direction === 'right') {
+        shootLikes();
+    } else if (direction === 'left') {
+        shootDislikes();
+    }
     if (fill >= 100) {
         
         foodMatch(false)
@@ -433,7 +438,7 @@ function swipe(direction) {
     } while (keepGenerating);
 
     updateFoodDisplay(direction);
-    progress();
+    progress(direction);
 }
 
 let lastSwipeTime = 0;
@@ -720,39 +725,124 @@ window.onload = function() {
     }
 };
 
-// document.getElementById('btnRight').addEventListener('click', shootLikes);
+// From ChatGPT, modified by Bryan Gan
+document.getElementById('btnRight').addEventListener('click', shootLikes);
+document.getElementById('btnLeft').addEventListener('click', () => shootDislikes('left'));
 
-// document.addEventListener('keydown', function(event) {
-//     if (event.key === 'ArrowRight') {
-//       shootLikes();
-//     }
-//   });
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'ArrowRight') {
+      shootLikes();
+    }
+});
 
-// function shootLikes() {
-//   const container = document.getElementById('foodContainer');
-//   const button = document.getElementById('btnRight');
-//   const rect = button.getBoundingClientRect();
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'ArrowLeft') {
+      shootDislikes();
+    }
+});
+
+function shootLikes() {
+  const container = document.getElementById('foodContainer');
+  const button = document.getElementById('btnRight');
+  const rect = button.getBoundingClientRect();
   
-//   // Position the container at the side of the button
-//   container.style.top = `${rect.top + window.scrollY}px`;
-//   container.style.left = `${rect.right + window.scrollX + 200}px`;
+  // Position the container at the side of the button
+  container.style.top = `${rect.top + window.scrollY}px`;
+  container.style.left = `${rect.right + window.scrollX + 200}px`;
 
-//   for (let i = 0; i < 20; i++) {
-//     const emoji = document.createElement('div');
-//     emoji.classList.add('shootemojis');
-//     emoji.innerHTML = getRandomEmoji();
-//     emoji.style.left = '0px';
-//     emoji.style.top = `${Math.random() * 50}px`;
-//     container.appendChild(emoji);
+  for (let i = 0; i < 20; i++) {
+    const emoji = document.createElement('div');
+    emoji.classList.add('shootemojis');
+    emoji.innerHTML = getRandomLikeEmoji();
+    emoji.style.left = '50%'; // Start from the middle
+    emoji.style.bottom = '0'; // Start from the bottom
+    emoji.style.transform = 'translateX(-50%)'; // Center the emoji
+    container.appendChild(emoji);
 
-//     // Remove the emoji after animation ends
-//     emoji.addEventListener('animationend', () => {
-//       emoji.remove();
-//     });
-//   }
-// }
+    // Remove the emoji after animation ends
+    emoji.addEventListener('animationend', () => {
+      emoji.remove();
+    });
+  }
+}
 
-// function getRandomEmoji() {
-//   const emojis = ['👍', '♥️', '💖', '💗', '💝'];
-//   return emojis[Math.floor(Math.random() * emojis.length)];
-// }
+function shootDislikes(direction) {
+  const container = document.getElementById('foodContainer');
+  const button = document.getElementById('btnLeft');
+  const rect = button.getBoundingClientRect();
+
+  // Position the container based on the direction
+  if (direction === 'left') {
+    container.style.top = `${rect.top + window.scrollY}px`;
+    container.style.left = `${rect.left + window.scrollX - 200}px`;
+  }
+
+  for (let i = 0; i < 20; i++) {
+    const emoji = document.createElement('div');
+    emoji.classList.add('shootemojis');
+    emoji.innerHTML = getRandomDislikeEmoji();
+    emoji.style.left = '50%'; // Start from the middle
+    emoji.style.bottom = '0'; // Start from the bottom
+    emoji.style.transform = 'translateX(-50%)'; // Center the emoji
+
+    // Apply different animations based on direction
+    if (direction === 'left') {
+      emoji.style.animationName = 'shootLeft';
+    }
+
+    container.appendChild(emoji);
+
+    // Remove the emoji after animation ends
+    emoji.addEventListener('animationend', () => {
+      emoji.remove();
+    });
+  }
+}
+
+function getRandomLikeEmoji() {
+  const emojis = ['♥️', '💖', '💗', '💝'];
+  return emojis[Math.floor(Math.random() * emojis.length)];
+}
+
+function getRandomDislikeEmoji() {
+  const emojis = ['😒', '🙃', '😡', '❌', '🚫'];
+  return emojis[Math.floor(Math.random() * emojis.length)];
+}
+
+function shootLikes() {
+    shootEmojis('♥️', '💖', '💗', '💝');
+}
+
+function shootDislikes() {
+    shootEmojis('💔', '😢', '😠', '😡');
+}
+
+function shootEmojis(...emojis) {
+    const foodContainer = document.getElementById('foodContainer');
+    const myBar = document.getElementById('myBar');
+    
+    const foodRect = foodContainer.getBoundingClientRect();
+    const barRect = myBar.getBoundingClientRect();
+    
+    const startX = foodRect.left + foodRect.width / 2;
+    const startY = foodRect.bottom;
+    const endX = barRect.right; 
+    const endY = barRect.top + barRect.height / 5; 
+
+    const translateX = endX - startX;
+    const translateY = endY - startY;
+
+    const emoji = document.createElement('div');
+    emoji.classList.add('shootemojis');
+    emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+    emoji.style.left = `${startX}px`;
+    emoji.style.top = `${startY}px`;
+    emoji.style.setProperty('--translateX', `${translateX}px`);
+    emoji.style.setProperty('--translateY', `${translateY}px`);
+    emoji.style.animation = `shoot 1s ease-out forwards`; 
+    document.body.appendChild(emoji);
+
+    emoji.addEventListener('animationend', () => {
+        emoji.remove();
+    });
+}
