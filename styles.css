@@ -729,7 +729,8 @@ div.line2 span {
     padding: 25px;
     font-size: 20px;
     font-weight: 500;
-    margin: 20px color: #FFF;
+    margin: 20px; 
+    color: #FFF;
     text-align: left;
 }
 
@@ -786,7 +787,7 @@ span.space {
     /* Slide out to the right */
 }
 
-/* .shootemojis {  
+.shootemojis {
     position: absolute;
     font-size: 34px;
     animation: shoot 3s ease-out forwards;
@@ -794,10 +795,14 @@ span.space {
 
 @keyframes shoot {
     0% {
-      transform: translateX(0) translateY(0) rotate(0);
+        transform: translateX(0) translateY(0) rotate(0);
+        opacity: 1;
+    }
+    25% {
+        opacity: 1; 
     }
     100% {
-      transform: translateX(2000px) translateY(calc(-100vh - 50px)) rotate(540deg);
-      opacity: 0;
+        transform: translateX(var(--translateX)) translateY(var(--translateY)) rotate(540deg);
+        opacity: 0; 
     }
-  } */
+}
