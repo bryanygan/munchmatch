@@ -310,79 +310,15 @@ function progress() {
 
     var elem = document.getElementById("myBar");
     elem.style.width = fill + "%";
-    document.getElementById("percentText").innerHTML = ("<b>" + fill + "%</b> to Match");
+    if (fill <= 100) {
+        document.getElementById("percentText").innerHTML = ("<b>" + fill + "%</b> to Match");
+    }
+    else {
+        document.getElementById("percentText").innerHTML = ("<b>" + "100" + "%</b> to Match");
+    }
     if (fill >= 100) {
         
-        foodMatch(false)
-        //Confetti taken from codepen created by Andrew Collins
-        const canvasEl = document.querySelector('#canvas');
-
-        const w = canvasEl.width = window.innerWidth;
-        const h = canvasEl.height = window.innerHeight * 2;
-
-        function loop() {
-            requestAnimationFrame(loop);
-            ctx.clearRect(0, 0, w, h);
-
-            confs.forEach((conf) => {
-                conf.update();
-                conf.draw();
-            })
-        }
-        
-
-        function Confetti() {
-            //construct confetti
-            const colours = ['#F5952E', '#F45614', '#76b53b'];
-
-            this.x = Math.round(Math.random() * w);
-            this.y = Math.round(Math.random() * h) - (h / 2);
-            this.rotation = Math.random() * 360;
-
-            const size = Math.random() * (w / 60);
-            this.size = size < 15 ? 15 : size;
-
-            this.color = colours[Math.floor(colours.length * Math.random())];
-
-            this.speed = this.size / 7;
-
-            this.opacity = Math.random();
-
-            this.shiftDirection = Math.random() > 0.5 ? 1 : -1;
-        }
-
-        Confetti.prototype.border = function () {
-            if (this.y >= h) {
-                this.y = h;
-            }
-        }
-
-        Confetti.prototype.update = function () {
-            this.y += this.speed;
-
-            if (this.y <= h) {
-                this.x += this.shiftDirection / 3;
-                this.rotation += this.shiftDirection * this.speed / 100;
-            }
-
-            if (this.y > h) this.border();
-        };
-
-        Confetti.prototype.draw = function () {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, this.rotation, this.rotation + (Math.PI / 2));
-            ctx.lineTo(this.x, this.y);
-            ctx.closePath();
-            ctx.globalAlpha = this.opacity;
-            ctx.fillStyle = this.color;
-            ctx.fill();
-        };
-
-        const ctx = canvasEl.getContext('2d');
-        const confNum = Math.floor(w / 4);
-        const confs = new Array(confNum).fill().map(_ => new Confetti());
-
-        loop();
+        foodMatch(true)
 
     }
 }
@@ -405,9 +341,77 @@ function foodMatch(useCurrent) {
     
     selectedFoodImageURL = selectedFood.image;
     var foodImage = document.getElementById("popup");
-    foodImage.style = "background-image: linear-gradient(rgba(0, 0, 0, 0), black 80%);";
+    foodImage.style = "background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 50%, black 90%), url(" + selectedFoodImageURL + ");";
     console.log(selectedFoodImageURL)
     openPopup();
+
+    //Confetti taken from codepen created by Andrew Collins
+    const canvasEl = document.querySelector('#canvas');
+
+    const w = canvasEl.width = window.innerWidth;
+    const h = canvasEl.height = window.innerHeight * 2;
+
+    function loop() {
+        requestAnimationFrame(loop);
+        ctx.clearRect(0, 0, w, h);
+
+        confs.forEach((conf) => {
+            conf.update();
+            conf.draw();
+        })
+    }
+    function Confetti() {
+        //construct confetti
+        const colours = ['#F5952E', '#F45614', '#76b53b'];
+
+        this.x = Math.round(Math.random() * w);
+        this.y = Math.round(Math.random() * h) - (h / 2);
+        this.rotation = Math.random() * 360;
+
+        const size = Math.random() * (w / 60);
+        this.size = size < 15 ? 15 : size;
+
+        this.color = colours[Math.floor(colours.length * Math.random())];
+
+        this.speed = this.size / 7;
+
+        this.opacity = Math.random();
+
+        this.shiftDirection = Math.random() > 0.5 ? 1 : -1;
+    }
+
+    Confetti.prototype.border = function () {
+        if (this.y >= h) {
+            this.y = h;
+        }
+    }
+
+    Confetti.prototype.update = function () {
+        this.y += this.speed;
+
+        if (this.y <= h) {
+            this.x += this.shiftDirection / 3;
+            this.rotation += this.shiftDirection * this.speed / 100;
+        }
+
+        if (this.y > h) this.border();
+    };
+
+    Confetti.prototype.draw = function () {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, this.rotation, this.rotation + (Math.PI / 2));
+        ctx.lineTo(this.x, this.y);
+        ctx.closePath();
+        ctx.globalAlpha = this.opacity;
+        ctx.fillStyle = this.color;
+        ctx.fill();
+    };
+
+    const ctx = canvasEl.getContext('2d');
+    const confNum = Math.floor(w / 4);
+    const confs = new Array(confNum).fill().map(_ => new Confetti());
+
+    loop();
 }
 
 function swipe(direction) {
@@ -610,6 +614,13 @@ function closePopup() {
     document.querySelector('.container').classList.remove('blur-effect');
 }
 
+function matchDecline() {
+    popup.classList.remove("open-popup");
+    document.querySelector('.container').classList.remove('blur-effect');
+    fill = 70
+    progress(true)
+}
+
 // Base code written by ChatGPT, modified by Bryan
 function tiltFoodContainer(direction) {
     const foodContainer = document.getElementById('foodContainer');
@@ -639,39 +650,3 @@ window.onload = function() {
     }
 };
 
-// document.getElementById('btnRight').addEventListener('click', shootLikes);
-
-// document.addEventListener('keydown', function(event) {
-//     if (event.key === 'ArrowRight') {
-//       shootLikes();
-//     }
-//   });
-
-// function shootLikes() {
-//   const container = document.getElementById('foodContainer');
-//   const button = document.getElementById('btnRight');
-//   const rect = button.getBoundingClientRect();
-  
-//   // Position the container at the side of the button
-//   container.style.top = `${rect.top + window.scrollY}px`;
-//   container.style.left = `${rect.right + window.scrollX + 200}px`;
-
-//   for (let i = 0; i < 20; i++) {
-//     const emoji = document.createElement('div');
-//     emoji.classList.add('shootemojis');
-//     emoji.innerHTML = getRandomEmoji();
-//     emoji.style.left = '0px';
-//     emoji.style.top = `${Math.random() * 50}px`;
-//     container.appendChild(emoji);
-
-//     // Remove the emoji after animation ends
-//     emoji.addEventListener('animationend', () => {
-//       emoji.remove();
-//     });
-//   }
-// }
-
-// function getRandomEmoji() {
-//   const emojis = ['👍', '♥️', '💖', '💗', '💝'];
-//   return emojis[Math.floor(Math.random() * emojis.length)];
-// }
