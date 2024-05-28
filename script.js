@@ -516,7 +516,7 @@ function updateFoodDisplay(direction) {
         // currentImage.src = preloadedImage.src;
         // currentImage.style.transform = 'translateX(0)';
 
-        // foodImage.src = foods[currentIndex].image;
+        foodImage.src = foods[currentIndex].image;
         dishName.innerText = replaceUnderscoresWithSpacesAndCapitalize(foods[currentIndex].name);
         dishflag.className = "fi fi-" + foods[currentIndex].country;
         dollar2.style = foods[currentIndex].price >= 2 ? "" : "color: rgba(255, 243, 222, 0.3);";
@@ -639,3 +639,39 @@ window.onload = function() {
     }
 };
 
+// document.getElementById('btnRight').addEventListener('click', shootLikes);
+
+// document.addEventListener('keydown', function(event) {
+//     if (event.key === 'ArrowRight') {
+//       shootLikes();
+//     }
+//   });
+
+// function shootLikes() {
+//   const container = document.getElementById('foodContainer');
+//   const button = document.getElementById('btnRight');
+//   const rect = button.getBoundingClientRect();
+  
+//   // Position the container at the side of the button
+//   container.style.top = `${rect.top + window.scrollY}px`;
+//   container.style.left = `${rect.right + window.scrollX + 200}px`;
+
+//   for (let i = 0; i < 20; i++) {
+//     const emoji = document.createElement('div');
+//     emoji.classList.add('shootemojis');
+//     emoji.innerHTML = getRandomEmoji();
+//     emoji.style.left = '0px';
+//     emoji.style.top = `${Math.random() * 50}px`;
+//     container.appendChild(emoji);
+
+//     // Remove the emoji after animation ends
+//     emoji.addEventListener('animationend', () => {
+//       emoji.remove();
+//     });
+//   }
+// }
+
+// function getRandomEmoji() {
+//   const emojis = ['👍', '♥️', '💖', '💗', '💝'];
+//   return emojis[Math.floor(Math.random() * emojis.length)];
+// }
