@@ -305,7 +305,7 @@ function generateList() {
 var resultList = generateList();
 
 var fill = 0;
-function progress() {
+function progress(direction) {
     fill += resultList.shift();
 
     var elem = document.getElementById("myBar");
@@ -315,6 +315,11 @@ function progress() {
     }
     else {
         document.getElementById("percentText").innerHTML = ("<b>" + "100" + "%</b> to Match");
+    }
+    if (direction === 'right') {
+        shootLikes();
+    } else if (direction === 'left') {
+        shootDislikes();
     }
     if (fill >= 100) {
         
@@ -437,7 +442,7 @@ function swipe(direction) {
     } while (keepGenerating);
 
     updateFoodDisplay(direction);
-    progress();
+    progress(direction);
 }
 
 let lastSwipeTime = 0;
@@ -507,9 +512,90 @@ function updateFoodDisplay(direction) {
 
     currArr = new Array(foods[currentIndex].sweet, foods[currentIndex].sour, foods[currentIndex].salty, foods[currentIndex].bitter, foods[currentIndex].umami);
     chartId.data.datasets[0].data = currArr;
-    chartId.data.datasets[1].data = new Array(sweetTotal / likedTotal, sourTotal / likedTotal, saltyTotal / likedTotal, bitterTotal / likedTotal, umamiTotal / likedTotal);
-
+    prefArr = new Array(sweetTotal / likedTotal, sourTotal / likedTotal, saltyTotal / likedTotal, bitterTotal / likedTotal, umamiTotal / likedTotal);
+    chartId.data.datasets[1].data = prefArr
     chartId.update()
+
+    let currMulti = [];
+let ind = 0;
+currArr.forEach(element => {
+    currMulti.push([ind++, element]);
+});
+ind = 0;
+let prefMutli = [];
+prefArr.forEach(element => {
+    prefMutli.push([ind++, element]);
+});
+
+    //food preference stuff elan is working on 5/23
+
+    // const spans= []
+    // for (let index = 0; index < 4; index++) {
+    //     const element = document.getElementById("fpDesc"+index+1)
+    //     spans.push(element)
+    // }
+    // console.log(spans)
+
+    const prefOrder = ["sweet", "sour", "salty", "bitter", "umami"]
+
+    const span1 = document.getElementById("fpDesc1")
+    const span2 = document.getElementById("fpDesc2")
+    const span3 = document.getElementById("fpDesc3")
+    const span4 = document.getElementById("fpDesc4")
+
+
+    function sortByDistanceFrom2_5(arr) {
+        return arr.sort((a, b) => {
+            const distanceA = Math.abs(a[0] - 2.5);
+            const distanceB = Math.abs(b[0] - 2.5);
+            return distanceA - distanceB;
+        });
+    }
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            // Generate a random index between 0 and i
+            const j = Math.floor(Math.random() * (i + 1));
+            // Swap elements at index i and j
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    // currMulti = sortByDistanceFrom2_5(currMulti)
+    // prefMutli = sortByDistanceFrom2_5(prefMutli)
+    currMulti = shuffleArray(currMulti)
+    prefMutli = shuffleArray(prefMutli)
+    currMulti = currMulti.reverse()
+    prefMutli = prefMutli.reverse()
+    console.log("-----")
+    console.log(currMulti)
+    console.log(prefMutli)
+
+    // span1.innerText=currArr[0][0]
+    // spans[0].innerText = currArr[0]
+    span1.innerText=formatPref(currMulti[0][1],currMulti[0][0])
+    span2.innerText=formatPref(currMulti[1][1],currMulti[1][0])
+    span3.innerText=formatPref(prefMutli[0][1],prefMutli[0][0])
+    span4.innerText=formatPref(prefMutli[1][1],prefMutli[1][0])
+
+    function formatPref(num, ind){
+        prefix=""
+        suffix = prefOrder[ind]
+        if(num >= 4){
+            prefix = "very"
+        }
+        else if(num >= 3){
+            prefix="a little"
+        }
+        else if (num <= 2){
+            prefix = "not very"
+        }
+        else if(num<=1){
+            prefix = "not"
+        }
+        return prefix+" "+suffix
+    }
 
     foodImage.style.transform = translation;
     setTimeout(() => {
@@ -650,3 +736,39 @@ window.onload = function() {
     }
 };
 
+// document.getElementById('btnRight').addEventListener('click', shootLikes);
+
+// document.addEventListener('keydown', function(event) {
+//     if (event.key === 'ArrowRight') {
+//       shootLikes();
+//     }
+//   });
+
+// function shootLikes() {
+//   const container = document.getElementById('foodContainer');
+//   const button = document.getElementById('btnRight');
+//   const rect = button.getBoundingClientRect();
+  
+//   // Position the container at the side of the button
+//   container.style.top = `${rect.top + window.scrollY}px`;
+//   container.style.left = `${rect.right + window.scrollX + 200}px`;
+
+//   for (let i = 0; i < 20; i++) {
+//     const emoji = document.createElement('div');
+//     emoji.classList.add('shootemojis');
+//     emoji.innerHTML = getRandomEmoji();
+//     emoji.style.left = '0px';
+//     emoji.style.top = `${Math.random() * 50}px`;
+//     container.appendChild(emoji);
+
+//     // Remove the emoji after animation ends
+//     emoji.addEventListener('animationend', () => {
+//       emoji.remove();
+//     });
+//   }
+// }
+
+// function getRandomEmoji() {
+//   const emojis = ['👍', '♥️', '💖', '💗', '💝'];
+//   return emojis[Math.floor(Math.random() * emojis.length)];
+// }

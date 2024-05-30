@@ -203,14 +203,18 @@
     <div class="container">
         <div class="column" id="chartColumn">
             <div class="column-title">Flavor Profiles</div>
-            <!-- <div id="dislikedFoods">
-
-                </div> -->
-
-            <div id="spiderChart">
-                <canvas id="chartId" aria-label="chart" height="200" width="200"></canvas>
+            <div style="display: flex; flex-direction: column;">
+                <div id="spiderChart">
+                    <canvas id="chartId" aria-label="chart" height="200" width="200"></canvas>
+                </div>
+                <div id="flavorProfileDesc">
+                    The current food is:<br>
+                    <span class="fp-desc-box" id="fpDesc1">____</span> and <span class="fp-desc-box" id="fpDesc2">____</span>.
+                    <br>
+                    You like foods that are:<br>
+                    <span class="fp-desc-box" id="fpDesc3">____</span> and <span class="fp-desc-box" id="fpDesc4">____</span>. 
+                </div>
             </div>
-            <!-- <div id="map"></div> -->
         </div>
         <div class="column" id="foodColumn">
             <!-- style="display: none;" -->
