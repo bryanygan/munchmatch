@@ -1,6 +1,6 @@
 const imageSearch = require('image-search-google');
 
-const client = new imageSearch('871c638868f774743', 'AIzaSyB6TGVlNYYLaaQbtqiTb8vth7TOCvE2shI');
+const client = new imageSearch('871c638868f774743', '');
 const options = { page: 1, size: 'large' };
 
 const fs = require('fs');
