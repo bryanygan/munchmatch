@@ -28,4 +28,4 @@ Elan R. | Ethan H. | Bryan G. | Emily L.
 Please feel free to use code from this project in your own sites, as long as credit is provided.
 
 ## Project status
-This project is in development at the moment.
+This project is not in development at the moment.
