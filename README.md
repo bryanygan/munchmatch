@@ -1,4 +1,4 @@
-# CI-102-Lab63-Group15
+# MunchMatch
 
 ## Name
 MunchMatch
