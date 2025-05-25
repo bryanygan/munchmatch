@@ -216,45 +216,39 @@
                 </div>
             </div>
         </div>
-        <div class="column" id="foodColumn">
-            <!-- style="display: none;" -->
-            <div id="instructionContainer">
-                <!-- Discover your perfect bite with Munch Match!
-                Swipe right if you like the food, and left if you don't.
-                Our algorithm will match you with a dish in 20 swipes.
-                Happy matching!
-                <br>
-                <br> -->
-                <button type="button" id="startButton" class="standard-button">Launch</button>
-            </div>
-            <div id="foodContainer">
-                <img draggable=false id="foodImage" src="images/image1.png" alt="Food Image">
-                <!-- <img draggable="false" id="preloadedImage" src="" alt="Preloaded Food Image" style="display: none;"> -->
-                <div id="foodTextContainer">
-                    <p id="dishName">Dish Name</p>
-                    <p id="description">Description text goes here.</p>
-
-                    <div class="grid-container">
-                        <div class="grid-item"><span id="foodcountry" class="fi fi-kr"></span></div>
-                        <div class="grid-item"><i class="fa-solid fa-dollar-sign" id="dollar1"></i><i
-                                class="fa-solid fa-dollar-sign" id="dollar2"></i><i class="fa-solid fa-dollar-sign"
-                                id="dollar3"></i></div>
-                        <div class="grid-item"><i class="fa-solid fa-wheat-awn" id="allergyGluten"></i> <i
-                                class="fa-solid fa-fish" id="allergySeafood"></i> <i class="fa-solid fa-cheese"
-                                id="allergyDairy"></i> <i class="fa-solid fa-pepper-hot" id="allergySpice"></i></div>
-                    </div>
-                </div>
-                <button class="custom-btn btn-ani-left" id="btnLeft" onclick="swipe('left')">❮</button>
-                <button class="custom-btn btn-ani-right" id="btnRight" onclick="swipe('right')">❯</button>
-                <!-- <dif id="badge">
-                    <i class="fa-solid fa-heart"></i>
-                </div> -->
-                <div class="super-btn" id="superBtn">
-                    <i class="fa-solid fa-heart"></i>
-                    Super Match
+        <!-- Replace this structure in your HTML -->
+<div class="column" id="foodColumn">
+    <div id="instructionContainer">
+        <button type="button" id="startButton" class="standard-button">Launch</button>
+    </div>
+    
+    <!-- Add this wrapper div -->
+    <div id="foodWrapper">
+        <div id="foodContainer">
+            <img draggable=false id="foodImage" src="images/image1.png" alt="Food Image">
+            <div id="foodTextContainer">
+                <p id="dishName">Dish Name</p>
+                <p id="description">Description text goes here.</p>
+                <div class="grid-container">
+                    <div class="grid-item"><span id="foodcountry" class="fi fi-kr"></span></div>
+                    <div class="grid-item"><i class="fa-solid fa-dollar-sign" id="dollar1"></i><i
+                            class="fa-solid fa-dollar-sign" id="dollar2"></i><i class="fa-solid fa-dollar-sign"
+                            id="dollar3"></i></div>
+                    <div class="grid-item"><i class="fa-solid fa-wheat-awn" id="allergyGluten"></i> <i
+                            class="fa-solid fa-fish" id="allergySeafood"></i> <i class="fa-solid fa-cheese"
+                            id="allergyDairy"></i> <i class="fa-solid fa-pepper-hot" id="allergySpice"></i></div>
                 </div>
             </div>
+            <button class="custom-btn btn-ani-left" id="btnLeft" onclick="swipe('left')">❮</button>
+            <button class="custom-btn btn-ani-right" id="btnRight" onclick="swipe('right')">❯</button>
         </div>
+        <!-- Move the super button outside the food container but inside the wrapper -->
+        <div class="super-btn" id="superBtn">
+            <i class="fa-solid fa-heart"></i>
+            Super Match
+        </div>
+    </div>
+</div>
         <div class="column" id="likedFoodsColumn">
             <div class="column-title">Liked Foods</div>
             <div id="likedFoods">
